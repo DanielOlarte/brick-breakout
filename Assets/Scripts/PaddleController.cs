@@ -18,7 +18,6 @@ public class PaddleController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 currentPosition = transform.position;
-		float speed = moveSpeed;
 		if( Input.GetKeyDown(KeyCode.RightArrow) ) {
 			moveDirection = transform.right;
 			moveDirection.Normalize();
