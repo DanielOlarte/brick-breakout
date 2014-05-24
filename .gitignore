@@ -1,0 +1,9 @@
+# Ignored files
+
+/Temp
+/obj
+/library
+*.csproj
+*.unityproj
+*.sln
+Assets/TK2DROOT/
