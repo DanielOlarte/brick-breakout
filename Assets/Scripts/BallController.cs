@@ -18,9 +18,10 @@ public class BallController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
+		Debug.Log (collision);
 		Vector2 normal = collision.contacts [0].normal;
 		if ( Mathf.Approximately( Mathf.Abs(normal.x), 1.0f) ){
-			speed.x = speed.x * -1;
+			speed.x = Mathf.Abs(speed.x) * normal.x;
 		}
 		if ( Mathf.Approximately( Mathf.Abs(normal.y) , 1.0f)) {
 			speed.y = speed.y * -1;
