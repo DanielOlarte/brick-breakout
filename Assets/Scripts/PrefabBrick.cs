@@ -18,4 +18,12 @@ public class PrefabBrick : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	void OnCollisionExit2D(Collision2D collision)
+	{
+		brick.addHits ();
+		if (brick.getCurrentHits () == brick.getNeededHits ()) {
+			Destroy(gameObject);
+		}
+	}
 }

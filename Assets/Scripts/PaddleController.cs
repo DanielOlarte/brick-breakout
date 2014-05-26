@@ -44,7 +44,6 @@ public class PaddleController : MonoBehaviour {
 
 		if ( newPosition.x < xMin || newPosition.x > xMax ) {
 			newPosition.x = Mathf.Clamp( newPosition.x, xMin, xMax );
-			//moveDirection.x = -moveDirection.x;
 		}
 
 		transform.position = newPosition;

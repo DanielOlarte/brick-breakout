@@ -4,6 +4,8 @@
 TagManager:
   tags:
   - 
+  - FxTemporaire
+  - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
   Builtin Layer 2: Ignore Raycast
@@ -44,4 +46,8 @@ TagManager:
   - name: Paddle
     userID: 1
     uniqueID: 3273325287
+    locked: 0
+  - name: Bricks
+    userID: 2
+    uniqueID: 434102571
     locked: 0

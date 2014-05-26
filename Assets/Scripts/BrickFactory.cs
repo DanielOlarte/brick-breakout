@@ -8,7 +8,9 @@ public class BrickFactory {
 		= new Dictionary<Brick.TypeBrick, Brick>
 	{
 		{ Brick.TypeBrick.NONE, new Brick() },
-		{ Brick.TypeBrick.NORMAL, new NormalBrick() }
+		{ Brick.TypeBrick.NORMAL, new NormalBrick() },
+		{ Brick.TypeBrick.XRES, new XResBrick() },
+		{ Brick.TypeBrick.XXRES, new XXResBrick() },
 	};
 
 	public static Brick getBrick(Brick.TypeBrick type) {

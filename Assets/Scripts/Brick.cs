@@ -30,4 +30,8 @@ public class Brick {
 	public int getCurrentHits() {
 		return currentHits;
 	}
+
+	public void addHits() {
+		currentHits += 1;
+	}
 }
