@@ -6,7 +6,7 @@ public class PaddleController : MonoBehaviour {
 	public float moveSpeed;
 	public float edgeScreenOffset;
 	
-	private Vector3 moveDirection;
+	public Vector3 moveDirection;
 
 	private bool isStopped;
 

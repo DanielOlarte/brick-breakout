@@ -3,29 +3,42 @@ using System.Collections;
 
 public class BallController : MonoBehaviour {
 
-	public Vector2 speed = new Vector2(0.5f,-1f);
+	public float speed = 3;
+	private PaddleController paddle;
 
 	// Use this for initialization
 	void Start () {
-	
+		Vector2 newVelocity = new Vector2 (1.5f,-1.5f);
+		float constant = calculateVelocityConstant (newVelocity);
+		newVelocity = new Vector2 (constant*newVelocity.x,constant*newVelocity.y);
+		rigidbody2D.velocity = newVelocity;
+
+		paddle = (PaddleController)FindObjectOfType (typeof(PaddleController));
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate(speed * Time.deltaTime);
 		checkBoundaries ();
 	}
 
-	void OnCollisionEnter2D(Collision2D collision)
+	void OnCollisionExit2D(Collision2D collision)
 	{
-		Debug.Log (collision);
-		Vector2 normal = collision.contacts [0].normal;
-		if ( Mathf.Approximately( Mathf.Abs(normal.x), 1.0f) ){
-			speed.x = Mathf.Abs(speed.x) * normal.x;
+		Debug.Log ( paddle.moveDirection );
+		float constant = calculateVelocityConstant (rigidbody2D.velocity);
+		Vector2 newVelocity = new Vector2 (constant*rigidbody2D.velocity.x,constant*rigidbody2D.velocity.y);
+
+		if (Mathf.Approximately (collision.contacts [0].normal.y, 1.0f)) {
+			newVelocity.x = newVelocity.x + (paddle.moveDirection.x * 0.5f);
 		}
-		if ( Mathf.Approximately( Mathf.Abs(normal.y) , 1.0f)) {
-			speed.y = speed.y * -1;
-		}
+
+		rigidbody2D.velocity = newVelocity;
+	}
+
+	float calculateVelocityConstant(Vector2 diminishedVelocity)
+	{
+		float constant = 0.0f;
+		constant = Mathf.Sqrt ( Mathf.Pow(speed,2) / ( Mathf.Pow(diminishedVelocity.x,2) + Mathf.Pow(diminishedVelocity.y,2) ) );
+		return constant;
 	}
 
 	void checkBoundaries()
@@ -39,10 +52,11 @@ public class BallController : MonoBehaviour {
 		float xMax = cameraPosition.x + xDist - colliderSize.x;
 		float xMin = cameraPosition.x - xDist + colliderSize.x;
 
+		Vector2 newVelocity = rigidbody2D.velocity;
+
 		if ( newPosition.x < xMin || newPosition.x > xMax ) {
 			newPosition.x = Mathf.Clamp( newPosition.x, xMin, xMax );
-			speed.x = speed.x * -1;
-			Debug.Log("X Boundary");
+			newVelocity.x = newVelocity.x * -1;
 		}
 
 		float yDist = mainCamera.orthographicSize; 
@@ -51,9 +65,10 @@ public class BallController : MonoBehaviour {
 
 		if ( newPosition.y > yMax ) {
 			newPosition.y = Mathf.Clamp( newPosition.y, float.MinValue, yMax );
-			speed.y = speed.y * -1;
-			Debug.Log("Y Boundary");
+			newVelocity.y = newVelocity.y * -1;
 		}
+
+		rigidbody2D.velocity = newVelocity;
 
 		transform.position = newPosition;
 	}
