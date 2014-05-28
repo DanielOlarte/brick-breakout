@@ -7,7 +7,7 @@ public class BallController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
@@ -56,5 +56,12 @@ public class BallController : MonoBehaviour {
 		}
 
 		transform.position = newPosition;
+	}
+
+	void OnBecameInvisible() {
+		Destroy (gameObject);
+		GameObject gameObjectGM = GameObject.Find("GameManager");
+		GameManager gameManager = (GameManager) gameObjectGM.GetComponent(typeof(GameManager));
+		gameManager.updateLivesAndInstantiate ();
 	}
 }

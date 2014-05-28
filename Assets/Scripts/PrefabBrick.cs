@@ -24,6 +24,10 @@ public class PrefabBrick : MonoBehaviour {
 		brick.addHits ();
 		if (brick.getCurrentHits () == brick.getNeededHits ()) {
 			Destroy(gameObject);
+
+			GameObject gameObjectGM = GameObject.Find("GameManager");
+			GameManager gameManager = (GameManager) gameObjectGM.GetComponent(typeof(GameManager));
+			gameManager.minusBrick();
 		}
 	}
 }

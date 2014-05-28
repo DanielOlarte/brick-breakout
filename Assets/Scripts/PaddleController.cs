@@ -4,6 +4,7 @@ using System.Collections;
 public class PaddleController : MonoBehaviour {
 
 	public float moveSpeed;
+	public float currentMoveSpeed;
 	public float edgeScreenOffset;
 	
 	private Vector3 moveDirection;
@@ -18,15 +19,19 @@ public class PaddleController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 currentPosition = transform.position;
-		if( Input.GetKeyDown(KeyCode.RightArrow) ) {
+		currentMoveSpeed = moveSpeed;
+
+		if( Input.GetKey(KeyCode.RightArrow) ) {
 			moveDirection = transform.right;
 			moveDirection.Normalize();
-		} else if( Input.GetKeyDown(KeyCode.LeftArrow) ) {
+		} else if( Input.GetKey(KeyCode.LeftArrow) ) {
 			moveDirection = -transform.right;
 			moveDirection.Normalize();
+		} else {
+			currentMoveSpeed = 0.0f;
 		}
 
-		Vector3 target = moveDirection * moveSpeed + currentPosition;
+		Vector3 target = moveDirection * currentMoveSpeed + currentPosition;
 		transform.position = Vector3.Lerp( currentPosition, target, Time.deltaTime );
 
 		enforceBounds();
