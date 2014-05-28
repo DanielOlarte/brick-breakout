@@ -41,12 +41,15 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void updateLivesAndInstantiate() {
+		Debug.Log (numberBricks);
 		if (numberBricks > 0) {
 			lives--;
 
 			Destroy (listLives [lives]);
 			if (lives > 0) {
 				StartCoroutine (startWaitNextBall (2.0f));
+			} else {
+				finishGame ();
 			}
 		}
 	}
