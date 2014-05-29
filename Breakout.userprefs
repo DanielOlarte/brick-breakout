@@ -1,12 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PrefabBrick.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BallController.cs">
     <Files>
-      <File FileName="Assets\Scripts\PrefabBrick.cs" Line="32" Column="3" />
-      <File FileName="Assets\Scripts\BallController.cs" Line="65" Column="44" />
-      <File FileName="Assets\Scripts\PrefabBrick.cs" Line="34" Column="1" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="58" Column="19" />
-      <File FileName="Assets\Scripts\TimeScript.cs" Line="32" Column="37" />
+      <File FileName="Assets\Scripts\BallController.cs" Line="21" Column="25" />
+      <File FileName="Assets\Scripts\PaddleController.cs" Line="48" Column="18" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="18" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
