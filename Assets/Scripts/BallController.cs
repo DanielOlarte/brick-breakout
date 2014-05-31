@@ -4,36 +4,60 @@ using System.Collections;
 public class BallController : MonoBehaviour {
 
 	public float speed = 3;
-
-	private GameManager gameManager;
+	public float redirectionMaxValue = 0.5f;
 	private PaddleController paddle;
+	private bool onPaddle = true;
+
+	public bool getOnPaddle()
+	{
+		return onPaddle;
+	}
 
 	// Use this for initialization
 	void Start () {
-		Vector2 newVelocity = new Vector2 (1.5f,-1.5f);
-		float constant = calculateVelocityConstant (newVelocity);
-		newVelocity = new Vector2 (constant*newVelocity.x,constant*newVelocity.y);
-		rigidbody2D.velocity = newVelocity;
-
 		paddle = (PaddleController)FindObjectOfType (typeof(PaddleController));
-		gameManager = (GameManager) FindObjectOfType(typeof(GameManager));
+
+		Vector3 pos = paddle.gameObject.transform.position;
+		pos.y = pos.y + 0.25f;
+		transform.position = pos;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		checkBoundaries ();
+		if( Input.GetKey(KeyCode.Space) && onPaddle ) {
+			rigidbody2D.velocity = new Vector2(0.0f,3.0f);
+			onPaddle = false;
+		}
+		//---------para que no se quede atascada horizontalmente--------------
+		if( Mathf.Abs(rigidbody2D.velocity.y) < 0.2f && !onPaddle)
+		{
+			Vector2 currentVelocity = rigidbody2D.velocity;
+			currentVelocity.y = 0.2f;
+			
+			float constant = calculateVelocityConstant (currentVelocity);
+			rigidbody2D.velocity = new Vector2 (constant*currentVelocity.x,constant*currentVelocity.y);
+		}
+		//------------------------END-----------------------------------------
 	}
+	void OnCollisionEnter2D(Collision2D collision)
+	{
+		Vector2 currentVelocity = rigidbody2D.velocity;
 
+		if (Mathf.Approximately (collision.contacts[0].normal.y, 1.0f) && collision.gameObject.name.Equals("Paddle")) {						//si choca con la parte de arriba del paddle
+			float paddleCenterModifier = Mathf.Abs( (collision.collider.gameObject.transform.position.x - transform.position.x) / 0.4f );	//Se calcula un porcentaje dependiendo del maximo valor 0.4f 
+																																			//que corresponderia al borde del paddle.
+			float speedModifier = paddle.moveDirection.x * (speed * redirectionMaxValue) * paddleCenterModifier;							//Y se calcula el speedModifier teniendo en cuenta la direccion del paddle,
+																																			//la maxima velocidad de la bola y el maximo porcentaje de redireccion
+			currentVelocity.x = currentVelocity.x + speedModifier;
+		}
+		rigidbody2D.velocity = currentVelocity;
+	}
 	void OnCollisionExit2D(Collision2D collision)
 	{
-		Debug.Log ( paddle.moveDirection );
-		float constant = calculateVelocityConstant (rigidbody2D.velocity);
-		Vector2 newVelocity = new Vector2 (constant*rigidbody2D.velocity.x,constant*rigidbody2D.velocity.y);
-
-		if (Mathf.Approximately (collision.contacts [0].normal.y, 1.0f)) {
-			newVelocity.x = newVelocity.x + (paddle.moveDirection.x * 0.5f);
-		}
-
+		Vector2 currentVelocity = rigidbody2D.velocity;
+		float constant = calculateVelocityConstant (currentVelocity);
+		Vector2 newVelocity = new Vector2 (constant*currentVelocity.x,constant*currentVelocity.y);
 		rigidbody2D.velocity = newVelocity;
 	}
 
@@ -77,8 +101,10 @@ public class BallController : MonoBehaviour {
 	}
 
 	void OnBecameInvisible() {
-		gameManager.updateLivesAndInstantiate ();
 		Destroy (gameObject);
+		GameObject gameObjectGM = GameObject.Find("GameManager");
+		GameManager gameManager = (GameManager) gameObjectGM.GetComponent(typeof(GameManager));
+		gameManager.updateLivesAndInstantiate ();
 	}
 
 }

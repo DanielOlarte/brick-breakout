@@ -29,13 +29,28 @@ public class PaddleController : MonoBehaviour {
 			moveDirection = -transform.right*directionModifier;
 			moveDirection.Normalize();
 		} else {
+			moveDirection = new Vector3(0.0f,0.0f,0.0f);
 			currentMoveSpeed = 0.0f;
 		}
 
 		Vector3 target = moveDirection * currentMoveSpeed + currentPosition;
 		transform.position = Vector3.Lerp( currentPosition, target, Time.deltaTime );
 
+		moveBallOnPaddle ();
 		enforceBounds();
+	}
+
+	private void moveBallOnPaddle()
+	{
+		BallController ballController = (BallController)FindObjectOfType (typeof(BallController));
+
+		if (ballController != null) {
+			if ( ballController.getOnPaddle ()) {
+				Vector2 ballPos = ballController.transform.position;
+				ballPos.x = transform.position.x;
+				ballController.transform.position = ballPos;
+			}
+		}
 	}
 
 	private void enforceBounds()
