@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour {
 
 			Destroy (listLives [lives]);
 			if (lives > 0) {
+				disablePowers ();
 				StartCoroutine (startWaitNextBall (2.0f));
 			} else {
 				finishGame ();
@@ -59,6 +60,7 @@ public class GameManager : MonoBehaviour {
 
 		disablePaddle ();
 		disableTimer ();
+		disablePowers ();
 	}
 
 	public void minusBrick() {
@@ -67,12 +69,23 @@ public class GameManager : MonoBehaviour {
 
 	private void disablePaddle() {
 		PaddleController paddleController = (PaddleController)paddleGO.GetComponent (typeof(PaddleController));
-		paddleController.enabled = false;
+
+		if (paddleController != null) {
+			paddleController.enabled = false;
+		}
 	}
 
 	private void disableTimer() {
 		TimeScript timeScript = (TimeScript) timeScriptGO.GetComponent(typeof(TimeScript));
 		timeScript.enabled = false;
+	}
+
+	private void disablePowers() {
+		GameObject[] powersGO = GameObject.FindGameObjectsWithTag ("Powers");
+
+		foreach(GameObject powerGameObject in powersGO) {
+			Destroy (powerGameObject);
+		}
 	}
 
 	private IEnumerator startWaitNextBall(float seconds)

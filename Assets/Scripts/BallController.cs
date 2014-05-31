@@ -4,6 +4,8 @@ using System.Collections;
 public class BallController : MonoBehaviour {
 
 	public float speed = 3;
+
+	private GameManager gameManager;
 	private PaddleController paddle;
 
 	// Use this for initialization
@@ -14,6 +16,7 @@ public class BallController : MonoBehaviour {
 		rigidbody2D.velocity = newVelocity;
 
 		paddle = (PaddleController)FindObjectOfType (typeof(PaddleController));
+		gameManager = (GameManager) FindObjectOfType(typeof(GameManager));
 	}
 	
 	// Update is called once per frame
@@ -74,10 +77,8 @@ public class BallController : MonoBehaviour {
 	}
 
 	void OnBecameInvisible() {
-		Destroy (gameObject);
-		GameObject gameObjectGM = GameObject.Find("GameManager");
-		GameManager gameManager = (GameManager) gameObjectGM.GetComponent(typeof(GameManager));
 		gameManager.updateLivesAndInstantiate ();
+		Destroy (gameObject);
 	}
 
 }
