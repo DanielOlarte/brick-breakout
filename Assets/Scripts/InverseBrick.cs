@@ -6,6 +6,6 @@ public class InverseBrick : Brick {
 		typeBrick = TypeBrick.INVERSE;
 		objectBrick = ObjectBrick.INVERSE;
 		currentHits = 0;
-		neededHits = 1;
+		neededHits = 2;
 	}
 }

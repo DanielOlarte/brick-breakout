@@ -22,6 +22,7 @@ public class InversePaddleObj : MonoBehaviour {
 			paddleController.inverseDirection ();	
 		}
 	}
+
 	void OnTriggerEnter2D(Collider2D other)  {
 		if (other.gameObject.CompareTag ("Paddle")) {
 			Debug.Log ("CollisionInversePaddle-----");

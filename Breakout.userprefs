@@ -1,14 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PaddleController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BallController.cs">
     <Files>
-      <File FileName="Assets\Scripts\PaddleController.cs" Line="77" Column="3" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="74" Column="1" />
-      <File FileName="Assets\Scripts\BallController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BrickFactory.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\InverseBrick.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\InversePaddleObj.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PaddleController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Brick.cs" Line="6" Column="70" />
+      <File FileName="Assets\Scripts\PaddleController.cs" Line="77" Column="1" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="37" Column="2" />
+      <File FileName="Assets\Scripts\BallController.cs" Line="43" Column="2" />
+      <File FileName="Assets\Scripts\BrickFactory.cs" Line="9" Column="3" />
+      <File FileName="Assets\Scripts\InverseBrick.cs" Line="7" Column="37" />
+      <File FileName="Assets\Scripts\InversePaddleObj.cs" Line="25" Column="2" />
+      <File FileName="Assets\Scripts\MultipleBallsBrick.cs" Line="9" Column="18" />
+      <File FileName="Assets\Scripts\PrefabBrick.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MultipleBallsObj.cs" Line="30" Column="80" />
+      <File FileName="Assets\Scripts\NormalBrick.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\XXResBrick.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

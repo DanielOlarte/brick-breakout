@@ -12,6 +12,7 @@ public class BrickFactory {
 		{ Brick.TypeBrick.XRES, new XResBrick() },
 		{ Brick.TypeBrick.XXRES, new XXResBrick() },
 		{ Brick.TypeBrick.INVERSE, new InverseBrick() },
+		{ Brick.TypeBrick.MULTIPLE_BALLS, new MultipleBallsBrick() },
 	};
 
 	public static Brick getBrick(Brick.TypeBrick type) {

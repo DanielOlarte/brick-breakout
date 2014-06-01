@@ -13,6 +13,10 @@ public class BallController : MonoBehaviour {
 		return onPaddle;
 	}
 
+	public void setOnPaddle(bool onPaddle) {
+		this.onPaddle = onPaddle;
+	}
+
 	// Use this for initialization
 	void Start () {
 		paddle = (PaddleController)FindObjectOfType (typeof(PaddleController));
@@ -40,6 +44,7 @@ public class BallController : MonoBehaviour {
 		}
 		//------------------------END-----------------------------------------
 	}
+
 	void OnCollisionEnter2D(Collision2D collision)
 	{
 		Vector2 currentVelocity = rigidbody2D.velocity;
@@ -53,6 +58,7 @@ public class BallController : MonoBehaviour {
 		}
 		rigidbody2D.velocity = currentVelocity;
 	}
+
 	void OnCollisionExit2D(Collision2D collision)
 	{
 		Vector2 currentVelocity = rigidbody2D.velocity;
@@ -101,10 +107,12 @@ public class BallController : MonoBehaviour {
 	}
 
 	void OnBecameInvisible() {
+		GameManager gameManager = (GameManager)FindObjectOfType (typeof(GameManager));
+		if (gameManager != null) {
+			gameManager.updateLivesAndInstantiate (gameObject);
+		}
+
 		Destroy (gameObject);
-		GameObject gameObjectGM = GameObject.Find("GameManager");
-		GameManager gameManager = (GameManager) gameObjectGM.GetComponent(typeof(GameManager));
-		gameManager.updateLivesAndInstantiate ();
 	}
 
 }

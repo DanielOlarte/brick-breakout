@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour {
 
 	private GameObject paddleGO;
-	private GameObject ballGO;
+	private List<GameObject> ballsGO;
 	private GameObject timeScriptGO;
 
 	private List<GameObject> listLives;
@@ -14,7 +14,9 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		ballGO = (GameObject)Instantiate(Resources.Load("Ball"));
+		ballsGO = new List<GameObject> ();
+		ballsGO.Add( (GameObject)Instantiate(Resources.Load("Ball")) );
+
 		paddleGO = GameObject.Find("Paddle");
 		timeScriptGO = GameObject.Find("TimeScore");
 
@@ -40,13 +42,18 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public void updateLivesAndInstantiate() {
+	public void addBall(GameObject ballGO) {
+		ballsGO.Add (ballGO);
+	}
+
+	public void updateLivesAndInstantiate(GameObject ballGO) {
 		Debug.Log (numberBricks);
-		if (numberBricks > 0) {
+			ballsGO.Remove (ballGO);
+		if (numberBricks > 0 && ballsGO.Count == 0) {
 			lives--;
 
 			Destroy (listLives [lives]);
-			if (lives > 0) {
+			if (lives > 0 ) {
 				disablePowers ();
 				StartCoroutine (startWaitNextBall (2.0f));
 			} else {
@@ -56,7 +63,9 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void finishGame() {
-		Destroy (ballGO);
+		foreach (GameObject ballGO in ballsGO) {
+			Destroy (ballGO);
+		}
 
 		disablePaddle ();
 		disableTimer ();
@@ -96,6 +105,6 @@ public class GameManager : MonoBehaviour {
 	private IEnumerator waitSeconds(float seconds)
 	{
 		yield return new WaitForSeconds(seconds);
-		ballGO = (GameObject)Instantiate(Resources.Load("Ball"));
+		ballsGO.Add((GameObject)Instantiate(Resources.Load("Ball")));
 	}
 }

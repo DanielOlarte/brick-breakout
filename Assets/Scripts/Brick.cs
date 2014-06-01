@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Brick {
-	public enum TypeBrick {NONE, NORMAL, XRES, XXRES, INVERSE};
+	public enum TypeBrick {NONE, NORMAL, XRES, XXRES, INVERSE, MULTIPLE_BALLS};
 	public enum ObjectBrick {
 		[StringValue("")] NONE = 0,
 		[StringValue("InversePaddleObj")] INVERSE = 1,
+		[StringValue("MultipleBallsObj")] MULTIPLE_BALLS = 2,
 	};
 
 	public TypeBrick typeBrick;
