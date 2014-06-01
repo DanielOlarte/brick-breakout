@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BallController : MonoBehaviour {
 
-	public float speed = 3;
+	public float speed = 9;
 	public float redirectionMaxValue = 0.5f;
 	private PaddleController paddle;
 	private bool onPaddle = true;
@@ -43,14 +43,18 @@ public class BallController : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collision)
 	{
 		Vector2 currentVelocity = rigidbody2D.velocity;
+		Debug.Log ("Before");
+		Debug.Log (currentVelocity);
+		if (Mathf.Approximately (collision.contacts[0].normal.y, 1.0f) && collision.gameObject.name.Equals("Paddle")) {						
+			float paddleCenterModifier = (transform.position.x - collision.collider.gameObject.transform.position.x) / 1.6f;
+			Debug.Log ("paddle constant");
+			Debug.Log(paddleCenterModifier);
+			float speedModifier = speed * paddleCenterModifier;							
 
-		if (Mathf.Approximately (collision.contacts[0].normal.y, 1.0f) && collision.gameObject.name.Equals("Paddle")) {						//si choca con la parte de arriba del paddle
-			float paddleCenterModifier = Mathf.Abs( (collision.collider.gameObject.transform.position.x - transform.position.x) / 0.4f );	//Se calcula un porcentaje dependiendo del maximo valor 0.4f 
-																																			//que corresponderia al borde del paddle.
-			float speedModifier = paddle.moveDirection.x * (speed * redirectionMaxValue) * paddleCenterModifier;							//Y se calcula el speedModifier teniendo en cuenta la direccion del paddle,
-																																			//la maxima velocidad de la bola y el maximo porcentaje de redireccion
-			currentVelocity.x = currentVelocity.x + speedModifier;
+			currentVelocity.x = speedModifier;
 		}
+		Debug.Log ("After");
+		Debug.Log (currentVelocity);
 		rigidbody2D.velocity = currentVelocity;
 	}
 	void OnCollisionExit2D(Collision2D collision)

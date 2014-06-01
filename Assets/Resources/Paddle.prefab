@@ -8,12 +8,12 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
-  - 50: {fileID: 5000000}
-  - 58: {fileID: 5800000}
-  - 114: {fileID: 11400000}
   - 212: {fileID: 21200000}
+  - 114: {fileID: 11400000}
+  - 60: {fileID: 6000000}
+  - 50: {fileID: 5000000}
   m_Layer: 0
-  m_Name: Ball
+  m_Name: Paddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.270004451, y: -1.2740829, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalScale: {x: 3, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -37,7 +37,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mass: 1
+  m_Mass: 1e+06
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -45,18 +45,24 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
---- !u!58 &5800000
-CircleCollider2D:
+  m_CollisionDetection: 1
+--- !u!60 &6000000
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: 2d77bee861fdbc143adcec2b1c6972ae, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: .300000012
-  m_Center: {x: 0, y: 0}
+  m_Poly:
+    m_Paths:
+    - - {x: -.599999964, y: .224999994}
+      - {x: -.599999964, y: .194999993}
+      - {x: -.599999964, y: -.224999994}
+      - {x: -.599999964, y: -.224999994}
+      - {x: .599999964, y: -.224999994}
+      - {x: .599999964, y: .224999994}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -65,11 +71,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 424525b9fca563943aacc1c7cff291d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cd7075bfa9382440b7ed377a4434bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 9
-  redirectionMaxValue: .5
+  moveSpeed: 8
+  currentMoveSpeed: 0
+  edgeScreenOffset: .899999976
+  moveDirection: {x: 0, y: 0, z: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -90,8 +98,8 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 3273325287
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5af25783a9ef4ad4cbe8d4fef5cb5c8a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: b2e712f1c70502f4aa5fd2d45d8728e1, type: 3}
+  m_Color: {r: 1, g: .0147058964, b: .0147058964, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

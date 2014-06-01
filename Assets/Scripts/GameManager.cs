@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour {
 		}
 
 		GameObject[] gos = GameObject.FindGameObjectsWithTag("Bricks");
-		Debug.Log (gos.Length);
 		numberBricks = gos.Length;
 	}
 	
@@ -41,7 +40,6 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void updateLivesAndInstantiate() {
-		Debug.Log (numberBricks);
 		if (numberBricks > 0) {
 			lives--;
 
