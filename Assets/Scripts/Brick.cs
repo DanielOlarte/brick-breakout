@@ -46,7 +46,7 @@ public class Brick {
 		return currentHits;
 	}
 
-	public void addHits() {
+	public virtual void addHits() {
 		currentHits += 1;
 	}
 }

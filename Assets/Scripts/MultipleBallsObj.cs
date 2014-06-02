@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class MultipleBallsObj : MonoBehaviour {
 
 	public int numberBalls = 3;
+	public float powerModifier = 20.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -27,12 +28,17 @@ public class MultipleBallsObj : MonoBehaviour {
 					GameObject ball = (GameObject)Instantiate(Resources.Load("Ball"));
 					BallController ballController =  (BallController)ball.GetComponent (typeof(BallController));
 					ballController.setOnPaddle(false);
-					float randomVelocityX = Random.Range(-3.0F, 3.0F);
-					float randomVelocityY = Random.Range(-3.0F, 3.0F);
-					ball.rigidbody2D.velocity = new Vector2(randomVelocityX, randomVelocityY);
+					Vector2 velocity = gameManager.getSpeedBall();
+					ball.rigidbody2D.velocity = velocity;
+					float randomModifierForce = Random.Range (-powerModifier, powerModifier);
+					ball.rigidbody2D.AddForce( transform.right * randomModifierForce, ForceMode2D.Impulse );
 					gameManager.addBall(ball);
 				}
 			}
 		}
+	}
+
+	void OnBecameInvisible() {
+		Destroy (gameObject);
 	}
 }

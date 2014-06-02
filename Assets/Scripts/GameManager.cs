@@ -15,8 +15,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		ballsGO = new List<GameObject> ();
-		ballsGO.Add( (GameObject)Instantiate(Resources.Load("Ball")) );
-
+		ballsGO.Add((GameObject)Instantiate(Resources.Load("Ball")));
 		paddleGO = GameObject.Find("Paddle");
 		timeScriptGO = GameObject.Find("TimeScore");
 
@@ -31,7 +30,6 @@ public class GameManager : MonoBehaviour {
 		}
 
 		GameObject[] gos = GameObject.FindGameObjectsWithTag("Bricks");
-		Debug.Log (gos.Length);
 		numberBricks = gos.Length;
 	}
 	
@@ -42,16 +40,30 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	public List<GameObject> getBalls() {
+		return ballsGO;
+	}
+
 	public void addBall(GameObject ballGO) {
 		ballsGO.Add (ballGO);
 	}
 
+	public Vector2 getSpeedBall() {
+		if (ballsGO.Count > 0) {
+			GameObject ballGO = ballsGO[0];
+			return ballGO.rigidbody2D.velocity;
+		}
+
+		return new Vector2 ();
+	}
+
 	public void updateLivesAndInstantiate(GameObject ballGO) {
 		Debug.Log (numberBricks);
-			ballsGO.Remove (ballGO);
+		ballsGO.Remove (ballGO);
+		Debug.Log ("Balls Left: " + ballsGO.Count + "Lives " + lives);
 		if (numberBricks > 0 && ballsGO.Count == 0) {
 			lives--;
-
+			
 			Destroy (listLives [lives]);
 			if (lives > 0 ) {
 				disablePowers ();
@@ -63,10 +75,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void finishGame() {
-		foreach (GameObject ballGO in ballsGO) {
-			Destroy (ballGO);
-		}
-
+		destroyBalls ();
 		disablePaddle ();
 		disableTimer ();
 		disablePowers ();
@@ -76,8 +85,10 @@ public class GameManager : MonoBehaviour {
 		numberBricks--;
 	}
 
-	public List<GameObject> getBalls() {
-		return ballsGO;
+	private void destroyBalls() {
+		foreach (GameObject ballGO in ballsGO) {
+			Destroy (ballGO);
+		}
 	}
 
 	private void disablePaddle() {

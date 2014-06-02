@@ -28,7 +28,6 @@ public class InversePaddleObj : MonoBehaviour {
 			Debug.Log ("CollisionInversePaddle-----");
 
 			renderer.enabled = false;
-
 			StartCoroutine ("startObjectEffect");	
 		}
 	}
@@ -45,8 +44,11 @@ public class InversePaddleObj : MonoBehaviour {
 	private IEnumerator waitSeconds()
 	{
 		yield return new WaitForSeconds(timeEffect);
-		paddleController.inverseDirection();
 		Destroy (gameObject);
 		Debug.Log ("Effect Inverse Done");
+	}
+
+	void OnBecameInvisible() {
+		Destroy (gameObject);
 	}
 }

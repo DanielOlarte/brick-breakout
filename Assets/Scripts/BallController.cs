@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BallController : MonoBehaviour {
 
-	public float speed = 3;
+	public float baseSpeed = 3.0f;
+	private int tickCount;
 	public float redirectionMaxValue = 0.5f;
-	private float defaultSpeed = 3.0f;
 	private PaddleController paddle;
 	private bool onPaddle = true;
+	private Dictionary<string,float> speedModifiers = new Dictionary<string,float>();
 
+	//------------------------------------------------GETTER AND SETTERS------------------------------------------------------
 	public bool getOnPaddle()
 	{
 		return onPaddle;
@@ -18,10 +21,28 @@ public class BallController : MonoBehaviour {
 		this.onPaddle = onPaddle;
 	}
 
+	public void setSpeedModifier(string key,float value)
+	{
+		if( !speedModifiers.ContainsKey(key) )
+		{
+			speedModifiers.Add(key,value);
+		}
+		else{
+			speedModifiers[key] = value;
+		}
+	}
+	
+	public void removeSpeedModifier(string key)
+	{
+		speedModifiers.Remove (key);
+	}
+	//------------------------------------------------END OF GETTER AND SETTERS------------------------------------------------------
+
+	//------------------------------------------------UNITY FUNCTIONS--------------------------------------------------------
 	// Use this for initialization
 	void Start () {
+		tickCount = 1;
 		paddle = (PaddleController)FindObjectOfType (typeof(PaddleController));
-
 		Vector3 pos = paddle.gameObject.transform.position;
 		pos.y = pos.y + 0.25f;
 		transform.position = pos;
@@ -29,6 +50,7 @@ public class BallController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		increaseTimerSpeed ();
 		checkBoundaries ();
 		if( Input.GetKey(KeyCode.Space) && onPaddle ) {
 			rigidbody2D.velocity = new Vector2(0.0f,3.0f);
@@ -37,45 +59,82 @@ public class BallController : MonoBehaviour {
 		//---------para que no se quede atascada horizontalmente--------------
 		if( Mathf.Abs(rigidbody2D.velocity.y) < 0.2f && !onPaddle)
 		{
+			Debug.Log ("Entra");
 			Vector2 currentVelocity = rigidbody2D.velocity;
 			currentVelocity.y = 0.2f;
-			
-			float constant = calculateVelocityConstant (currentVelocity);
-			rigidbody2D.velocity = new Vector2 (constant*currentVelocity.x,constant*currentVelocity.y);
+			rigidbody2D.velocity = currentVelocity;
+
+			adjustVelocity();
 		}
+
+		adjustVelocity ();
 		//------------------------END-----------------------------------------
 	}
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
 		Vector2 currentVelocity = rigidbody2D.velocity;
+		if (Mathf.Approximately (collision.contacts[0].normal.y, 1.0f) && collision.gameObject.name.Equals("Paddle")) {
+			float paddleSize = collision.collider.gameObject.transform.localScale.x / 2;
+			float paddleCenterModifier = (transform.position.x - collision.collider.gameObject.transform.position.x) / paddleSize;
+			float speedModifier = getModifiedSpeed() * paddleCenterModifier/2.0f;							
 
-		if (Mathf.Approximately (collision.contacts[0].normal.y, 1.0f) && collision.gameObject.name.Equals("Paddle")) {						//si choca con la parte de arriba del paddle
-			float paddleCenterModifier = Mathf.Abs( (collision.collider.gameObject.transform.position.x - transform.position.x) / 0.4f );	//Se calcula un porcentaje dependiendo del maximo valor 0.4f 
-																																			//que corresponderia al borde del paddle.
-			float speedModifier = paddle.moveDirection.x * (speed * redirectionMaxValue) * paddleCenterModifier;							//Y se calcula el speedModifier teniendo en cuenta la direccion del paddle,
-																																			//la maxima velocidad de la bola y el maximo porcentaje de redireccion
-			currentVelocity.x = currentVelocity.x + speedModifier;
+			currentVelocity.x = speedModifier;
 		}
 		rigidbody2D.velocity = currentVelocity;
 	}
 
-	void OnCollisionExit2D(Collision2D collision)
+	void OnBecameInvisible() {
+		GameManager gameManager = (GameManager)FindObjectOfType (typeof(GameManager));
+		if (gameManager != null) {
+			gameManager.updateLivesAndInstantiate (gameObject);
+		}
+		
+		Destroy (gameObject);
+	}
+	//------------------------------------------------END OF UNITY FUNCTIONS--------------------------------------------------------
+
+	//------------------------------------------------CUSTOM FUNCTIONS--------------------------------------------------------
+	public float getModifiedSpeed()
 	{
-		Vector2 currentVelocity = rigidbody2D.velocity;
-		float constant = calculateVelocityConstant (currentVelocity);
-		Vector2 newVelocity = new Vector2 (constant*currentVelocity.x,constant*currentVelocity.y);
-		rigidbody2D.velocity = newVelocity;
+		float modifier = 0.0f;
+		
+		foreach(KeyValuePair<string, float> entry in speedModifiers)
+		{
+			modifier += entry.Value;
+		}
+
+		return baseSpeed + modifier;
 	}
 
-	float calculateVelocityConstant(Vector2 diminishedVelocity)
+	private void increaseTimerSpeed()
+	{
+		float tickTimer = TimeScript.Timer / 10;
+		if ( tickTimer > tickCount && tickCount < 11) {
+			setSpeedModifier("time_modifier",tickCount / 10.0f);
+			tickCount += 1;
+			Debug.Log (getModifiedSpeed());
+		}
+	}
+
+	public void adjustVelocity()
+	{
+		float constant = calculateVelocityConstant ();
+		rigidbody2D.velocity = new Vector2 (constant*rigidbody2D.velocity.x,constant*rigidbody2D.velocity.y);
+	}
+
+	private float calculateVelocityConstant()
 	{
 		float constant = 0.0f;
-		constant = Mathf.Sqrt ( Mathf.Pow(speed,2) / ( Mathf.Pow(diminishedVelocity.x,2) + Mathf.Pow(diminishedVelocity.y,2) ) );
+		float components = (Mathf.Pow (rigidbody2D.velocity.x, 2) + Mathf.Pow (rigidbody2D.velocity.y, 2));
+
+		if (components != 0.0f) {
+			constant = Mathf.Sqrt (Mathf.Pow (getModifiedSpeed (), 2) / (components));
+		}
 		return constant;
 	}
 
-	void checkBoundaries()
+	private void checkBoundaries()
 	{
 		Vector3 newPosition = transform.position; 
 		Camera mainCamera = Camera.main;
@@ -106,22 +165,5 @@ public class BallController : MonoBehaviour {
 
 		transform.position = newPosition;
 	}
-
-	void OnBecameInvisible() {
-		GameManager gameManager = (GameManager)FindObjectOfType (typeof(GameManager));
-		if (gameManager != null) {
-			gameManager.updateLivesAndInstantiate (gameObject);
-		}
-
-		Destroy (gameObject);
-	}
-
-	public void setSpeed(float speedModifier) {
-		this.speed = defaultSpeed*speedModifier;
-	}
-
-	public void resetSpeed() {
-		this.speed = defaultSpeed;
-	}
-
+	//------------------------------------------------END CUSTOM FUNCTIONS--------------------------------------------------------
 }

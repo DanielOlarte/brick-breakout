@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class FastBallsObj : MonoBehaviour {
 	
 	public float timeEffect = 3.0f;
-	public float speedModifier = 2.0f;
+	public float speedModifier = 0.3f;
 
 	// Use this for initialization
 	void Start () {
@@ -33,7 +33,7 @@ public class FastBallsObj : MonoBehaviour {
 		
 		foreach(GameObject ball in balls) {
 			BallController ballController =  (BallController)ball.GetComponent (typeof(BallController));
-			ballController.setSpeed(speedModifier);
+			ballController.setSpeedModifier("fast_speed", ballController.getModifiedSpeed()*speedModifier);
 		}
 		
 		yield return StartCoroutine("waitSeconds");
@@ -47,11 +47,15 @@ public class FastBallsObj : MonoBehaviour {
 		
 		foreach(GameObject ball in balls) {
 			BallController ballController =  (BallController)ball.GetComponent (typeof(BallController));
-			ballController.resetSpeed();
+			ballController.removeSpeedModifier("fast_speed");
 		}
 		
 		Destroy (gameObject);
 		Debug.Log ("Effect Fast Done");
+	}
+
+	void OnBecameInvisible() {
+		Destroy (gameObject);
 	}
 }
 
