@@ -76,6 +76,10 @@ public class GameManager : MonoBehaviour {
 		numberBricks--;
 	}
 
+	public List<GameObject> getBalls() {
+		return ballsGO;
+	}
+
 	private void disablePaddle() {
 		PaddleController paddleController = (PaddleController)paddleGO.GetComponent (typeof(PaddleController));
 

@@ -5,6 +5,7 @@ public class BallController : MonoBehaviour {
 
 	public float speed = 3;
 	public float redirectionMaxValue = 0.5f;
+	private float defaultSpeed = 3.0f;
 	private PaddleController paddle;
 	private bool onPaddle = true;
 
@@ -113,6 +114,14 @@ public class BallController : MonoBehaviour {
 		}
 
 		Destroy (gameObject);
+	}
+
+	public void setSpeed(float speedModifier) {
+		this.speed = defaultSpeed*speedModifier;
+	}
+
+	public void resetSpeed() {
+		this.speed = defaultSpeed;
 	}
 
 }
