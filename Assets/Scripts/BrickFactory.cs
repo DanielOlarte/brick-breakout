@@ -11,6 +11,7 @@ public class BrickFactory {
 		{ Brick.TypeBrick.NORMAL, new NormalBrick() },
 		{ Brick.TypeBrick.XRES, new XResBrick() },
 		{ Brick.TypeBrick.XXRES, new XXResBrick() },
+		{ Brick.TypeBrick.INVERSE, new InverseBrick() },
 	};
 
 	public static Brick getBrick(Brick.TypeBrick type) {

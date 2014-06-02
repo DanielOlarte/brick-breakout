@@ -9,11 +9,12 @@ public class PaddleController : MonoBehaviour {
 	
 	public Vector3 moveDirection;
 
+	private int directionModifier;
 	private bool isStopped;
 
 	// Use this for initialization
 	void Start () {
-	
+		directionModifier = 1;
 	}
 	
 	// Update is called once per frame
@@ -22,10 +23,10 @@ public class PaddleController : MonoBehaviour {
 		currentMoveSpeed = moveSpeed;
 
 		if( Input.GetKey(KeyCode.RightArrow) ) {
-			moveDirection = transform.right;
+			moveDirection = transform.right*directionModifier;
 			moveDirection.Normalize();
 		} else if( Input.GetKey(KeyCode.LeftArrow) ) {
-			moveDirection = -transform.right;
+			moveDirection = -transform.right*directionModifier;
 			moveDirection.Normalize();
 		} else {
 			moveDirection = new Vector3(0.0f,0.0f,0.0f);
@@ -42,10 +43,13 @@ public class PaddleController : MonoBehaviour {
 	private void moveBallOnPaddle()
 	{
 		BallController ballController = (BallController)FindObjectOfType (typeof(BallController));
-		if ( ballController.getOnPaddle ()) {
-			Vector2 ballPos = ballController.transform.position;
-			ballPos.x = transform.position.x;
-			ballController.transform.position = ballPos;
+
+		if (ballController != null) {
+			if ( ballController.getOnPaddle ()) {
+				Vector2 ballPos = ballController.transform.position;
+				ballPos.x = transform.position.x;
+				ballController.transform.position = ballPos;
+			}
 		}
 	}
 
@@ -64,5 +68,9 @@ public class PaddleController : MonoBehaviour {
 		}
 
 		transform.position = newPosition;
+	}
+
+	public void inverseDirection() {
+		directionModifier = directionModifier * -1;
 	}
 }

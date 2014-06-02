@@ -6,6 +6,8 @@ TagManager:
   - 
   - FxTemporaire
   - Bricks
+  - Paddle
+  - Powers
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
