@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class BallController : MonoBehaviour {
-
+	public float paddleDirectionForce = 150.0f;
 	public float baseSpeed = 3.0f;
 	private int tickCount;
 	public float redirectionMaxValue = 0.5f;
@@ -49,36 +49,31 @@ public class BallController : MonoBehaviour {
 		increaseTimerSpeed ();
 		checkBoundaries ();
 		if( Input.GetKey(KeyCode.Space) && onPaddle ) {
-			rigidbody2D.velocity = new Vector2(0.0f,3.0f);
+			float paddleSpeed = paddle.currentMoveSpeed;
+			rigidbody2D.velocity = new Vector2(0.5f*paddleSpeed,3.0f);
 			onPaddle = false;
 		}
 		//---------para que no se quede atascada horizontalmente--------------
 		if( Mathf.Abs(rigidbody2D.velocity.y) < 0.2f && !onPaddle)
 		{
-			Debug.Log ("Entra");
 			Vector2 currentVelocity = rigidbody2D.velocity;
 			currentVelocity.y = 0.2f;
 			rigidbody2D.velocity = currentVelocity;
-
-			adjustVelocity();
 		}
 		//------------------------END-----------------------------------------
+		adjustVelocity();
 	}
 	void OnCollisionEnter2D(Collision2D collision)
 	{
 		Vector2 currentVelocity = rigidbody2D.velocity;
-		if (Mathf.Approximately (collision.contacts[0].normal.y, 1.0f) && collision.gameObject.name.Equals("Paddle")) {
+		if ( collision.contacts[0].normal.y > 0.9f && collision.gameObject.name.Equals("Paddle")) {
 			float paddleSize = collision.collider.gameObject.transform.localScale.x / 2;
 			float paddleCenterModifier = (transform.position.x - collision.collider.gameObject.transform.position.x) / paddleSize;
-			float speedModifier = getModifiedSpeed() * paddleCenterModifier/2.0f;							
-
+			float speedModifier = getModifiedSpeed() * paddleCenterModifier;							
+			
 			currentVelocity.x = speedModifier;
 		}
 		rigidbody2D.velocity = currentVelocity;
-	}
-	void OnCollisionExit2D(Collision2D collision)
-	{
-		adjustVelocity ();
 	}
 	void OnBecameInvisible() {
 		Destroy (gameObject);
@@ -106,7 +101,6 @@ public class BallController : MonoBehaviour {
 		if ( tickTimer > tickCount && tickCount < 11) {
 			setSpeedModifier("time_modifier",tickCount / 10.0f);
 			tickCount += 1;
-			Debug.Log (getModifiedSpeed());
 		}
 	}
 
@@ -118,8 +112,13 @@ public class BallController : MonoBehaviour {
 
 	private float calculateVelocityConstant()
 	{
+		float speedSum = rigidbody2D.velocity.x + rigidbody2D.velocity.y;
 		float constant = 0.0f;
-		constant = Mathf.Sqrt ( Mathf.Pow(getModifiedSpeed(),2) / ( Mathf.Pow(rigidbody2D.velocity.x,2) + Mathf.Pow(rigidbody2D.velocity.y,2) ) );
+
+		if (Mathf.Abs(speedSum) > 0.0f) 
+		{
+			constant = Mathf.Sqrt ( Mathf.Pow(getModifiedSpeed(),2) / ( Mathf.Pow(rigidbody2D.velocity.x,2) + Mathf.Pow(rigidbody2D.velocity.y,2) ) );
+		}
 		return constant;
 	}
 
