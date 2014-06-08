@@ -79,6 +79,8 @@ public class GameManager : MonoBehaviour {
 		disablePaddle ();
 		disableTimer ();
 		disablePowers ();
+
+		Application.LoadLevel ("LevelSelection");
 	}
 
 	public void minusBrick() {
