@@ -16,7 +16,11 @@ public class BallController : MonoBehaviour {
 	{
 		return onPaddle;
 	}
-	
+
+	public void setOnPaddle(bool onPaddle) {
+		this.onPaddle = onPaddle;
+	}
+
 	public void setSpeedModifier(string key,float value)
 	{
 		if( !speedModifiers.ContainsKey(key) )
@@ -60,9 +64,12 @@ public class BallController : MonoBehaviour {
 			currentVelocity.y = 0.2f;
 			rigidbody2D.velocity = currentVelocity;
 		}
+
+		adjustVelocity ();
 		//------------------------END-----------------------------------------
 		adjustVelocity();
 	}
+
 	void OnCollisionEnter2D(Collision2D collision)
 	{
 		Vector2 currentVelocity = rigidbody2D.velocity;
@@ -75,11 +82,14 @@ public class BallController : MonoBehaviour {
 		}
 		rigidbody2D.velocity = currentVelocity;
 	}
+
 	void OnBecameInvisible() {
+		GameManager gameManager = (GameManager)FindObjectOfType (typeof(GameManager));
+		if (gameManager != null) {
+			gameManager.updateLivesAndInstantiate (gameObject);
+		}
+		
 		Destroy (gameObject);
-		GameObject gameObjectGM = GameObject.Find("GameManager");
-		GameManager gameManager = (GameManager) gameObjectGM.GetComponent(typeof(GameManager));
-		gameManager.updateLivesAndInstantiate ();
 	}
 	//------------------------------------------------END OF UNITY FUNCTIONS--------------------------------------------------------
 
@@ -92,6 +102,7 @@ public class BallController : MonoBehaviour {
 		{
 			modifier += entry.Value;
 		}
+
 		return baseSpeed + modifier;
 	}
 
@@ -114,7 +125,6 @@ public class BallController : MonoBehaviour {
 	{
 		float speedSum = rigidbody2D.velocity.x + rigidbody2D.velocity.y;
 		float constant = 0.0f;
-
 		if (Mathf.Abs(speedSum) > 0.0f) 
 		{
 			constant = Mathf.Sqrt ( Mathf.Pow(getModifiedSpeed(),2) / ( Mathf.Pow(rigidbody2D.velocity.x,2) + Mathf.Pow(rigidbody2D.velocity.y,2) ) );

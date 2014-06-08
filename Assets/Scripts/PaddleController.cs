@@ -72,5 +72,6 @@ public class PaddleController : MonoBehaviour {
 
 	public void inverseDirection() {
 		directionModifier = directionModifier * -1;
+		Debug.Log ("Inverse " + directionModifier);
 	}
 }

@@ -8,13 +8,13 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
-  - 50: {fileID: 5000000}
-  - 58: {fileID: 5800000}
-  - 114: {fileID: 11400000}
   - 212: {fileID: 21200000}
-  m_Layer: 8
-  m_Name: Ball
-  m_TagString: Untagged
+  - 61: {fileID: 6100000}
+  - 50: {fileID: 5000000}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: SlowBallsBrick
+  m_TagString: Bricks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.270004451, y: -1.2740829, z: 0}
-  m_LocalScale: {x: .400000006, y: .400000006, z: 1}
+  m_LocalPosition: {x: -.0387694836, y: 1.1824733, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -37,7 +37,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mass: 1
+  m_Mass: 1e+06
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -46,16 +46,16 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!58 &5800000
-CircleCollider2D:
+--- !u!61 &6100000
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: 2d77bee861fdbc143adcec2b1c6972ae, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: .300000012
+  m_Size: {x: .620000005, y: .280000001}
   m_Center: {x: 0, y: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -65,11 +65,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 424525b9fca563943aacc1c7cff291d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7770efb31de03aa45b696c9c8582465b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 3
-  redirectionMaxValue: .5
+  type: 6
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -88,10 +87,10 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 3273325287
+  m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5af25783a9ef4ad4cbe8d4fef5cb5c8a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0686ce91fa99a804ab989afdcc914a0c, type: 3}
+  m_Color: {r: 0, g: 1, b: .911764622, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

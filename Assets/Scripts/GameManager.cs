@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour {
 
 	private GameObject paddleGO;
-	private GameObject ballGO;
+	private List<GameObject> ballsGO;
 	private GameObject timeScriptGO;
 
 	private List<GameObject> listLives;
@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		ballGO = (GameObject)Instantiate(Resources.Load("Ball"));
+		ballsGO = new List<GameObject> ();
+		ballsGO.Add((GameObject)Instantiate(Resources.Load("Ball")));
 		paddleGO = GameObject.Find("Paddle");
 		timeScriptGO = GameObject.Find("TimeScore");
 
@@ -39,12 +40,32 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public void updateLivesAndInstantiate() {
-		if (numberBricks > 0) {
-			lives--;
+	public List<GameObject> getBalls() {
+		return ballsGO;
+	}
 
+	public void addBall(GameObject ballGO) {
+		ballsGO.Add (ballGO);
+	}
+
+	public Vector2 getSpeedBall() {
+		if (ballsGO.Count > 0) {
+			GameObject ballGO = ballsGO[0];
+			return ballGO.rigidbody2D.velocity;
+		}
+
+		return new Vector2 ();
+	}
+
+	public void updateLivesAndInstantiate(GameObject ballGO) {
+		Debug.Log (numberBricks);
+		ballsGO.Remove (ballGO);
+		Debug.Log ("Balls Left: " + ballsGO.Count + "Lives " + lives);
+		if (numberBricks > 0 && ballsGO.Count == 0) {
+			lives--;
+			
 			Destroy (listLives [lives]);
-			if (lives > 0) {
+			if (lives > 0 ) {
 				disablePowers ();
 				StartCoroutine (startWaitNextBall (2.0f));
 			} else {
@@ -54,15 +75,22 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void finishGame() {
-		Destroy (ballGO);
-
+		destroyBalls ();
 		disablePaddle ();
 		disableTimer ();
 		disablePowers ();
+
+		Application.LoadLevel ("LevelSelection");
 	}
 
 	public void minusBrick() {
 		numberBricks--;
+	}
+
+	private void destroyBalls() {
+		foreach (GameObject ballGO in ballsGO) {
+			Destroy (ballGO);
+		}
 	}
 
 	private void disablePaddle() {
@@ -94,6 +122,6 @@ public class GameManager : MonoBehaviour {
 	private IEnumerator waitSeconds(float seconds)
 	{
 		yield return new WaitForSeconds(seconds);
-		ballGO = (GameObject)Instantiate(Resources.Load("Ball"));
+		ballsGO.Add((GameObject)Instantiate(Resources.Load("Ball")));
 	}
 }
