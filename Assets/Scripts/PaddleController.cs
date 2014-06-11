@@ -9,32 +9,20 @@ public class PaddleController : MonoBehaviour {
 	
 	public Vector3 moveDirection;
 
+	private InputManager inputManager;
 	private int directionModifier;
 	private bool isStopped;
 
 	// Use this for initialization
 	void Start () {
+		inputManager = (InputManager)FindObjectOfType (typeof(InputManager));
 		directionModifier = 1;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		Vector3 currentPosition = transform.position;
-		currentMoveSpeed = moveSpeed;
 
-		if( Input.GetKey(KeyCode.RightArrow) ) {
-			moveDirection = transform.right*directionModifier;
-			moveDirection.Normalize();
-		} else if( Input.GetKey(KeyCode.LeftArrow) ) {
-			moveDirection = -transform.right*directionModifier;
-			moveDirection.Normalize();
-		} else {
-			moveDirection = new Vector3(0.0f,0.0f,0.0f);
-			currentMoveSpeed = 0.0f;
-		}
-
-		Vector3 target = moveDirection * currentMoveSpeed + currentPosition;
-		transform.position = Vector3.Lerp( currentPosition, target, Time.deltaTime );
+		inputManager.paddleMovementInput (this,moveSpeed);
 
 		moveBallOnPaddle ();
 		enforceBounds();

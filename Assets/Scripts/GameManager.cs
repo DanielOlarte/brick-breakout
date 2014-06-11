@@ -58,9 +58,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void updateLivesAndInstantiate(GameObject ballGO) {
-		Debug.Log (numberBricks);
 		ballsGO.Remove (ballGO);
-		Debug.Log ("Balls Left: " + ballsGO.Count + "Lives " + lives);
 		if (numberBricks > 0 && ballsGO.Count == 0) {
 			lives--;
 			

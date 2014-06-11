@@ -10,6 +10,7 @@ public class BallController : MonoBehaviour {
 	private PaddleController paddle;
 	private bool onPaddle = true;
 	private Dictionary<string,float> speedModifiers = new Dictionary<string,float>();
+	private InputManager inputManager;
 
 	//------------------------------------------------GETTER AND SETTERS------------------------------------------------------
 	public bool getOnPaddle()
@@ -41,6 +42,7 @@ public class BallController : MonoBehaviour {
 	//------------------------------------------------UNITY FUNCTIONS--------------------------------------------------------
 	// Use this for initialization
 	void Start () {
+		inputManager = (InputManager)FindObjectOfType (typeof(InputManager));
 		tickCount = 1;
 		paddle = (PaddleController)FindObjectOfType (typeof(PaddleController));
 		Vector3 pos = paddle.gameObject.transform.position;
@@ -52,9 +54,8 @@ public class BallController : MonoBehaviour {
 	void Update () {
 		increaseTimerSpeed ();
 		checkBoundaries ();
-		if( Input.GetKey(KeyCode.Space) && onPaddle ) {
-			float paddleSpeed = paddle.currentMoveSpeed;
-			rigidbody2D.velocity = new Vector2(0.5f*paddleSpeed,3.0f);
+		if( inputManager.relaseBallInput() && onPaddle ) {
+			rigidbody2D.velocity = new Vector2(0.0f,3.0f);
 			onPaddle = false;
 		}
 		//---------para que no se quede atascada horizontalmente--------------
@@ -64,8 +65,6 @@ public class BallController : MonoBehaviour {
 			currentVelocity.y = 0.2f;
 			rigidbody2D.velocity = currentVelocity;
 		}
-
-		adjustVelocity ();
 		//------------------------END-----------------------------------------
 		adjustVelocity();
 	}
