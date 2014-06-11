@@ -104,7 +104,7 @@ Transform:
   m_Children:
   - {fileID: 63988963}
   m_Father: {fileID: 1149573886}
-  m_RootOrder: 0
+  m_RootOrder: 5
 --- !u!114 &12566699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,7 +402,7 @@ Transform:
   m_Children:
   - {fileID: 395369851}
   m_Father: {fileID: 1149573886}
-  m_RootOrder: 6
+  m_RootOrder: 3
 --- !u!114 &239777955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -710,7 +710,7 @@ Transform:
   m_Children:
   - {fileID: 1564783533}
   m_Father: {fileID: 1149573886}
-  m_RootOrder: 2
+  m_RootOrder: 7
 --- !u!114 &385633184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1112,7 +1112,7 @@ Transform:
   m_Children:
   - {fileID: 2048747689}
   m_Father: {fileID: 1149573886}
-  m_RootOrder: 7
+  m_RootOrder: 4
 --- !u!114 &628058779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1766,7 +1766,7 @@ Transform:
   m_Children:
   - {fileID: 1179167076}
   m_Father: {fileID: 1149573886}
-  m_RootOrder: 3
+  m_RootOrder: 0
 --- !u!114 &922474084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1990,14 +1990,14 @@ Transform:
   m_LocalPosition: {x: -0, y: 0, z: -.100000024}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 12566698}
-  - {fileID: 1258705200}
-  - {fileID: 385633183}
   - {fileID: 922474083}
   - {fileID: 2034233300}
   - {fileID: 1322961603}
   - {fileID: 239777954}
   - {fileID: 628058778}
+  - {fileID: 12566698}
+  - {fileID: 1258705200}
+  - {fileID: 385633183}
   m_Father: {fileID: 817729345}
   m_RootOrder: 1
 --- !u!1 &1179167075
@@ -2285,7 +2285,7 @@ Transform:
   m_Children:
   - {fileID: 2085223728}
   m_Father: {fileID: 1149573886}
-  m_RootOrder: 1
+  m_RootOrder: 6
 --- !u!1 &1267975045
 GameObject:
   m_ObjectHideFlags: 0
@@ -2516,7 +2516,7 @@ Transform:
   m_Children:
   - {fileID: 2062327775}
   m_Father: {fileID: 1149573886}
-  m_RootOrder: 5
+  m_RootOrder: 2
 --- !u!114 &1322961604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3899,7 +3899,7 @@ Transform:
   m_Children:
   - {fileID: 1273669182}
   m_Father: {fileID: 1149573886}
-  m_RootOrder: 4
+  m_RootOrder: 1
 --- !u!114 &2034233301
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,5 +7,6 @@ public class NormalBrick : Brick {
 		objectBrick = ObjectBrick.NONE;
 		currentHits = 0;
 		neededHits = 1;
+		points = 100;
 	}
 }

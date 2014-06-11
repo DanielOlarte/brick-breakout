@@ -7,5 +7,6 @@ public class MultipleBallsBrick : Brick {
 		objectBrick = ObjectBrick.MULTIPLE_BALLS;
 		currentHits = 0;
 		neededHits = 2;
+		points = 150;
 	}
 }

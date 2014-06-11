@@ -2,12 +2,19 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class SlowBallsObj : MonoBehaviour {
+public class FastBallsObj : MonoBehaviour {
 	
 	public float timeEffect = 3.0f;
-	public float speedModifier = 0.4f;
+	public float speedModifier = 0.3f;
+	public float scoreModifier = 1.5f;
+
+	private bool paddleDidntCapture = false;
+	private string modifierStr = ScoreUtils.FAST_BALLS_MODIFIER;
+	private GameManager gameManager;
+
 	// Use this for initialization
 	void Start () {
+		gameManager = (GameManager)FindObjectOfType (typeof(GameManager));
 	}
 	
 	// Update is called once per frame
@@ -17,8 +24,9 @@ public class SlowBallsObj : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D other)  {
 		if (other.gameObject.CompareTag ("Paddle")) {
-			Debug.Log ("CollisionSlowBalls-----");
-			
+			Debug.Log ("CollisionFastBalls-----");
+
+			paddleDidntCapture = true;
 			renderer.enabled = false;
 			
 			StartCoroutine ("startObjectEffect");	
@@ -27,13 +35,14 @@ public class SlowBallsObj : MonoBehaviour {
 	
 	private IEnumerator startObjectEffect()
 	{
-		GameManager gameManager = (GameManager)FindObjectOfType (typeof(GameManager));
 		List<GameObject> balls = gameManager.getBalls ();
-
+		
 		foreach(GameObject ball in balls) {
 			BallController ballController =  (BallController)ball.GetComponent (typeof(BallController));
-			ballController.setSpeedModifier("slow_speed", -ballController.getModifiedSpeed()*speedModifier);
+			ballController.setSpeedModifier(modifierStr, ballController.getModifiedSpeed()*speedModifier);
 		}
+
+		gameManager.setScoreModifier (modifierStr, scoreModifier);
 
 		yield return StartCoroutine("waitSeconds");
 	}
@@ -41,21 +50,23 @@ public class SlowBallsObj : MonoBehaviour {
 	private IEnumerator waitSeconds()
 	{
 		yield return new WaitForSeconds(timeEffect);
-		GameManager gameManager = (GameManager)FindObjectOfType (typeof(GameManager));
 		List<GameObject> balls = gameManager.getBalls ();
 		
 		foreach(GameObject ball in balls) {
 			BallController ballController =  (BallController)ball.GetComponent (typeof(BallController));
-			ballController.removeSpeedModifier("slow_speed");
+			ballController.removeSpeedModifier(modifierStr);
 		}
 
+		gameManager.removeScoreModifier (modifierStr);
+
 		Destroy (gameObject);
-		Debug.Log ("Effect Slow Done");
+		Debug.Log ("Effect Fast Done");
 	}
 
 	void OnBecameInvisible() {
-		Destroy (gameObject);
+		if (!paddleDidntCapture) {
+			Destroy (gameObject);
+		}
 	}
 }
-
 

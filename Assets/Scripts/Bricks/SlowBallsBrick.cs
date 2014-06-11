@@ -7,5 +7,6 @@ public class SlowBallsBrick : Brick {
 		objectBrick = ObjectBrick.SLOW_BALLS;
 		currentHits = 0;
 		neededHits = 2;
+		points = 150;
 	}
 }

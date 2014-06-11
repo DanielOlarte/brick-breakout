@@ -15,6 +15,7 @@ public class Brick {
 	public TypeBrick typeBrick;
 	public ObjectBrick objectBrick;
 
+	protected int points;
 	protected int neededHits;
 	protected int currentHits;
 
@@ -44,6 +45,10 @@ public class Brick {
 
 	public int getCurrentHits() {
 		return currentHits;
+	}
+
+	public int getPoints() {
+		return points;
 	}
 
 	public virtual void addHits() {

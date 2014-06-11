@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using System.Collections;
 using System.Reflection;
 
@@ -17,6 +18,13 @@ public class StringUtils
 		
 		// Return the first if there was a match.
 		return attribs.Length > 0 ? attribs[0].StringValue : null;
+	}
+
+	public static int getLevelBySceneName(string sceneName) {
+		string levelStr = "Level";
+		int lengthLevel = levelStr.Length;
+		string numberLevel = sceneName.Substring (lengthLevel, sceneName.Length - lengthLevel);
+		return int.Parse(numberLevel);
 	}
 }
 

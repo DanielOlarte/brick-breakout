@@ -31,8 +31,11 @@ public class PrefabBrick : MonoBehaviour {
 
 			Destroy(gameObject);
 
+			int totalPoints = brick.getPoints()*brick.getCurrentHits();
+
 			GameObject gameObjectGM = GameObject.Find("GameManager");
 			GameManager gameManager = (GameManager) gameObjectGM.GetComponent(typeof(GameManager));
+			gameManager.addScore(totalPoints);
 			gameManager.minusBrick();
 		}
 	}
