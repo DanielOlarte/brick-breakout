@@ -10,7 +10,10 @@ public class LevelSelectionController : MonoBehaviour {
 		Regex regex = new Regex(@"Level[0-9]+"); // Pattern to look for
 		Match match = regex.Match (levelName);
 
-		if (match.Value.Equals ("Level01")) {
+		PlayerPrefs.SetInt (ScoreUtils.TOTAL_SCORE, 0);
+		PlayerPrefs.SetInt (ScoreUtils.LIVES, 3);
+
+		if (match.Value.Equals ("Level01") || match.Value.Equals ("Level02")) {
 			Application.LoadLevel (match.Value);
 		}
 	}

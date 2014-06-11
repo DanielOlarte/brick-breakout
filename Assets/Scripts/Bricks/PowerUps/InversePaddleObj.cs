@@ -4,12 +4,16 @@ using System.Collections;
 public class InversePaddleObj : MonoBehaviour {
 
 	public float timeEffect = 10.0f;
+	public float scoreModifier = 4.0f;
 
+	private bool paddleDidntCapture = false;
+	private string modifierStr = ScoreUtils.INVERSE_PADDLE_MODIFIER;
+	private GameManager gameManager;
 	private PaddleController paddleController;
 
 	// Use this for initialization
 	void Start () {
-	
+		gameManager = (GameManager)FindObjectOfType (typeof(GameManager));
 	}
 	
 	// Update is called once per frame
@@ -27,6 +31,7 @@ public class InversePaddleObj : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Paddle")) {
 			Debug.Log ("CollisionInversePaddle-----");
 
+			paddleDidntCapture = true;
 			renderer.enabled = false;
 			StartCoroutine ("startObjectEffect");	
 		}
@@ -34,9 +39,9 @@ public class InversePaddleObj : MonoBehaviour {
 
 	private IEnumerator startObjectEffect()
 	{
-		GameObject gameObjectGM = GameObject.Find("Paddle");
-		paddleController = (PaddleController) gameObjectGM.GetComponent(typeof(PaddleController));
+		paddleController = (PaddleController) GameObject.Find("Paddle").GetComponent(typeof(PaddleController));
 		paddleController.inverseDirection();
+		gameManager.setScoreModifier (modifierStr, scoreModifier);
 
 		yield return StartCoroutine("waitSeconds");
 	}
@@ -44,11 +49,16 @@ public class InversePaddleObj : MonoBehaviour {
 	private IEnumerator waitSeconds()
 	{
 		yield return new WaitForSeconds(timeEffect);
+
+		gameManager.removeScoreModifier (modifierStr);
+
 		Destroy (gameObject);
 		Debug.Log ("Effect Inverse Done");
 	}
 
 	void OnBecameInvisible() {
-		Destroy (gameObject);
+		if (!paddleDidntCapture) {
+			Destroy (gameObject);
+		}
 	}
 }

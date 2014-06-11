@@ -7,5 +7,6 @@ public class InverseBrick : Brick {
 		objectBrick = ObjectBrick.INVERSE;
 		currentHits = 0;
 		neededHits = 2;
+		points = 150;
 	}
 }
