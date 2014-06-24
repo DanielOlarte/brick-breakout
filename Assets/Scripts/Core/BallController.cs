@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class BallController : MonoBehaviour {
-	public float paddleDirectionForce = 150.0f;
 	public float baseSpeed = 3.0f;
 	private int tickCount;
 	public float redirectionMaxValue = 0.5f;
@@ -46,7 +45,7 @@ public class BallController : MonoBehaviour {
 		tickCount = 1;
 		paddle = (PaddleController)FindObjectOfType (typeof(PaddleController));
 		Vector3 pos = paddle.gameObject.transform.position;
-		pos.y = pos.y + 0.25f;
+		pos.y = pos.y + paddle.gameObject.transform.localScale.y / 2;
 		transform.position = pos;
 	}
 	
