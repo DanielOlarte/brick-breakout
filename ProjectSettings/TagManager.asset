@@ -9,6 +9,7 @@ TagManager:
   - Paddle
   - Powers
   - Buttons
+  - ScoreLeaderboard
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

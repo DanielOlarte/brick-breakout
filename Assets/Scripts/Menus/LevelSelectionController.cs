@@ -11,7 +11,7 @@ public class LevelSelectionController : MonoBehaviour {
 		Match match = regex.Match (levelName);
 
 		PlayerPrefs.SetInt (ScoreUtils.TOTAL_SCORE, 0);
-		PlayerPrefs.SetInt (ScoreUtils.LIVES, 3);
+		PlayerPrefs.SetInt (ScoreUtils.LIVES, 1);
 
 		if (match.Value.Equals ("Level01") || match.Value.Equals ("Level02")) {
 			Application.LoadLevel (match.Value);

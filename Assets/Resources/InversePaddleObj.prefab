@@ -38,8 +38,8 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mass: 100
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
+  m_LinearDrag: 6
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_FixedAngle: 1
   m_IsKinematic: 0
@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeEffect: 5
+  scoreModifier: 4
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

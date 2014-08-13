@@ -685,6 +685,7 @@ GameObject:
   - 23: {fileID: 1261952185}
   - 33: {fileID: 1261952184}
   - 114: {fileID: 1261952183}
+  - 114: {fileID: 1261952186}
   m_Layer: 8
   m_Name: HighScores
   m_TagString: Untagged
@@ -699,7 +700,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1261952181}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .875947475, y: -2.76371765, z: -3.57627869e-07}
+  m_LocalPosition: {x: 2.0695405, y: -2.94734764, z: -3.57627869e-07}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 1392522319}
@@ -771,7 +772,7 @@ MonoBehaviour:
     renderLayer: 0
     scale: {x: 1, y: 1, z: 1}
     kerning: 0
-    maxChars: 150
+    maxChars: 400
     inlineStyling: 0
     formatting: 0
     wordWrapWidth: 224
@@ -806,6 +807,17 @@ Renderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &1261952186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1261952181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 177b557e57709b649bd19a5820a172f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1280290304
 GameObject:
   m_ObjectHideFlags: 0
