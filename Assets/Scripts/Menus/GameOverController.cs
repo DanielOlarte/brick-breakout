@@ -7,10 +7,10 @@ public class GameOverController : MonoBehaviour {
 	private GameObject[] buttonsPlayerNameGO;
 
 	void Start() {
-		tk2dTextMesh scoreTitle =(tk2dTextMesh) GameObject.Find("ScoreTitle").GetComponent<tk2dTextMesh>();
+		tk2dTextMesh scoreTitle =(tk2dTextMesh) GameObject.Find(NameUtils.NAME_SCORE_TITLE).GetComponent<tk2dTextMesh>();
 		scoreTitle.text = PlayerPrefs.GetInt (ScoreUtils.TOTAL_SCORE).ToString ();
 		scoreTitle.Commit ();
-		buttonsGO = GameObject.FindGameObjectsWithTag ("Buttons");
+		buttonsGO = GameObject.FindGameObjectsWithTag (TagUtils.TAG_BUTTONS);
 		
 		foreach(GameObject buttonGO in buttonsGO) {
 			buttonGO.SetActive(false);
@@ -31,16 +31,17 @@ public class GameOverController : MonoBehaviour {
 
 	void saveButtonClicked() {
 
-		string nameUser = "AAA";
+		string nameUser = ScoreUtils.DEFAULT_STR_PLAYER_NAME;
 
-		buttonsPlayerNameGO = GameObject.FindGameObjectsWithTag ("ScoreLeaderboard");
+		buttonsPlayerNameGO = GameObject.FindGameObjectsWithTag (TagUtils.TAG_SCORE_LEADERBOARD);
 
 		foreach(GameObject buttonGO in buttonsPlayerNameGO) {
-			if (buttonGO.name.Equals ("InputPlayerName")) {
+			if (buttonGO.name.Equals (NameUtils.NAME_INPUT_LEADERBOARD)) {
 				tk2dUITextInput textInput = buttonGO.GetComponent<tk2dUITextInput>();
 				nameUser = textInput.Text;
-				Debug.Log (nameUser);
-				if (nameUser.Length < 3) {
+
+				if (nameUser.Length < ScoreUtils.TOTAL_CHARACTERS_NAME) {
+					Debug.Log (nameUser);
 					return;
 				}
 

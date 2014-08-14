@@ -276,7 +276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collection: {fileID: 11400000, guid: a7b2ba5d04adf144faffa96ff7497955, type: 2}
   _color: {r: 1, g: 1, b: 1, a: 1}
-  _scale: {x: 10.5, y: 20, z: 1}
+  _scale: {x: 14, y: 20, z: 1}
   _spriteId: 4
   boxCollider2D: {fileID: 0}
   polygonCollider2D: []
@@ -583,7 +583,7 @@ Transform:
   m_PrefabInternal: {fileID: 845911501}
   m_GameObject: {fileID: 215152034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.7157593, y: -.545368791, z: -.00999999978}
+  m_LocalPosition: {x: -20.2015858, y: -.439238191, z: -.00999999978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 184604116}
@@ -617,7 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d932ed487efc2f4c8b824406c968e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sendMessageTarget: {fileID: 0}
+  sendMessageTarget: {fileID: 425400837}
   SendMessageOnDownMethodName: 
   SendMessageOnUpMethodName: 
   SendMessageOnClickMethodName: 
@@ -651,7 +651,7 @@ MonoBehaviour:
   isPasswordField: 0
   passwordChar: '*'
   layoutItem: {fileID: 0}
-  SendMessageOnTextChangeMethodName: 
+  SendMessageOnTextChangeMethodName: onTextChanged
 --- !u!1 &224054758
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,7 +776,7 @@ GameObject:
   - 114: {fileID: 294041009}
   m_Layer: 8
   m_Name: Cursor
-  m_TagString: Untagged
+  m_TagString: CursorInput
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1033,6 +1033,45 @@ MonoBehaviour:
   isHoverEnabled: 1
   editorExtraBounds: []
   editorIgnoreBounds: []
+--- !u!1 &425400837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 425400838}
+  - 114: {fileID: 425400839}
+  m_Layer: 8
+  m_Name: CursorScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &425400838
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 425400837}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.38013172, y: -.565459967, z: -.00999999978}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1926099104}
+  m_RootOrder: 3
+--- !u!114 &425400839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 425400837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cf869507637fc748a625db6481393da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &620886220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,7 +1196,7 @@ GameObject:
   - 114: {fileID: 668703305}
   m_Layer: 8
   m_Name: InputText
-  m_TagString: Untagged
+  m_TagString: InputLeaderboard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1760,11 +1799,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400004, guid: 26548f7a1678ad64b835bf290a254dbe, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -18.7157593
+      value: -20.2015858
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 26548f7a1678ad64b835bf290a254dbe, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -.545368791
+      value: -.439238191
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 26548f7a1678ad64b835bf290a254dbe, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1927,7 +1966,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400012, guid: 26548f7a1678ad64b835bf290a254dbe, type: 2}
       propertyPath: _scale.x
-      value: 10.5
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 11400012, guid: 26548f7a1678ad64b835bf290a254dbe, type: 2}
       propertyPath: _scale.y
@@ -1935,7 +1974,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400010, guid: 26548f7a1678ad64b835bf290a254dbe, type: 2}
       propertyPath: _scale.x
-      value: 10.5
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 11400010, guid: 26548f7a1678ad64b835bf290a254dbe, type: 2}
       propertyPath: _scale.y
@@ -1959,11 +1998,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 26548f7a1678ad64b835bf290a254dbe, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.38013113
+      value: 2.80132389
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 26548f7a1678ad64b835bf290a254dbe, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -.565459907
+      value: -.565459967
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 26548f7a1678ad64b835bf290a254dbe, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2051,7 +2090,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 26548f7a1678ad64b835bf290a254dbe, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300002, guid: 26548f7a1678ad64b835bf290a254dbe, type: 2}
       propertyPath: m_CastShadows
@@ -2072,6 +2111,26 @@ Prefab:
     - target: {fileID: 11400000, guid: 26548f7a1678ad64b835bf290a254dbe, type: 2}
       propertyPath: data.text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 26548f7a1678ad64b835bf290a254dbe, type: 2}
+      propertyPath: data.inlineStyling
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 26548f7a1678ad64b835bf290a254dbe, type: 2}
+      propertyPath: m_TagString
+      value: CursorInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: 26548f7a1678ad64b835bf290a254dbe, type: 2}
+      propertyPath: sendMessageTarget
+      value: 
+      objectReference: {fileID: 425400837}
+    - target: {fileID: 11400004, guid: 26548f7a1678ad64b835bf290a254dbe, type: 2}
+      propertyPath: SendMessageOnTextChangeMethodName
+      value: onTextChanged
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 26548f7a1678ad64b835bf290a254dbe, type: 2}
+      propertyPath: m_TagString
+      value: InputLeaderboard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 26548f7a1678ad64b835bf290a254dbe, type: 2}
@@ -2639,7 +2698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collection: {fileID: 11400000, guid: a7b2ba5d04adf144faffa96ff7497955, type: 2}
   _color: {r: 1, g: 1, b: 1, a: 1}
-  _scale: {x: 10.5, y: 20, z: 1}
+  _scale: {x: 14, y: 20, z: 1}
   _spriteId: 3
   boxCollider2D: {fileID: 0}
   polygonCollider2D: []
@@ -3077,6 +3136,7 @@ Transform:
   - {fileID: 294041008}
   - {fileID: 1970138675}
   - {fileID: 668703304}
+  - {fileID: 425400838}
   m_Father: {fileID: 215152035}
   m_RootOrder: 2
 --- !u!1 &1970138674
@@ -3104,7 +3164,7 @@ Transform:
   m_PrefabInternal: {fileID: 845911501}
   m_GameObject: {fileID: 1970138674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.38013113, y: -.565459907, z: -.00999999978}
+  m_LocalPosition: {x: 2.80132389, y: -.565459967, z: -.00999999978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1926099104}
@@ -3380,7 +3440,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 1c7fbdd00920ad3489cb069e9891239f, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 1c7fbdd00920ad3489cb069e9891239f, type: 2}
       propertyPath: SendMessageOnClickMethodName

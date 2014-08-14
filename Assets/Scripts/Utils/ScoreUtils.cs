@@ -5,12 +5,17 @@ public static class ScoreUtils
 {
 	public static string LEADERBOARD_INIT = "initialize_leaderboard";
 	public static string BASE_STR_LEADERBOARD = "BR_";
+	public static string DEFAULT_STR_PLAYER_NAME = "AAA";
 	public static string DEFAULT_STR_PLAYER = "AAA_";
 	public static string DEFAULT_SCORE_PLAYER = "0";
+
+	public static int TOTAL_CHARACTERS_NAME = 3;
 	public static int TOTAL_POSITIONS_LEADERBOARD = 10;
 
 	public static string TOTAL_SCORE = "total_score";
 	public static string LIVES = "lives";
+
+	public static int TOTAL_LIVES = 3;
 
 	public static string FAST_BALLS_MODIFIER = "fast_balls";
 	public static string SLOW_BALLS_MODIFIER = "slow_balls";
