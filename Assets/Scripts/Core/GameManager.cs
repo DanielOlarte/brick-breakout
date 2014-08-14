@@ -151,10 +151,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void disablePaddle() {
-		PaddleController paddleController = (PaddleController)paddleGO.GetComponent (typeof(PaddleController));
+		if (paddleGO != null) {
+			PaddleController paddleController = (PaddleController)paddleGO.GetComponent (typeof(PaddleController));
 
-		if (paddleController != null) {
-			paddleController.enabled = false;
+			if (paddleController != null) {
+				paddleController.enabled = false;
+			}
 		}
 	}
 

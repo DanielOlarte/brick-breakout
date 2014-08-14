@@ -6,14 +6,14 @@ public class InputManager : MonoBehaviour
 	private int leftClick = 0;
 	private int rightClick = 1;
 
-	public void paddleMovementInput(PaddleController paddle, float paddleMoveSpeed){
+	public void paddleMovementInput(PaddleController paddle, float paddleMoveSpeed, int direction){
 		#if UNITY_ANDROID
 		if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
 		{
 			GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
 			Camera camera = cameraObject.camera;
 			float   fingerXPosition = camera.ScreenToWorldPoint(Input.GetTouch(0).position).x;
-			Vector3 newPos = new Vector3(fingerXPosition,paddle.transform.position.y,paddle.transform.position.z);
+			Vector3 newPos = new Vector3(direction*fingerXPosition,paddle.transform.position.y,paddle.transform.position.z);
 			
 			paddle.transform.position = Vector3.Lerp(paddle.transform.position, newPos, Time.deltaTime*10);
 		}
@@ -38,7 +38,7 @@ public class InputManager : MonoBehaviour
 		GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
 		Camera camera = cameraObject.camera;
 		float mouseXPosition = camera.ScreenToWorldPoint(Input.mousePosition).x;
-		Vector3 target = new Vector3( mouseXPosition,currentPosition.y,currentPosition.z);
+		Vector3 target = new Vector3( direction*mouseXPosition,currentPosition.y,currentPosition.z);
 		paddle.transform.position = Vector3.Lerp( currentPosition, target, Time.deltaTime*10 );
 		#endif
 	}

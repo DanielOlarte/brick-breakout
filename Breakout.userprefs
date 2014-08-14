@@ -1,13 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Utils\ScoreUtils.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Core\PaddleController.cs">
     <Files>
-      <File FileName="Assets\Scripts\Menus\LevelSelectionController.cs" Line="19" Column="24" />
-      <File FileName="Assets\Scripts\UI\CursorScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Menus\GameOverController.cs" Line="45" Column="3" />
-      <File FileName="Assets\Scripts\Utils\TagUtils.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Utils\NameUtils.cs" Line="7" Column="66" />
-      <File FileName="Assets\Scripts\Utils\ScoreUtils.cs" Line="19" Column="35" />
+      <File FileName="Assets\Scripts\UI\TimeScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\InputManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Bricks\PowerUps\InversePaddleObj.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Core\GameManager.cs" Line="164" Column="1" />
+      <File FileName="Assets\Scripts\Utils\ScoreUtils.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Bricks\PowerUps\MultipleBallsObj.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Bricks\PowerUps\FastBallsObj.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Bricks\PowerUps\SlowBallsObj.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Core\PaddleController.cs" Line="25" Column="43" />
+      <File FileName="Assets\Scripts\Bricks\PrefabBrick.cs" Line="31" Column="4" />
+      <File FileName="Assets\Scripts\Bricks\BrickFactory.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
