@@ -1,5 +1,6 @@
 using UnityEngine;
-using System;
+using System.Text.RegularExpressions;
+using System.Collections;
 
 public static class ScoreUtils
 {
@@ -15,7 +16,9 @@ public static class ScoreUtils
 	public static string TOTAL_SCORE = "total_score";
 	public static string LIVES = "lives";
 
-	public static int TOTAL_LIVES = 3;
+	public static int TOTAL_LIVES = 1;
+
+	public static string LEVEL_USER_INIT = "level_user_init";
 
 	public static string FAST_BALLS_MODIFIER = "fast_balls";
 	public static string SLOW_BALLS_MODIFIER = "slow_balls";
@@ -35,6 +38,19 @@ public static class ScoreUtils
 			}
 			PlayerPrefs.SetInt (LEADERBOARD_INIT, 1);
 		}
+	}
+
+	public static bool canBeAddedToLeaderboard (string startedLevel)
+	{
+		Regex regex = new Regex(@"[0-9]+"); // Pattern to look for
+		Match match = regex.Match (startedLevel);
+		int levelNumber = int.Parse (match.Value);
+
+		if (levelNumber > 1) {
+			return false;
+		}
+
+		return true;
 	}
 
 	public static string[] getLeaderboard() {

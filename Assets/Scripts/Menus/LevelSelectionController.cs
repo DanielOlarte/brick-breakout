@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Text.RegularExpressions;
 using System.Collections;
-using System.Collections.Generic;
 
 public class LevelSelectionController : MonoBehaviour {
 
@@ -16,6 +15,8 @@ public class LevelSelectionController : MonoBehaviour {
 		if (match.Value.Equals ("Level01") || match.Value.Equals ("Level02")) {
 			Application.LoadLevel (match.Value);
 		}
+
+		PlayerPrefs.SetString (ScoreUtils.LEVEL_USER_INIT, match.Value);
 	}
 
 	void backMainMenuClicked() {

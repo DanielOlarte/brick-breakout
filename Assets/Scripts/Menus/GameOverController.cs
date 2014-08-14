@@ -11,9 +11,19 @@ public class GameOverController : MonoBehaviour {
 		scoreTitle.text = PlayerPrefs.GetInt (ScoreUtils.TOTAL_SCORE).ToString ();
 		scoreTitle.Commit ();
 		buttonsGO = GameObject.FindGameObjectsWithTag (TagUtils.TAG_BUTTONS);
-		
-		foreach(GameObject buttonGO in buttonsGO) {
-			buttonGO.SetActive(false);
+		buttonsPlayerNameGO = GameObject.FindGameObjectsWithTag (TagUtils.TAG_SCORE_LEADERBOARD);
+
+		string startedLevel = PlayerPrefs.GetString (ScoreUtils.LEVEL_USER_INIT);
+		bool canBeAddedToLeaderboard = ScoreUtils.canBeAddedToLeaderboard (startedLevel);
+
+		if (canBeAddedToLeaderboard) {
+			foreach(GameObject buttonGO in buttonsGO) {
+				buttonGO.SetActive(false);
+			}
+		} else {
+			foreach(GameObject buttonGO in buttonsPlayerNameGO) {
+				buttonGO.SetActive(false);
+			}
 		}
 	}
 
@@ -32,8 +42,6 @@ public class GameOverController : MonoBehaviour {
 	void saveButtonClicked() {
 
 		string nameUser = ScoreUtils.DEFAULT_STR_PLAYER_NAME;
-
-		buttonsPlayerNameGO = GameObject.FindGameObjectsWithTag (TagUtils.TAG_SCORE_LEADERBOARD);
 
 		foreach(GameObject buttonGO in buttonsPlayerNameGO) {
 			if (buttonGO.name.Equals (NameUtils.NAME_INPUT_LEADERBOARD)) {
