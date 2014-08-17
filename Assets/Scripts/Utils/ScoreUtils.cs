@@ -16,7 +16,7 @@ public static class ScoreUtils
 	public static string TOTAL_SCORE = "total_score";
 	public static string LIVES = "lives";
 
-	public static int TOTAL_LIVES = 1;
+	public static int TOTAL_LIVES = 3;
 
 	public static string LEVEL_USER_INIT = "level_user_init";
 

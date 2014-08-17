@@ -161,8 +161,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void disableTimer() {
-		TimeScript timeScript = (TimeScript) timeScriptGO.GetComponent(typeof(TimeScript));
-		timeScript.enabled = false;
+		if (timeScriptGO != null) {
+			TimeScript timeScript = (TimeScript)timeScriptGO.GetComponent (typeof(TimeScript));
+			timeScript.enabled = false;
+		}
 	}
 
 	private void disablePowers() {
