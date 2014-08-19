@@ -22,7 +22,7 @@ public class PaddleController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		inputManager.paddleMovementInput (this,moveSpeed);
+		inputManager.paddleMovementInput (this, moveSpeed, directionModifier);
 
 		moveBallOnPaddle ();
 		enforceBounds();

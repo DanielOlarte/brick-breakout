@@ -3,6 +3,10 @@ using System.Collections;
 
 public class MainMenuController : MonoBehaviour {
 
+	void Start() {
+		ScoreUtils.initializeLeaderboards ();
+	}
+
 	void startGameClicked() {
 		Debug.Log ("StartGameClicked");
 		Application.LoadLevel ("LevelSelection");

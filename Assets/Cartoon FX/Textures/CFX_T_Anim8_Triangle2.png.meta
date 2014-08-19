@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: 398da4b026da3fd4dbe04dfc2ba43f09
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: CFX_T_Anim8_Triangle2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 1
@@ -35,6 +37,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 5
