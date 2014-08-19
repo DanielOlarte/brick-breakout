@@ -40,9 +40,8 @@ public class WallBuilder : MonoBehaviour
 
     private void readFile(string filename)
 	{
-		var sr = File.OpenText(filename);
-		filedata = sr.ReadToEnd().Split('\n').Select(s=>s.Split(',').ToList()).ToList();
-		sr.Close();
+		TextAsset sr = Resources.Load("Level2") as TextAsset;
+		filedata = sr.text.Split('\n').Select(s=>s.Split(',').ToList()).ToList();
 	}
 
     private void placeBricks()
