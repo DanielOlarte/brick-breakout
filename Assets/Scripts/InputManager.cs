@@ -64,5 +64,14 @@ public class InputManager : MonoBehaviour
 		#endif
 		return false;
 	}
+
+	public bool pauseMenuInput() {
+		#if UNITY_STANDALONE
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			return true;
+		}
+		#endif
+		return false;
+	}
 }
 

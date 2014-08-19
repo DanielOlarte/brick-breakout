@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour {
 
 	public float levelScoreModifier = 0.1f;
 
+	public GameObject pauseButtonGO;
+
 	private float basicScoreModifier;
 
 	private GameObject paddleGO;
@@ -61,6 +63,8 @@ public class GameManager : MonoBehaviour {
 
 		int levelNumber = StringUtils.getLevelBySceneName (Application.loadedLevelName);
 		basicScoreModifier = levelScoreModifier * (levelNumber - 1);
+
+		enableUI ();
 	}
 	
 	// Update is called once per frame
@@ -202,6 +206,12 @@ public class GameManager : MonoBehaviour {
 		} else {
 			Application.LoadLevel ("GameOver");
 		}
+	}
+
+	private void enableUI() {
+		#if UNITY_ANDROID
+			pauseButtonGO.SetActive(true);
+		#endif
 	}
 	
 }

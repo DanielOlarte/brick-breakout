@@ -11,43 +11,31 @@ Platform assembly: D:\Users\Silex RPR\Documents\Oscar RPR\Brainstorm Interactive
 Loading D:\Users\Silex RPR\Documents\Oscar RPR\Brainstorm Interactive\Breakout\ProjectBreakout_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: D:\Users\Silex RPR\Documents\Oscar RPR\Brainstorm Interactive\Breakout\ProjectBreakout_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading D:\Users\Silex RPR\Documents\Oscar RPR\Brainstorm Interactive\Breakout\ProjectBreakout_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.044 seconds
+- Completed reload, in  0.034 seconds
 desktop: 1680x1050 60Hz; virtual: 1680x1050 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 Platform assembly: D:\Users\Silex RPR\Documents\Oscar RPR\Brainstorm Interactive\Breakout\ProjectBreakout_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: D:\Users\Silex RPR\Documents\Oscar RPR\Brainstorm Interactive\Breakout\ProjectBreakout_Data\Managed\System.dll (this message is harmless)
-UnloadTime: 1.945732 ms
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 274.
-Total: 0.467946 ms (FindLiveObjects: 0.017537 ms CreateObjectMapping: 0.006137 ms MarkObjects: 0.114282 ms  DeleteObjects: 0.003215 ms)
-
-backMainMenuClicked
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-UnloadTime: 0.806118 ms
-Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 287.
-Total: 0.430533 ms (FindLiveObjects: 0.007891 ms CreateObjectMapping: 0.007891 ms MarkObjects: 0.126266 ms  DeleteObjects: 0.010522 ms)
-
 StartGameClicked
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
-UnloadTime: 0.302221 ms
+UnloadTime: 4.579500 ms
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 406.
+Total: 1.138444 ms (FindLiveObjects: 0.048811 ms CreateObjectMapping: 0.016367 ms MarkObjects: 0.313620 ms  DeleteObjects: 0.007599 ms)
+
+UnloadTime: 1.910658 ms
+Discarding unnecessary tk2dUIManager instance.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
 Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 408.
-Total: 0.453039 ms (FindLiveObjects: 0.011106 ms CreateObjectMapping: 0.007307 ms MarkObjects: 0.151987 ms  DeleteObjects: 0.002630 ms)
-
-UnloadTime: 0.790919 ms
-Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 342.
-Total: 1.146044 ms (FindLiveObjects: 0.021336 ms CreateObjectMapping: 0.015491 ms MarkObjects: 0.259840 ms  DeleteObjects: 0.178877 ms)
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 410.
+Total: 1.025331 ms (FindLiveObjects: 0.026597 ms CreateObjectMapping: 0.016660 ms MarkObjects: 0.273869 ms  DeleteObjects: 0.021044 ms)
 
 0
  
@@ -73,6 +61,30 @@ Modifier : 1
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
+CollisionFastBalls-----
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Modifier : 1.5
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+CollisionMultipleBallsPaddle-----
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Modifier : 3.5
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Modifier : 3.5
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Effect Fast Done
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
 Modifier : 1
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
@@ -89,45 +101,171 @@ CollisionSlowBalls-----
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
-Modifier : 0.5
+backMainMenuClicked
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
-Effect Slow Done
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Modifier : 1
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Modifier : 1
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Modifier : 1
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-CollisionFastBalls-----
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Modifier : 1.5
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-UnloadTime: 0.477883 ms
+UnloadTime: 1.707228 ms
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 57 unused Assets to reduce memory usage. Loaded Objects now: 266.
-Total: 1.089925 ms (FindLiveObjects: 0.024551 ms CreateObjectMapping: 0.018121 ms MarkObjects: 0.275038 ms  DeleteObjects: 0.063133 ms)
+Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 287.
+Total: 1.104832 ms (FindLiveObjects: 0.020459 ms CreateObjectMapping: 0.015198 ms MarkObjects: 0.279715 ms  DeleteObjects: 0.058749 ms)
 
-Level02
+UnloadTime: 0.422349 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 359.
+Total: 1.003702 ms (FindLiveObjects: 0.026597 ms CreateObjectMapping: 0.016075 ms MarkObjects: 0.270946 ms  DeleteObjects: 0.005845 ms)
+
+
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
-1850
+OLA_4620
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+DAN_3910
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+WIT_2520
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+AC2_2520
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+ME2_2250
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+222_2050
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+AAA_2000
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+HTY_1000
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+EAS_1000
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+JSR_1000
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+UnloadTime: 0.578429 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 412.
+Total: 1.060697 ms (FindLiveObjects: 0.025720 ms CreateObjectMapping: 0.021044 ms MarkObjects: 0.329111 ms  DeleteObjects: 0.005553 ms)
+
+UnloadTime: 0.773674 ms
+Discarding unnecessary tk2dUIManager instance.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 413.
+Total: 1.046667 ms (FindLiveObjects: 0.026890 ms CreateObjectMapping: 0.018413 ms MarkObjects: 0.295791 ms  DeleteObjects: 0.021044 ms)
+
+0
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Level01
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+backMainMenuClicked
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+UnloadTime: 0.686866 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 287.
+Total: 1.167673 ms (FindLiveObjects: 0.019875 ms CreateObjectMapping: 0.016075 ms MarkObjects: 0.282053 ms  DeleteObjects: 0.044719 ms)
+
+StartGameClicked
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+UnloadTime: 0.510327 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 409.
+Total: 1.062743 ms (FindLiveObjects: 0.028936 ms CreateObjectMapping: 0.017244 ms MarkObjects: 0.333787 ms  DeleteObjects: 0.005553 ms)
+
+UnloadTime: 0.772505 ms
+Discarding unnecessary tk2dUIManager instance.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 413.
+Total: 1.032345 ms (FindLiveObjects: 0.025428 ms CreateObjectMapping: 0.018998 ms MarkObjects: 0.295791 ms  DeleteObjects: 0.020752 ms)
+
+0
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Level01
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Modifier : 1
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+backMainMenuClicked
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+UnloadTime: 0.680144 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 287.
+Total: 1.067127 ms (FindLiveObjects: 0.019583 ms CreateObjectMapping: 0.016660 ms MarkObjects: 0.283515 ms  DeleteObjects: 0.045011 ms)
+
+UnloadTime: 0.512665 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 246.
+Total: 0.965997 ms (FindLiveObjects: 0.014321 ms CreateObjectMapping: 0.015198 ms MarkObjects: 0.260717 ms  DeleteObjects: 0.004968 ms)
+
+backMainMenuClicked
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+UnloadTime: 0.423519 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 285.
+Total: 1.033222 ms (FindLiveObjects: 0.018706 ms CreateObjectMapping: 0.016660 ms MarkObjects: 0.283807 ms  DeleteObjects: 0.005261 ms)
+
+UnloadTime: 0.509158 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 278.
+Total: 1.005163 ms (FindLiveObjects: 0.020459 ms CreateObjectMapping: 0.016367 ms MarkObjects: 0.267439 ms  DeleteObjects: 0.004968 ms)
+
+backMainMenuClicked
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+UnloadTime: 0.493959 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 288.
+Total: 1.047544 ms (FindLiveObjects: 0.023382 ms CreateObjectMapping: 0.016660 ms MarkObjects: 0.304267 ms  DeleteObjects: 0.020752 ms)
 
