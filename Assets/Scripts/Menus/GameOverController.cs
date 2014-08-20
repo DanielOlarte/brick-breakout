@@ -5,6 +5,9 @@ public class GameOverController : MonoBehaviour {
 
 	private GameObject[] buttonsGO;
 	private GameObject[] buttonsPlayerNameGO;
+	private string[] leaderboard;
+	private int score;
+	private int position;
 
 	void Start() {
 		tk2dTextMesh scoreTitle =(tk2dTextMesh) GameObject.Find(NameUtils.NAME_SCORE_TITLE).GetComponent<tk2dTextMesh>();
@@ -16,7 +19,13 @@ public class GameOverController : MonoBehaviour {
 		string startedLevel = PlayerPrefs.GetString (ScoreUtils.LEVEL_USER_INIT);
 		bool canBeAddedToLeaderboard = ScoreUtils.canBeAddedToLeaderboard (startedLevel);
 
-		if (canBeAddedToLeaderboard) {
+		leaderboard = ScoreUtils.getLeaderboard ();
+		score = PlayerPrefs.GetInt (ScoreUtils.TOTAL_SCORE);
+		position = ScoreUtils.checkUserEnterLeaderboard (leaderboard, score);
+		Debug.Log (canBeAddedToLeaderboard);
+		Debug.Log (position);
+
+		if (canBeAddedToLeaderboard && isOnLeaderboard(position)) {
 			foreach(GameObject buttonGO in buttonsGO) {
 				buttonGO.SetActive(false);
 			}
@@ -65,14 +74,10 @@ public class GameOverController : MonoBehaviour {
 			buttonGO.SetActive(false);
 		}
 
-		string[] leaderboard = ScoreUtils.getLeaderboard ();
-		int score = PlayerPrefs.GetInt (ScoreUtils.TOTAL_SCORE);
-		int position = ScoreUtils.checkUserEnterLeaderboard (leaderboard, score);
+		ScoreUtils.addUserLeaderboard(nameUser, score, position, leaderboard);
+	}
 
-		if (position >= 0) {
-			ScoreUtils.addUserLeaderboard(nameUser, score, position, leaderboard);
-		}
-
-
+	private bool isOnLeaderboard(int position) {
+		return position >= 0 && position < 10 ? true : false ;
 	}
 }

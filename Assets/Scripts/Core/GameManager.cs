@@ -4,15 +4,13 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
-	public float levelScoreModifier = 0.1f;
-
 	public GameObject pauseButtonGO;
 
 	private float basicScoreModifier;
 
 	private GameObject paddleGO;
 	private List<GameObject> ballsGO;
-	private GameObject timeScriptGO;
+	private TimeScript timeScript;
 	private ScoreScript scoreScript;
 
 	private List<GameObject> listLives;
@@ -45,7 +43,7 @@ public class GameManager : MonoBehaviour {
 		ballsGO = new List<GameObject> ();
 		ballsGO.Add((GameObject)Instantiate(Resources.Load("Ball")));
 		paddleGO = GameObject.Find("Paddle");
-		timeScriptGO = GameObject.Find("TimeScore");
+		timeScript = (TimeScript) GameObject.Find("TimeScore").GetComponent(typeof(TimeScript));
 		scoreScript = (ScoreScript) GameObject.Find("PointsScore").GetComponent(typeof(ScoreScript));
 
 		lives = PlayerPrefs.GetInt(ScoreUtils.LIVES);
@@ -62,7 +60,7 @@ public class GameManager : MonoBehaviour {
 		numberBricks = gos.Length;
 
 		int levelNumber = StringUtils.getLevelBySceneName (Application.loadedLevelName);
-		basicScoreModifier = levelScoreModifier * (levelNumber - 1);
+		basicScoreModifier = ScoreUtils.SCORE_LEVEL_MODIFIER * (levelNumber - 1);
 
 		enableUI ();
 	}
@@ -71,6 +69,8 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		if (numberBricks == 0) {
 			moveNextLevel();
+		} else if (TimeScript.Timer <= 0.0f) {
+			finishGame ();
 		}
 	}
 	
@@ -137,8 +137,10 @@ public class GameManager : MonoBehaviour {
 		disablePaddle ();
 		disableTimer ();
 		disablePowers ();
-		
-		PlayerPrefs.SetInt (ScoreUtils.TOTAL_SCORE, scoreScript.getScore());
+
+		int totalScore = scoreScript.getFullScore (TimeScript.Timer, lives);
+
+		PlayerPrefs.SetInt (ScoreUtils.TOTAL_SCORE, totalScore);
 		PlayerPrefs.SetInt (ScoreUtils.LIVES, lives);
 
 		StartCoroutine (startWaitNextLevel (2.0f));
@@ -165,8 +167,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void disableTimer() {
-		if (timeScriptGO != null) {
-			TimeScript timeScript = (TimeScript)timeScriptGO.GetComponent (typeof(TimeScript));
+		if (timeScript != null) {
 			timeScript.enabled = false;
 		}
 	}

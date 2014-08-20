@@ -22,13 +22,14 @@ public class TimeScript : MonoBehaviour
 	
 	// Use this for initialization
 	void Start () {
-		timer = 0.0f;
+		int levelNumber = StringUtils.getLevelBySceneName (Application.loadedLevelName);
+		timer = TimerUtils.getTimerByLevel(levelNumber - 1);
 		textMesh = GetComponent<tk2dTextMesh>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Timer += Time.deltaTime;
+		Timer -= Time.deltaTime;
 		TimeSpan t = TimeSpan.FromSeconds(timer);
 		
 		string answer = string.Format("{0:D2}:{1:D2}",  

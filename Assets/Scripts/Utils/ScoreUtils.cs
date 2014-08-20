@@ -25,6 +25,11 @@ public static class ScoreUtils
 	public static string INVERSE_PADDLE_MODIFIER = "inverse_paddle";
 	public static string MULTIPLE_BALLS_MODIFIER = "multiple_balls";
 
+	public static float SCORE_LEVEL_MODIFIER = 0.1f;
+
+	public static int SCORE_PER_LIVE = 1000;
+	public static int SCORE_PER_SECOND = 10;
+
 	public static void initializeLeaderboards() {
 		//PlayerPrefs.DeleteAll ();
 		if (!PlayerPrefs.HasKey (LEADERBOARD_INIT)) {
