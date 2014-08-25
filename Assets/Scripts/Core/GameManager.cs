@@ -5,7 +5,8 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour {
 
 	public GameObject pauseButtonGO;
-
+	public GameObject summaryScoreGO;
+	
 	private float basicScoreModifier;
 
 	private GameObject paddleGO;
@@ -61,6 +62,8 @@ public class GameManager : MonoBehaviour {
 
 		int levelNumber = StringUtils.getLevelBySceneName (Application.loadedLevelName);
 		basicScoreModifier = ScoreUtils.SCORE_LEVEL_MODIFIER * (levelNumber - 1);
+
+		Time.timeScale = 1.0f;
 
 		enableUI ();
 	}
@@ -138,12 +141,12 @@ public class GameManager : MonoBehaviour {
 		disableTimer ();
 		disablePowers ();
 
-		int totalScore = scoreScript.getFullScore (TimeScript.Timer, lives);
+		/*int totalScore = scoreScript.getFullScore (TimeScript.Timer, lives);
 
 		PlayerPrefs.SetInt (ScoreUtils.TOTAL_SCORE, totalScore);
-		PlayerPrefs.SetInt (ScoreUtils.LIVES, lives);
+		PlayerPrefs.SetInt (ScoreUtils.LIVES, lives);*/
 
-		StartCoroutine (startWaitNextLevel (2.0f));
+		StartCoroutine (startWaitNextLevel (0.5f));
 	}
 
 	public void minusBrick() {
@@ -200,13 +203,17 @@ public class GameManager : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(seconds);
 
-		int currentLevelIndex = Application.loadedLevel;
+		SummaryScoreMenuController summaryScoreMenuController = 
+			(SummaryScoreMenuController)summaryScoreGO.GetComponent<SummaryScoreMenuController> ();
+
+		summaryScoreMenuController.show (scoreScript.getScore(), lives, TimeScript.Timer);
+		/*int currentLevelIndex = Application.loadedLevel;
 		int totalScenes = Application.levelCount;
 		if (currentLevelIndex + 1 < totalScenes) {
 			Application.LoadLevel (currentLevelIndex + 1);
 		} else {
 			Application.LoadLevel ("GameOver");
-		}
+		}*/
 	}
 
 	private void enableUI() {

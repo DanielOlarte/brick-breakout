@@ -30,11 +30,8 @@ public class TimeScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
 		Timer -= Time.deltaTime;
-		TimeSpan t = TimeSpan.FromSeconds(timer);
-		
-		string answer = string.Format("{0:D2}:{1:D2}",  
-		                              t.Minutes, 
-		                              t.Seconds);
+
+		string answer = TimerUtils.getTimeFromFloat (Timer);
 		textMesh.text = "Time: " + answer;
 		textMesh.Commit();
 	}

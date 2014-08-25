@@ -26,6 +26,10 @@ public class StringUtils
 		string numberLevel = sceneName.Substring (lengthLevel, sceneName.Length - lengthLevel);
 		return int.Parse(numberLevel);
 	}
+
+	public static string getSpaces(int n) {
+		return new String(' ', n);
+	}
 }
 
 

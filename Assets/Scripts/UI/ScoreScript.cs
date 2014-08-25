@@ -37,12 +37,4 @@ public class ScoreScript : MonoBehaviour {
 	public int getScore() {
 		return score;
 	}
-
-	public int getFullScore(float leftTime, float leftLives) {
-		int totalScore = score;
-		totalScore += ((int)leftTime * ScoreUtils.SCORE_PER_SECOND);
-		totalScore += ((int)leftLives * ScoreUtils.SCORE_PER_LIVE);
-		return totalScore;
-
-	}
 }

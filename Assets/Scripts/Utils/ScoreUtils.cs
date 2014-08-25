@@ -113,5 +113,20 @@ public static class ScoreUtils
 			Debug.Log (position + " - " + PlayerPrefs.GetString(position));
 		}*/
 	}
+
+	public static int getFullScore(int score, float leftTime, int leftLives) {
+		int totalScore = score;
+		totalScore += ((int)leftTime * SCORE_PER_SECOND);
+		totalScore += (leftLives * SCORE_PER_LIVE);
+		return totalScore;
+	}
+
+	public static int getLivesScore(int lives) {
+		return (lives * SCORE_PER_LIVE);
+	}
+
+	public static int getTimeScore(float time) {
+		return ((int)time * SCORE_PER_SECOND);
+	}
 }
 
