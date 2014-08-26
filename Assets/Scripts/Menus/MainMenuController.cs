@@ -16,6 +16,10 @@ public class MainMenuController : MonoBehaviour {
 		Application.LoadLevel ("Leaderboards");
 	}
 
+	void optionsClicked() {
+		Application.LoadLevel ("Options");
+	}
+
 	void creditsClicked() {
 		Application.LoadLevel ("Credits");
 	}
