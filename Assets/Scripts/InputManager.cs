@@ -43,7 +43,7 @@ public class InputManager : MonoBehaviour
 		#endif
 	}
 
-	public bool relaseBallInput()
+	public bool releaseBallInput()
 	{
 		#if UNITY_ANDROID
 		if( Input.touchCount == 1)

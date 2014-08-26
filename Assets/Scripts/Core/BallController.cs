@@ -10,6 +10,7 @@ public class BallController : MonoBehaviour {
 	private bool onPaddle = true;
 	private Dictionary<string,float> speedModifiers = new Dictionary<string,float>();
 	private InputManager inputManager;
+	private bool hasStarted = false;
 
 	//------------------------------------------------GETTER AND SETTERS------------------------------------------------------
 	public bool getOnPaddle()
@@ -51,21 +52,24 @@ public class BallController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		increaseTimerSpeed ();
-		checkBoundaries ();
-		if( inputManager.relaseBallInput() && onPaddle ) {
-			rigidbody2D.velocity = new Vector2(0.0f,3.0f);
-			onPaddle = false;
+		if (hasStarted) {
+			increaseTimerSpeed ();
+			checkBoundaries ();
+
+			if( inputManager.releaseBallInput() && onPaddle ) {
+				rigidbody2D.velocity = new Vector2(0.0f,3.0f);
+				onPaddle = false;
+			}
+			//---------para que no se quede atascada horizontalmente--------------
+			if( Mathf.Abs(rigidbody2D.velocity.y) < 0.2f && !onPaddle)
+			{
+				Vector2 currentVelocity = rigidbody2D.velocity;
+				currentVelocity.y = 0.2f;
+				rigidbody2D.velocity = currentVelocity;
+			}
+			//------------------------END-----------------------------------------
+			adjustVelocity();
 		}
-		//---------para que no se quede atascada horizontalmente--------------
-		if( Mathf.Abs(rigidbody2D.velocity.y) < 0.2f && !onPaddle)
-		{
-			Vector2 currentVelocity = rigidbody2D.velocity;
-			currentVelocity.y = 0.2f;
-			rigidbody2D.velocity = currentVelocity;
-		}
-		//------------------------END-----------------------------------------
-		adjustVelocity();
 	}
 
 	void OnCollisionEnter2D(Collision2D collision)
@@ -161,5 +165,10 @@ public class BallController : MonoBehaviour {
 
 		transform.position = newPosition;
 	}
+
+	public void setStarted(bool started) {
+		this.hasStarted = started;
+	}
+
 	//------------------------------------------------END CUSTOM FUNCTIONS--------------------------------------------------------
 }

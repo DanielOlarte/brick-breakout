@@ -19,20 +19,29 @@ public class TimeScript : MonoBehaviour
 			timer = value;	
 		}
 	}
-	
+
+	private bool hasStarted = false;
+
 	// Use this for initialization
 	void Start () {
 		int levelNumber = StringUtils.getLevelBySceneName (Application.loadedLevelName);
 		timer = TimerUtils.getTimerByLevel(levelNumber - 1);
 		textMesh = GetComponent<tk2dTextMesh>();
+		string answer = TimerUtils.getTimeFromFloat (Timer);
+		textMesh.text = "Time: " + answer;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Timer -= Time.deltaTime;
+		if (hasStarted) {
+			Timer -= Time.deltaTime;
+			string answer = TimerUtils.getTimeFromFloat (Timer);
+			textMesh.text = "Time: " + answer;
+			textMesh.Commit();
+		}
+	}
 
-		string answer = TimerUtils.getTimeFromFloat (Timer);
-		textMesh.text = "Time: " + answer;
-		textMesh.Commit();
+	public void setStarted(bool started) {
+		this.hasStarted = started;
 	}
 }

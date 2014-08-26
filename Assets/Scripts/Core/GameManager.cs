@@ -141,11 +141,6 @@ public class GameManager : MonoBehaviour {
 		disableTimer ();
 		disablePowers ();
 
-		/*int totalScore = scoreScript.getFullScore (TimeScript.Timer, lives);
-
-		PlayerPrefs.SetInt (ScoreUtils.TOTAL_SCORE, totalScore);
-		PlayerPrefs.SetInt (ScoreUtils.LIVES, lives);*/
-
 		StartCoroutine (startWaitNextLevel (0.5f));
 	}
 
@@ -191,7 +186,9 @@ public class GameManager : MonoBehaviour {
 	private IEnumerator waitSeconds(float seconds)
 	{
 		yield return new WaitForSeconds(seconds);
-		ballsGO.Add((GameObject)Instantiate(Resources.Load("Ball")));
+		GameObject newBall = (GameObject)Instantiate(Resources.Load("Ball"));
+		newBall.GetComponent<BallController>().setStarted(true);
+		ballsGO.Add(newBall);
 	}
 
 	private IEnumerator startWaitNextLevel(float seconds)
@@ -207,13 +204,6 @@ public class GameManager : MonoBehaviour {
 			(SummaryScoreMenuController)summaryScoreGO.GetComponent<SummaryScoreMenuController> ();
 
 		summaryScoreMenuController.show (scoreScript.getScore(), lives, TimeScript.Timer);
-		/*int currentLevelIndex = Application.loadedLevel;
-		int totalScenes = Application.levelCount;
-		if (currentLevelIndex + 1 < totalScenes) {
-			Application.LoadLevel (currentLevelIndex + 1);
-		} else {
-			Application.LoadLevel ("GameOver");
-		}*/
 	}
 
 	private void enableUI() {
