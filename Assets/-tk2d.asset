@@ -723,3 +723,25 @@ MonoBehaviour:
     loadable: 0
     assetName: 
     version: 3
+  - name: ObjectsSpriteCollection
+    spriteCollectionGUID: 6dd2715f33b267b44a131d43f4e8cfe7
+    spriteCollectionDataGUID: 692f2f98a76d53e4a9eb73c29106f19e
+    spriteNames:
+    - FallingObjectsSpriteSheet-4x/0
+    - FallingObjectsSpriteSheet-4x/1
+    - FallingObjectsSpriteSheet-4x/2
+    - FallingObjectsSpriteSheet-4x/3
+    spriteTextureGUIDs:
+    - 7dd732a88ee926446a79aa428091a2c4
+    - 7dd732a88ee926446a79aa428091a2c4
+    - 7dd732a88ee926446a79aa428091a2c4
+    - 7dd732a88ee926446a79aa428091a2c4
+    spriteTextureTimeStamps:
+    - 1411927580.42578
+    - 1411927580.42578
+    - 1411927580.42578
+    - 1411927580.42578
+    managedSpriteCollection: 0
+    loadable: 0
+    assetName: 
+    version: 3
