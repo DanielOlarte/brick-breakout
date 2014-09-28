@@ -6,15 +6,16 @@ using System.IO;
 
 public class WallBuilder : MonoBehaviour
 {
-	public float xOffset = 0.35f;
-	public float yOffset = 0.15f;
+	public float xOffset;
+	public float yOffset;
 	private List<List<string>> filedata;
     private Dictionary<string, string> prefabMap;
 
 	// Use this for initialization 24
 	void Awake ()
 	{
-        readFile("./Assets/" + Application.loadedLevelName + ".lyt");
+		string levelName = PlayerPrefs.GetString (ScoreUtils.LEVEL_USER_INIT);
+		readFile("Levels/" + levelName);
         initPrefabMap();
         placeBricks();
 	}
@@ -28,42 +29,45 @@ public class WallBuilder : MonoBehaviour
     private void initPrefabMap()
     {
         prefabMap = new Dictionary<string, string>();
-        prefabMap.Add("F","FastBallsBrick");
-        prefabMap.Add("I", "InverseBrick");
-        prefabMap.Add("M", "MultipleBallsBrick");
-        prefabMap.Add("U", "NonDestroyableBrick");
-        prefabMap.Add("N", "NormalBrickPrefab");
-        prefabMap.Add("S", "SlowBallsBrick");
+        prefabMap.Add("F","FastBallsBrickPrefab");
+        prefabMap.Add("I", "InverseBrickPrefab");
+        prefabMap.Add("M", "MultipleBallsBrickPrefab");
+		prefabMap.Add("U", "NonDestroyableBrickPrefab");
+		prefabMap.Add("N", "NormalBrickPrefab");
+        prefabMap.Add("S", "SlowBallsBrickPrefab");
         prefabMap.Add("X", "XResBrickPrefab");
         prefabMap.Add("XX", "XXResBrickPrefab");
     }
 
     private void readFile(string filename)
 	{
-		TextAsset sr = Resources.Load("Level2") as TextAsset;
+		Debug.Log (filename);
+		TextAsset sr = Resources.Load(filename) as TextAsset;
 		filedata = sr.text.Split('\n').Select(s=>s.Split(',').ToList()).ToList();
 	}
 
     private void placeBricks()
     {
-        Camera mainCamera = Camera.main;
+		Camera mainCamera = tk2dCamera.Instance.ScreenCamera;
 
-        float halfWidth = mainCamera.aspect * mainCamera.orthographicSize;
-        float tempYOffset = mainCamera.orthographicSize - yOffset - 1.3f;
+		float halfWidth = tk2dCamera.Instance.ScreenExtents.xMin + xOffset;
+		float tempYOffset = /*tk2dCamera.Instance.ScreenExtents.yMax - yOffset - 0.95f*/4.2f;
+
         foreach (var data in filedata)
         {
-            float tempXOffset = -halfWidth + xOffset;
+			float tempXOffset = halfWidth + xOffset;
             foreach (var item in data)
-            {
-                if (tempXOffset < halfWidth - xOffset)
+			{
+				if (tempXOffset < tk2dCamera.Instance.ScreenExtents.xMax - 2*xOffset)
                 {
                     instantiateBrick(item,tempXOffset, tempYOffset);
                 }
                 else
                 {
+					//Debug.Log ("TempXOffset: " + tempXOffset + " HalfWidth: " + halfWidth + " XOffset: " + (-xOffset));
                     break;
                 }
-                tempXOffset += xOffset;
+				tempXOffset += xOffset;
             }
             tempYOffset -= yOffset;
         }
@@ -71,10 +75,11 @@ public class WallBuilder : MonoBehaviour
 
     private void instantiateBrick(string type,float xOffset,float yOffset)
     {
-        if (prefabMap.ContainsKey(type))
-        {
-            Instantiate(Resources.Load(prefabMap[type]), new Vector3(xOffset, yOffset, 0), Quaternion.identity);
-        }
+		string item = type.Trim ();
+		if (prefabMap.ContainsKey (item)) {
+			//Debug.Log ("PositionX: " + xOffset);
+			GameObject.Instantiate (Resources.Load (prefabMap [item]), new Vector3 (xOffset, yOffset, 0), Quaternion.identity);
+		}
     }
 }
 

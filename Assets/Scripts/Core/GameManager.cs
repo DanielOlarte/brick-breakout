@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log (Application.loadedLevelName);
+		Debug.Log (PlayerPrefs.GetString (ScoreUtils.LEVEL_USER_INIT));
 
 		ballsGO = new List<GameObject> ();
 		ballsGO.Add((GameObject)Instantiate(Resources.Load("Ball")));
@@ -47,12 +47,12 @@ public class GameManager : MonoBehaviour {
 		timeScript = (TimeScript) GameObject.Find("TimeScore").GetComponent(typeof(TimeScript));
 		scoreScript = (ScoreScript) GameObject.Find("PointsScore").GetComponent(typeof(ScoreScript));
 
-		lives = PlayerPrefs.GetInt(ScoreUtils.LIVES);
+		lives = 3/*PlayerPrefs.GetInt(ScoreUtils.LIVES)*/;
 		listLives = new List<GameObject> ();
 		for (int i = 0; i < lives; i++) {
 			GameObject live = (GameObject)Instantiate(Resources.Load("Live"));
 			Vector3 position = live.transform.position;
-			position.x += (i*0.5f);
+			position.x += (i*0.4f);
 			live.transform.position = position;
 			listLives.Insert(i, live);
 		}
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour {
 		GameObject[] gos = GameObject.FindGameObjectsWithTag("Bricks");
 		numberBricks = gos.Length;
 
-		int levelNumber = StringUtils.getLevelBySceneName (Application.loadedLevelName);
+		int levelNumber = StringUtils.getLevelBySceneName (PlayerPrefs.GetString (ScoreUtils.LEVEL_USER_INIT));
 		basicScoreModifier = ScoreUtils.SCORE_LEVEL_MODIFIER * (levelNumber - 1);
 
 		Time.timeScale = 1.0f;

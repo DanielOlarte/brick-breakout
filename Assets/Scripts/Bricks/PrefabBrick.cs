@@ -14,29 +14,31 @@ public class PrefabBrick : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
 	void OnCollisionExit2D(Collision2D collision)
 	{
-		brick.addHits ();
-		if (brick.getCurrentHits () == brick.getNeededHits ()) {
+		if (collision.gameObject.tag == "Player") {
+			brick.addHits ();
+			if (brick.getCurrentHits () == brick.getNeededHits ()) {
 
-			Brick.ObjectBrick objectBrick = brick.getObject();
+				Brick.ObjectBrick objectBrick = brick.getObject();
 
-			if (objectBrick != Brick.ObjectBrick.NONE) {
-				String objectBrickStr = StringUtils.GetStringValue(objectBrick);
-				Instantiate(Resources.Load(objectBrickStr), gameObject.transform.position, gameObject.transform.rotation);
+				if (objectBrick != Brick.ObjectBrick.NONE) {
+					String objectBrickStr = StringUtils.GetStringValue(objectBrick);
+					Instantiate(Resources.Load(objectBrickStr), gameObject.transform.position, gameObject.transform.rotation);
+				}
+
+				int totalPoints = brick.getPoints()*brick.getCurrentHits();
+
+				GameObject gameObjectGM = GameObject.Find("GameManager");
+				GameManager gameManager = (GameManager) gameObjectGM.GetComponent(typeof(GameManager));
+				gameManager.addScore(totalPoints);
+				gameManager.minusBrick();
+
+				Destroy(gameObject);
 			}
-
-			Destroy(gameObject);
-
-			int totalPoints = brick.getPoints()*brick.getCurrentHits();
-
-			GameObject gameObjectGM = GameObject.Find("GameManager");
-			GameManager gameManager = (GameManager) gameObjectGM.GetComponent(typeof(GameManager));
-			gameManager.addScore(totalPoints);
-			gameManager.minusBrick();
 		}
 	}
 }

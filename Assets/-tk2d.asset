@@ -424,6 +424,7 @@ MonoBehaviour:
     - WhiteSquareAnchorTopLeft
     - PauseButton
     - WhiteSquare
+    - PauseButton-4x
     spriteTextureGUIDs:
     - 10b038b1b05b3d44998364213b44a84b
     - cdb8375bd7d44bf4c91ea5d1757cbc23
@@ -447,6 +448,7 @@ MonoBehaviour:
     - 20bf45e2e89271c43b72895d440f6ab7
     - fa73beae1af7a3f47a94ff1741bbb812
     - 197a84f0983385f41a1d2b3cb0a99dd9
+    - f111a1b50668b2a4cb4d3fa8e32d0c14
     spriteTextureTimeStamps:
     - 1394014588
     - 1394014588
@@ -468,8 +470,9 @@ MonoBehaviour:
     - 1394014588
     - 1394014588
     - 1394014588
-    - 1408402500.47792
+    - 1409178438.46427
     - 1394014588
+    - 1411811685.75479
     managedSpriteCollection: 0
     loadable: 0
     assetName: 
@@ -688,6 +691,34 @@ MonoBehaviour:
     - 1394014587
     - 1394014587
     - 1394014587
+    managedSpriteCollection: 0
+    loadable: 0
+    assetName: 
+    version: 3
+  - name: BricksSpriteCollection
+    spriteCollectionGUID: 7c66d8ef682fcff41b8dab9ebaf42da4
+    spriteCollectionDataGUID: 6c409cfeffe1d4b4eb85144b7a3622ec
+    spriteNames:
+    - BricksSpriteSheet-4x/0
+    - BricksSpriteSheet-4x/1
+    - BricksSpriteSheet-4x/2
+    - BricksSpriteSheet-4x/3
+    - BricksSpriteSheet-4x/4
+    - BricksSpriteSheet-4x/5
+    spriteTextureGUIDs:
+    - 4c8d1aa5534483a4e91c83bdd9772687
+    - 4c8d1aa5534483a4e91c83bdd9772687
+    - 4c8d1aa5534483a4e91c83bdd9772687
+    - 4c8d1aa5534483a4e91c83bdd9772687
+    - 4c8d1aa5534483a4e91c83bdd9772687
+    - 4c8d1aa5534483a4e91c83bdd9772687
+    spriteTextureTimeStamps:
+    - 1411816936.90167
+    - 1411816936.90167
+    - 1411816936.90167
+    - 1411816936.90167
+    - 1411816936.90167
+    - 1411816936.90167
     managedSpriteCollection: 0
     loadable: 0
     assetName: 

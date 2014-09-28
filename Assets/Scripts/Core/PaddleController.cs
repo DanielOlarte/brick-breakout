@@ -44,10 +44,11 @@ public class PaddleController : MonoBehaviour {
 	private void enforceBounds()
 	{
 		Vector3 newPosition = transform.position; 
-		Camera mainCamera = Camera.main;
+		Camera mainCamera = tk2dCamera.Instance.ScreenCamera;
 		Vector3 cameraPosition = mainCamera.transform.position;
+	
 
-		float xDist = mainCamera.aspect * mainCamera.orthographicSize * edgeScreenOffset; 
+		float xDist = /*mainCamera.aspect * */tk2dCamera.Instance.ScreenExtents.xMax * edgeScreenOffset; 
 		float xMax = cameraPosition.x + xDist;
 		float xMin = cameraPosition.x - xDist;
 

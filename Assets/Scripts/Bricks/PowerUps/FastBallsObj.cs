@@ -26,9 +26,6 @@ public class FastBallsObj : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Paddle")) {
 			Debug.Log ("CollisionFastBalls-----");
 
-			paddleDidntCapture = true;
-			renderer.enabled = false;
-			
 			StartCoroutine ("startObjectEffect");	
 		}
 	}
@@ -43,6 +40,9 @@ public class FastBallsObj : MonoBehaviour {
 		}
 
 		gameManager.setScoreModifier (modifierStr, scoreModifier);
+
+		paddleDidntCapture = true;
+		renderer.enabled = false;
 
 		yield return StartCoroutine("waitSeconds");
 	}

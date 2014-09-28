@@ -24,13 +24,13 @@ public class ScoreScript : MonoBehaviour {
 	public void updateScore(int newScore) {
 		score += newScore;
 		string pointsScore = score.ToString();
-		textMesh.text = "Score: " + pointsScore;
+		textMesh.text = /*"SCORE  " + */pointsScore;
 		textMesh.Commit();
 	}
 
 	public void updateScore() {
 		string pointsScore = score.ToString();
-		textMesh.text = "Score: " + pointsScore;
+		textMesh.text = /*"SCORE  " + */pointsScore;
 		textMesh.Commit();
 	}
 

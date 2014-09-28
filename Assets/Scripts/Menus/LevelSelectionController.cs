@@ -6,15 +6,13 @@ public class LevelSelectionController : MonoBehaviour {
 
 	void levelSelectedClicked(tk2dUIItem item) {
 		string levelName = item.name;
-		Regex regex = new Regex(@"Level[0-9]+"); // Pattern to look for
+		Regex regex = new Regex(@"Level[0-9]+");
 		Match match = regex.Match (levelName);
 
 		PlayerPrefs.SetInt (ScoreUtils.TOTAL_SCORE, 0);
 		PlayerPrefs.SetInt (ScoreUtils.LIVES, ScoreUtils.TOTAL_LIVES);
 
-		if (match.Value.Equals ("Level01") || match.Value.Equals ("Level02")) {
-			Application.LoadLevel (match.Value);
-		}
+		Application.LoadLevel ("LevelBase");
 
 		PlayerPrefs.SetString (ScoreUtils.LEVEL_USER_INIT, match.Value);
 	}

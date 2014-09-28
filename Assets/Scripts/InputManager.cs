@@ -19,8 +19,8 @@ public class InputManager : MonoBehaviour
 		#if UNITY_ANDROID
 		if(Input.touchCount == 1)// && Input.GetTouch(0).phase == TouchPhase.Moved)
 		{
-			GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
-			Camera camera = cameraObject.camera;
+			//GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
+			Camera camera = tk2dCamera.Instance.ScreenCamera;
 			float   fingerXPosition = camera.ScreenToWorldPoint(Input.GetTouch(0).position).x;
 			Vector3 newPos = new Vector3(direction*fingerXPosition,paddle.transform.position.y,paddle.transform.position.z);
 			
@@ -45,7 +45,7 @@ public class InputManager : MonoBehaviour
 			currentMoveSpeed = 0.0f;
 		}*/
 		GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
-		Camera camera = cameraObject.camera;
+		Camera camera = tk2dCamera.Instance.ScreenCamera;
 		float mouseXPosition = camera.ScreenToWorldPoint(Input.mousePosition).x;
 		Vector3 target = new Vector3( direction*mouseXPosition,currentPosition.y,currentPosition.z);
 		paddle.transform.position = Vector3.Lerp( currentPosition, target, Time.deltaTime*10 );

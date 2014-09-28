@@ -46,7 +46,7 @@ public class BallController : MonoBehaviour {
 		tickCount = 1;
 		paddle = (PaddleController)FindObjectOfType (typeof(PaddleController));
 		Vector3 pos = paddle.gameObject.transform.position;
-		pos.y = pos.y + paddle.gameObject.transform.localScale.y / 2;
+		pos.y = pos.y + paddle.gameObject.transform.localScale.y / 4;
 		transform.position = pos;
 	}
 	
@@ -61,10 +61,10 @@ public class BallController : MonoBehaviour {
 				onPaddle = false;
 			}
 			//---------para que no se quede atascada horizontalmente--------------
-			if( Mathf.Abs(rigidbody2D.velocity.y) < 0.2f && !onPaddle)
+			if( Mathf.Abs(rigidbody2D.velocity.y) < 0.3f && !onPaddle)
 			{
 				Vector2 currentVelocity = rigidbody2D.velocity;
-				currentVelocity.y = 0.2f;
+				currentVelocity.y = 0.3f;
 				rigidbody2D.velocity = currentVelocity;
 			}
 			//------------------------END-----------------------------------------
@@ -137,13 +137,21 @@ public class BallController : MonoBehaviour {
 	private void checkBoundaries()
 	{
 		Vector3 newPosition = transform.position; 
-		Camera mainCamera = Camera.main;
+		Camera mainCamera = tk2dCamera.Instance.ScreenCamera;
 		Vector3 cameraPosition = mainCamera.transform.position;
 
 		Vector3 colliderSize = gameObject.renderer.bounds.extents;
-		float xDist = mainCamera.aspect * mainCamera.orthographicSize; 
-		float xMax = cameraPosition.x + xDist - colliderSize.x;
-		float xMin = cameraPosition.x - xDist + colliderSize.x;
+		float xDistM = tk2dCamera.Instance.ScreenExtents.xMin; 
+
+		float xDistX =  tk2dCamera.Instance.ScreenExtents.xMax; 
+		float xMax = cameraPosition.x + xDistX - colliderSize.x;
+		float xMin = cameraPosition.x - xDistX + colliderSize.x;
+
+		Debug.Log ("XMAXCamera: " + tk2dCamera.Instance.ScreenExtents.xMax);
+		Debug.Log ("XMINCamera: " + tk2dCamera.Instance.ScreenExtents.xMin);
+		Debug.Log ("XCamera: " + tk2dCamera.Instance.ScreenExtents.width);
+		Debug.Log ("XMAX: " + xMax + " Camera Pos: " + cameraPosition.x + " ColliderSize: " + colliderSize.x + "New Position: " + xDistX);
+
 
 		Vector2 newVelocity = rigidbody2D.velocity;
 
@@ -152,10 +160,8 @@ public class BallController : MonoBehaviour {
 			newVelocity.x = newVelocity.x * -1;
 		}
 
-		float yDist = mainCamera.orthographicSize; 
-
+		float yDist = tk2dCamera.Instance.ScreenExtents.yMax; 
 		float yMax = cameraPosition.y + yDist - colliderSize.y;
-
 		if ( newPosition.y > yMax ) {
 			newPosition.y = Mathf.Clamp( newPosition.y, float.MinValue, yMax );
 			newVelocity.y = newVelocity.y * -1;

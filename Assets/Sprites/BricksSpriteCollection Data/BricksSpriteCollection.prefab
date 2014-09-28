@@ -1,0 +1,332 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: BricksSpriteCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d546f34a90531a14eaba82a43b05b86b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 3
+  materialIdsValid: 1
+  needMaterialInstance: 0
+  spriteDefinitions:
+  - name: BricksSpriteSheet-4x/0
+    boundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 1.27999997, y: .5, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 1.27999997, y: .5, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.639999986, y: -.25, z: 0}
+    - {x: .639999986, y: -.25, z: 0}
+    - {x: -.639999986, y: .25, z: 0}
+    - {x: .639999986, y: .25, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .00781640597, y: .00781640597}
+    - {x: .507808566, y: .00781640597}
+    - {x: .00781640597, y: .203121096}
+    - {x: .507808566, y: .203121096}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 1acde69209bb0774180964399624f0bb, type: 2}
+    materialId: 0
+    sourceTextureGUID: 4c8d1aa5534483a4e91c83bdd9772687
+    extractRegion: 1
+    regionX: 0
+    regionY: 250
+    regionW: 128
+    regionH: 50
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: BricksSpriteSheet-4x/1
+    boundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 1.27999997, y: .5, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 1.27999997, y: .5, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.639999986, y: -.25, z: 0}
+    - {x: .639999986, y: -.25, z: 0}
+    - {x: -.639999986, y: .25, z: 0}
+    - {x: .639999986, y: .25, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .523441434, y: .00781640597}
+    - {x: .523441434, y: .507808566}
+    - {x: .718746066, y: .00781640597}
+    - {x: .718746066, y: .507808566}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 1acde69209bb0774180964399624f0bb, type: 2}
+    materialId: 0
+    sourceTextureGUID: 4c8d1aa5534483a4e91c83bdd9772687
+    extractRegion: 1
+    regionX: 0
+    regionY: 200
+    regionW: 128
+    regionH: 50
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: BricksSpriteSheet-4x/2
+    boundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 1.27999997, y: .5, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 1.27999997, y: .5, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.639999986, y: -.25, z: 0}
+    - {x: .639999986, y: -.25, z: 0}
+    - {x: -.639999986, y: .25, z: 0}
+    - {x: .639999986, y: .25, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .734378934, y: .00781640597}
+    - {x: .734378934, y: .507808566}
+    - {x: .929683566, y: .00781640597}
+    - {x: .929683566, y: .507808566}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 1acde69209bb0774180964399624f0bb, type: 2}
+    materialId: 0
+    sourceTextureGUID: 4c8d1aa5534483a4e91c83bdd9772687
+    extractRegion: 1
+    regionX: 0
+    regionY: 150
+    regionW: 128
+    regionH: 50
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: BricksSpriteSheet-4x/3
+    boundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 1.27999997, y: .5, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 1.27999997, y: .5, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.639999986, y: -.25, z: 0}
+    - {x: .639999986, y: -.25, z: 0}
+    - {x: -.639999986, y: .25, z: 0}
+    - {x: .639999986, y: .25, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .00781640597, y: .218753904}
+    - {x: .507808566, y: .218753904}
+    - {x: .00781640597, y: .414058596}
+    - {x: .507808566, y: .414058596}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 1acde69209bb0774180964399624f0bb, type: 2}
+    materialId: 0
+    sourceTextureGUID: 4c8d1aa5534483a4e91c83bdd9772687
+    extractRegion: 1
+    regionX: 0
+    regionY: 100
+    regionW: 128
+    regionH: 50
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: BricksSpriteSheet-4x/4
+    boundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 1.27999997, y: .5, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 1.27999997, y: .5, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.639999986, y: -.25, z: 0}
+    - {x: .639999986, y: -.25, z: 0}
+    - {x: -.639999986, y: .25, z: 0}
+    - {x: .639999986, y: .25, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .00781640597, y: .429691404}
+    - {x: .507808566, y: .429691404}
+    - {x: .00781640597, y: .624996066}
+    - {x: .507808566, y: .624996066}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 1acde69209bb0774180964399624f0bb, type: 2}
+    materialId: 0
+    sourceTextureGUID: 4c8d1aa5534483a4e91c83bdd9772687
+    extractRegion: 1
+    regionX: 0
+    regionY: 50
+    regionW: 128
+    regionH: 50
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: BricksSpriteSheet-4x/5
+    boundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 1.27999997, y: .5, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 1.27999997, y: .5, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.639999986, y: -.25, z: 0}
+    - {x: .639999986, y: -.25, z: 0}
+    - {x: -.639999986, y: .25, z: 0}
+    - {x: .639999986, y: .25, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .00781640597, y: .640628934}
+    - {x: .507808566, y: .640628934}
+    - {x: .00781640597, y: .835933566}
+    - {x: .507808566, y: .835933566}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 1acde69209bb0774180964399624f0bb, type: 2}
+    materialId: 0
+    sourceTextureGUID: 4c8d1aa5534483a4e91c83bdd9772687
+    extractRegion: 1
+    regionX: 0
+    regionY: 0
+    regionW: 128
+    regionH: 50
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  premultipliedAlpha: 0
+  material: {fileID: 0}
+  materials:
+  - {fileID: 2100000, guid: 1acde69209bb0774180964399624f0bb, type: 2}
+  textures:
+  - {fileID: 2800000, guid: 74aac36aaf65daf4f89088c9e9bb3213, type: 3}
+  pngTextures: []
+  materialPngTextureId: 00000000
+  textureFilterMode: 1
+  textureMipMaps: 0
+  allowMultipleAtlases: 0
+  spriteCollectionGUID: 7c66d8ef682fcff41b8dab9ebaf42da4
+  spriteCollectionName: BricksSpriteCollection
+  assetName: 
+  loadable: 0
+  invOrthoSize: 2
+  halfTargetHeight: 50
+  buildKey: 159732843
+  dataGuid: 6c409cfeffe1d4b4eb85144b7a3622ec
+  managedSpriteCollection: 0
+  hasPlatformData: 0
+  spriteCollectionPlatforms: []
+  spriteCollectionPlatformGUIDs: []
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

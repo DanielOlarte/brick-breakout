@@ -11,7 +11,7 @@ public class ScreenRelativePosition : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Vector3 newPosition = transform.position;
-		Camera camera = Camera.main;
+		Camera camera = tk2dCamera.Instance.ScreenCamera;
 
 		switch(screenEdge)
 		{
