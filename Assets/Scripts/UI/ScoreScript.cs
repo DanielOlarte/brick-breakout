@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Text;
 
 public class ScoreScript : MonoBehaviour {
 
@@ -24,13 +25,27 @@ public class ScoreScript : MonoBehaviour {
 	public void updateScore(int newScore) {
 		score += newScore;
 		string pointsScore = score.ToString();
-		textMesh.text = /*"SCORE  " + */pointsScore;
+		int l = pointsScore.Length;
+		string baseS = ScoreUtils.BASE_SCORE;
+		Debug.Log ("BaseL: " + baseS.Length + " Score: " + l);
+
+		StringBuilder aStringBuilder = new StringBuilder(baseS);
+		aStringBuilder.Remove((baseS.Length - l) + 1, l - 1);
+		aStringBuilder.Insert((baseS.Length - l) + 1, pointsScore);
+		textMesh.text = aStringBuilder.ToString();
 		textMesh.Commit();
 	}
 
 	public void updateScore() {
 		string pointsScore = score.ToString();
-		textMesh.text = /*"SCORE  " + */pointsScore;
+		int l = pointsScore.Length;
+		string baseS = ScoreUtils.BASE_SCORE;
+		Debug.Log ("BaseL: " + baseS.Length + " Score: " + l);
+		
+		StringBuilder aStringBuilder = new StringBuilder(baseS);
+		aStringBuilder.Remove((baseS.Length - l) + 1, l - 1);
+		aStringBuilder.Insert((baseS.Length - l) + 1, pointsScore);
+		textMesh.text = aStringBuilder.ToString();
 		textMesh.Commit();
 	}
 

@@ -30,6 +30,8 @@ public static class ScoreUtils
 	public static int SCORE_PER_LIVE = 1000;
 	public static int SCORE_PER_SECOND = 10;
 
+	public static string BASE_SCORE = "00000000";
+
 	public static void initializeLeaderboards() {
 		//PlayerPrefs.DeleteAll ();
 		if (!PlayerPrefs.HasKey (LEADERBOARD_INIT)) {
