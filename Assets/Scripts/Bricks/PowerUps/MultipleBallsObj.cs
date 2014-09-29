@@ -31,6 +31,7 @@ public class MultipleBallsObj : MonoBehaviour {
 					GameObject ball = (GameObject)Instantiate(Resources.Load("Ball"));
 					BallController ballController =  (BallController)ball.GetComponent (typeof(BallController));
 					ballController.setOnPaddle(false);
+					ballController.setStarted(true);
 					Vector2 velocity = gameManager.getSpeedBall();
 					ball.rigidbody2D.velocity = velocity;
 

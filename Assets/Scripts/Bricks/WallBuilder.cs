@@ -41,15 +41,12 @@ public class WallBuilder : MonoBehaviour
 
     private void readFile(string filename)
 	{
-		Debug.Log (filename);
 		TextAsset sr = Resources.Load(filename) as TextAsset;
 		filedata = sr.text.Split('\n').Select(s=>s.Split(',').ToList()).ToList();
 	}
 
     private void placeBricks()
     {
-		Camera mainCamera = tk2dCamera.Instance.ScreenCamera;
-
 		float halfWidth = tk2dCamera.Instance.ScreenExtents.xMin + xOffset;
 		float tempYOffset = /*tk2dCamera.Instance.ScreenExtents.yMax - yOffset - 0.95f*/4.2f;
 

@@ -4,7 +4,6 @@ using System.Collections;
 public class InputManager : MonoBehaviour
 {
 	private int leftClick = 0;
-	private int rightClick = 1;
 
 #if UNITY_ANDROID
     private float fingerStartTime  = 0.0f;
@@ -44,7 +43,6 @@ public class InputManager : MonoBehaviour
 			moveDirection = new Vector3(0.0f,0.0f,0.0f);
 			currentMoveSpeed = 0.0f;
 		}*/
-		GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
 		Camera camera = tk2dCamera.Instance.ScreenCamera;
 		float mouseXPosition = camera.ScreenToWorldPoint(Input.mousePosition).x;
 		Vector3 target = new Vector3( direction*mouseXPosition,currentPosition.y,currentPosition.z);

@@ -27,7 +27,6 @@ public class ScoreScript : MonoBehaviour {
 		string pointsScore = score.ToString();
 		int l = pointsScore.Length;
 		string baseS = ScoreUtils.BASE_SCORE;
-		Debug.Log ("BaseL: " + baseS.Length + " Score: " + l);
 
 		StringBuilder aStringBuilder = new StringBuilder(baseS);
 		aStringBuilder.Remove((baseS.Length - l) + 1, l - 1);
@@ -40,7 +39,6 @@ public class ScoreScript : MonoBehaviour {
 		string pointsScore = score.ToString();
 		int l = pointsScore.Length;
 		string baseS = ScoreUtils.BASE_SCORE;
-		Debug.Log ("BaseL: " + baseS.Length + " Score: " + l);
 		
 		StringBuilder aStringBuilder = new StringBuilder(baseS);
 		aStringBuilder.Remove((baseS.Length - l) + 1, l - 1);

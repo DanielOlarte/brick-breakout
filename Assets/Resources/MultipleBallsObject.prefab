@@ -67,7 +67,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mass: 100
-  m_LinearDrag: 6
+  m_LinearDrag: 4.5
   m_AngularDrag: 0
   m_GravityScale: 1
   m_FixedAngle: 1
@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberBalls: 2
-  powerModifier: 20
-  limitLowAngle: 40
-  limitHighAngle: 140
+  powerModifier: 10
+  limitLowAngle: 45
+  limitHighAngle: 135
   scoreModifier: 2
 --- !u!114 &11400002
 MonoBehaviour:

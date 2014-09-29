@@ -6,7 +6,8 @@ public class TimeScript : MonoBehaviour
 {
 	static private tk2dTextMesh textMesh;
 	static private float timer;
-	
+	static private float fullTimer;
+
 	static public float Timer
 	{
 		get
@@ -20,12 +21,26 @@ public class TimeScript : MonoBehaviour
 		}
 	}
 
+	static public float FullTimer
+	{
+		get
+		{
+			return fullTimer;	
+		}
+		
+		set
+		{
+			fullTimer = value;	
+		}
+	}
+
 	private bool hasStarted = false;
 
 	// Use this for initialization
 	void Start () {
 		int levelNumber = StringUtils.getLevelBySceneName (PlayerPrefs.GetString (ScoreUtils.LEVEL_USER_INIT));
 		timer = TimerUtils.getTimerByLevel(levelNumber - 1);
+		fullTimer = timer;
 		textMesh = GetComponent<tk2dTextMesh>();
 		string answer = TimerUtils.getTimeFromFloat (Timer);
 		textMesh.text = "TIME  " + answer;
