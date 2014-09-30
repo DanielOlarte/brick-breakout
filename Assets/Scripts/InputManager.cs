@@ -77,13 +77,7 @@ public class InputManager : MonoBehaviour
 
                         float gestureTime = Time.time - fingerStartTime;
                         float gestureDist = (touch.position - fingerStartPos).magnitude;
-                        Debug.Log("Distance");
-                        Debug.Log(gestureDist);
-                        Debug.Log("Time");
-                        Debug.Log(gestureTime);
-                        Debug.Log("IsSwipe");
-                        Debug.Log(isSwipe);
-                        Debug.Log("==========");
+
                         if (isSwipe && gestureTime < maxSwipeTime && gestureDist > minSwipeDist)
                         {
                             Vector2 direction = touch.position - fingerStartPos;

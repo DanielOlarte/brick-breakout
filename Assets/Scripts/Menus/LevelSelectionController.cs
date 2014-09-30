@@ -18,7 +18,6 @@ public class LevelSelectionController : MonoBehaviour {
 	}
 
 	void backMainMenuClicked() {
-		Debug.Log ("backMainMenuClicked");
 		Application.LoadLevel ("MainMenu");
 	}
 }

@@ -113,7 +113,6 @@ public class BallController : MonoBehaviour {
 		float tickTimer = (TimeScript.FullTimer - TimeScript.Timer) / 15.0f;
 		if ( tickTimer > tickCount && tickCount < 16) {
 			setSpeedModifier("time_modifier",tickCount / 15.0f);
-			Debug.Log ("ModifiedSpeed: " + getModifiedSpeed());
 			tickCount += 1;
 		}
 	}
@@ -146,12 +145,6 @@ public class BallController : MonoBehaviour {
 		float xDistX =  tk2dCamera.Instance.ScreenExtents.xMax; 
 		float xMax = cameraPosition.x + xDistX - colliderSize.x;
 		float xMin = cameraPosition.x - xDistX + colliderSize.x;
-
-		/*Debug.Log ("XMAXCamera: " + tk2dCamera.Instance.ScreenExtents.xMax);
-		Debug.Log ("XMINCamera: " + tk2dCamera.Instance.ScreenExtents.xMin);
-		Debug.Log ("XCamera: " + tk2dCamera.Instance.ScreenExtents.width);
-		Debug.Log ("XMAX: " + xMax + " Camera Pos: " + cameraPosition.x + " ColliderSize: " + colliderSize.x + "New Position: " + xDistX);
-*/
 
 		Vector2 newVelocity = rigidbody2D.velocity;
 

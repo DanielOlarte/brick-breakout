@@ -23,8 +23,6 @@ public class MultipleBallsObj : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)  {
 		if (other.gameObject.CompareTag ("Paddle")) {
-			Debug.Log ("CollisionMultipleBallsPaddle-----");
-
 			GameManager gameManager = (GameManager)FindObjectOfType (typeof(GameManager));
 			if (gameManager != null) {
 				for (int i = 0; i < numberBalls; i++) {

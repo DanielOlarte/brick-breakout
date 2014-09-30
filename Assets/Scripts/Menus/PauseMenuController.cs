@@ -32,7 +32,6 @@ public class PauseMenuController : MonoBehaviour {
 	}
 
 	public void exitGame() {
-		Debug.Log ("backMainMenuClicked");
 		Application.LoadLevel ("MainMenu");
 	}
 

@@ -13,8 +13,11 @@ public class OptionsMenuController : MonoBehaviour {
 		}
 	}
 
+	void helpMenuClicked() {
+		Application.LoadLevel ("HelpMenu");
+	}
+
 	void backMainMenuClicked() {
-		Debug.Log ("backMainMenuClicked");
 		Application.LoadLevel ("MainMenu");
 	}
 }

@@ -8,7 +8,6 @@ public class MainMenuController : MonoBehaviour {
 	}
 
 	void startGameClicked() {
-		Debug.Log ("StartGameClicked");
 		Application.LoadLevel ("LevelSelection");
 	}
 

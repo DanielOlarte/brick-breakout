@@ -173,8 +173,10 @@ public class GameManager : MonoBehaviour {
 	private void disablePowers() {
 		GameObject[] powersGO = GameObject.FindGameObjectsWithTag ("Powers");
 
-		foreach(GameObject powerGameObject in powersGO) {
-			Destroy (powerGameObject);
+		if (powersGO.Length == 0) {
+			foreach(GameObject powerGameObject in powersGO) {
+				Destroy (powerGameObject);
+			}
 		}
 	}
 

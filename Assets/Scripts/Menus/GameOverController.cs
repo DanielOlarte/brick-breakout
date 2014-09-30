@@ -22,8 +22,6 @@ public class GameOverController : MonoBehaviour {
 		leaderboard = ScoreUtils.getLeaderboard ();
 		score = PlayerPrefs.GetInt (ScoreUtils.TOTAL_SCORE);
 		position = ScoreUtils.checkUserEnterLeaderboard (leaderboard, score);
-		Debug.Log (canBeAddedToLeaderboard);
-		Debug.Log (position);
 
 		if (canBeAddedToLeaderboard && isOnLeaderboard(position)) {
 			foreach(GameObject buttonGO in buttonsGO) {

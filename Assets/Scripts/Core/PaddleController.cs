@@ -46,9 +46,8 @@ public class PaddleController : MonoBehaviour {
 		Vector3 newPosition = transform.position; 
 		Camera mainCamera = tk2dCamera.Instance.ScreenCamera;
 		Vector3 cameraPosition = mainCamera.transform.position;
-	
 
-		float xDist = /*mainCamera.aspect * */tk2dCamera.Instance.ScreenExtents.xMax * edgeScreenOffset; 
+		float xDist = tk2dCamera.Instance.ScreenExtents.xMax * edgeScreenOffset; 
 		float xMax = cameraPosition.x + xDist;
 		float xMin = cameraPosition.x - xDist;
 
@@ -61,6 +60,5 @@ public class PaddleController : MonoBehaviour {
 
 	public void inverseDirection() {
 		directionModifier = directionModifier * -1;
-		Debug.Log ("Inverse " + directionModifier);
 	}
 }
