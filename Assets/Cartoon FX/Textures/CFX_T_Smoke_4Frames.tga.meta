@@ -1,8 +1,7 @@
 fileFormatVersion: 2
 guid: 3d70761f9ae377945a3aad2a3936df5e
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: CFX_T_Smoke_4Frames
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

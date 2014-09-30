@@ -5,6 +5,7 @@ using System.Collections;
 public class PrefabBrick : MonoBehaviour {
 
 	public Brick.TypeBrick type;
+	public GameObject particleHit;
 	private Brick brick;
 
 	// Use this for initialization
@@ -21,6 +22,9 @@ public class PrefabBrick : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "Player") {
 			brick.addHits ();
+			Vector3 t = transform.position;
+			t.z = -1;
+			Instantiate(particleHit, t, Quaternion.identity);
 			if (brick.getCurrentHits () == brick.getNeededHits ()) {
 
 				Brick.ObjectBrick objectBrick = brick.getObject();

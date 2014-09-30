@@ -1,8 +1,7 @@
 fileFormatVersion: 2
 guid: 7fb1264fc225cf94bbc9edf9ad2b1020
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: CFX_T_Anim4_Triangle3
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

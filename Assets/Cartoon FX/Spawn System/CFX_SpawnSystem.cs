@@ -38,12 +38,12 @@ public class CFX_SpawnSystem : MonoBehaviour
 		}
 		
 		GameObject returnObj = instance.instantiatedObjects[uniqueId][cursor];
-		if (activateObject) {
-						#if UNITY_4_0
+		if(activateObject) {
+			#if UNITY_4_0
 					returnObj.SetActive(true);
-						#elif UNITY_3_5
+			#elif UNITY_3_5
 					returnObj.SetActiveRecursively(true);
-						#endif
+			#endif
 		}
 		return returnObj;
 	}

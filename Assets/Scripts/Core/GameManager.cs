@@ -6,7 +6,9 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject pauseButtonGO;
 	public GameObject summaryScoreGO;
-	
+
+	public GameObject[] particles;
+
 	private float basicScoreModifier;
 
 	private GameObject paddleGO;

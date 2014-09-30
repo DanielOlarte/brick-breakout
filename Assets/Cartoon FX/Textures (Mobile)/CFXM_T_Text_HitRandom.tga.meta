@@ -1,8 +1,7 @@
 fileFormatVersion: 2
 guid: 7e9a8f5e069b4724ba6e05cd7705c475
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: CFXM_T_Text_HitRandom
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

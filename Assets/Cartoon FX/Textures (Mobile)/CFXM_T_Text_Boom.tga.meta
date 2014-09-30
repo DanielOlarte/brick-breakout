@@ -1,8 +1,7 @@
 fileFormatVersion: 2
 guid: 22c0075a461891b449a650786f72cf6a
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: CFXM_T_Text_Boom
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

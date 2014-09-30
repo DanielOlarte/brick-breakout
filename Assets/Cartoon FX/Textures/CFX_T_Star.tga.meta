@@ -1,8 +1,7 @@
 fileFormatVersion: 2
 guid: 95b22be2b746dff46a95032d1620aae1
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: CFX_T_Star
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

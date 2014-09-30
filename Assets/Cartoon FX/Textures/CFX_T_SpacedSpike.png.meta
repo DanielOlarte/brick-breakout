@@ -1,8 +1,7 @@
 fileFormatVersion: 2
 guid: ebbcc38b2a5a365429d42c1e4c7ebf21
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: CFX_T_SpacedSpike
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

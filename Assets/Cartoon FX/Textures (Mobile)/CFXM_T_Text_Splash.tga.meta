@@ -1,8 +1,7 @@
 fileFormatVersion: 2
 guid: e8f0c517f2b7bc248b5e3bd999cfe107
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: CFXM_T_Text_Splash
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

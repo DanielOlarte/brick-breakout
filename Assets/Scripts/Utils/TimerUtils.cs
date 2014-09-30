@@ -4,7 +4,7 @@ using UnityEngine;
 public static class TimerUtils
 {
 	private static float[] timerLevels = new float[]{
-		1.0f, // LEVEL01
+		180.0f, // LEVEL01
 		420.0f  // LEVEL02
 	};
 	
