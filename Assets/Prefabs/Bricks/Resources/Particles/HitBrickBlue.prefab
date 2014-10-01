@@ -30,7 +30,7 @@ GameObject:
   - 199: {fileID: 19900002}
   - 114: {fileID: 11400002}
   m_Layer: 0
-  m_Name: CFXM_Hit_B Blue
+  m_Name: HitBrickBlue
   m_TagString: FxTemporaire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1274,7 +1274,7 @@ ParticleSystem:
         rgba: 4287328557
       minMaxState: 0
     startSize:
-      scalar: .00499999989
+      scalar: .200000003
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1289,7 +1289,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: .5
           inSlope: 0
           outSlope: 0
           tangentMode: 0

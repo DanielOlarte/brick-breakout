@@ -22,7 +22,7 @@ TagManager:
   Builtin Layer 6: 
   Builtin Layer 7: 
   User Layer 8: Ball
-  User Layer 9: 
+  User Layer 9: FX
   User Layer 10: 
   User Layer 11: 
   User Layer 12: 
@@ -49,6 +49,10 @@ TagManager:
   - name: Default
     userID: 0
     uniqueID: 0
+    locked: 0
+  - name: FX
+    userID: 5
+    uniqueID: 4125105445
     locked: 0
   - name: Paddle
     userID: 1

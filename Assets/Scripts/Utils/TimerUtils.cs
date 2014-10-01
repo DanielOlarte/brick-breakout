@@ -5,7 +5,9 @@ public static class TimerUtils
 {
 	private static float[] timerLevels = new float[]{
 		180.0f, // LEVEL01
-		420.0f  // LEVEL02
+		420.0f,  // LEVEL02
+		180.0f, // LEVEL03
+		420.0f  // LEVEL04
 	};
 	
 	public static float getTimerByLevel(int level) {

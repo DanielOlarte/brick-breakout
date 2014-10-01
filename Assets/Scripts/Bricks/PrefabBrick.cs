@@ -22,9 +22,12 @@ public class PrefabBrick : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "Player") {
 			brick.addHits ();
-			Vector3 t = transform.position;
-			t.z = -1;
-			Instantiate(particleHit, t, Quaternion.identity);
+
+			Vector3 positionHit = transform.position;
+			positionHit.z = -1;
+
+			Instantiate(particleHit, positionHit, Quaternion.identity);
+
 			if (brick.getCurrentHits () == brick.getNeededHits ()) {
 
 				Brick.ObjectBrick objectBrick = brick.getObject();

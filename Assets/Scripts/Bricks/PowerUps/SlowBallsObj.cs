@@ -7,6 +7,7 @@ public class SlowBallsObj : MonoBehaviour {
 	public float timeEffect = 3.0f;
 	public float speedModifier = 0.4f;
 	public float scoreModifier = 0.5f;
+	public GameObject slowBallsParticle;
 
 	private bool paddleDidntCapture = false;
 	private string modifierStr = ScoreUtils.SLOW_BALLS_MODIFIER;
@@ -40,6 +41,8 @@ public class SlowBallsObj : MonoBehaviour {
 		foreach(GameObject ball in balls) {
 			BallController ballController =  (BallController)ball.GetComponent (typeof(BallController));
 			ballController.setSpeedModifier(modifierStr, -ballController.getModifiedSpeed()*speedModifier);
+
+			Instantiate (slowBallsParticle, ball.transform.position, ball.transform.rotation);
 		}
 
 		gameManager.setScoreModifier (modifierStr, scoreModifier);

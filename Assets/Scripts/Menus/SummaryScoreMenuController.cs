@@ -6,6 +6,7 @@ public class SummaryScoreMenuController : MonoBehaviour {
 
 	public Transform[] childTransforms;
 	public tk2dTextMesh resultsText;
+	public GameObject particleSummary;
 
 	void Start() {
 		disableSummaryMenu ();
@@ -49,6 +50,10 @@ public class SummaryScoreMenuController : MonoBehaviour {
 	}
 
 	private void enableSummaryMenu() {
+
+		//instantiateParticle ();
+		LaunchParticlePoof ();
+
 		foreach (Transform t in childTransforms) {
 			t.gameObject.SetActive(true);
 		}
@@ -59,5 +64,17 @@ public class SummaryScoreMenuController : MonoBehaviour {
 		foreach (Transform t in childTransforms) {
 			t.gameObject.SetActive(false);
 		}
+	}
+
+	private void instantiateParticle() {
+		InvokeRepeating("LaunchParticlePoof", 5, 1.0F);
+	}
+
+	private void LaunchParticlePoof() {
+		Vector3 positionHit = transform.position;
+		positionHit.z = -10;
+		
+		Instantiate(particleSummary, positionHit, Quaternion.identity);
+
 	}
 }

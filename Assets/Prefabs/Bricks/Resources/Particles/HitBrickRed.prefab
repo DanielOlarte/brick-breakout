@@ -30,7 +30,7 @@ GameObject:
   - 199: {fileID: 19900002}
   - 114: {fileID: 11400002}
   m_Layer: 0
-  m_Name: CFXM_Hit_B Purple
+  m_Name: HitBrickRed
   m_TagString: FxTemporaire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,8 +55,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.3051643, y: -4.24607611, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -26.6374969, y: -3.28034592, z: 0}
+  m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children:
   - {fileID: 400000}
   m_Father: {fileID: 0}
@@ -444,16 +444,16 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4292843263
+          rgba: 4278249215
         key1:
           serializedVersion: 2
-          rgba: 2143682815
+          rgba: 2130746367
         key2:
           serializedVersion: 2
-          rgba: 184484034
+          rgba: 167772415
         key3:
           serializedVersion: 2
-          rgba: 178716736
+          rgba: 167772327
         key4:
           serializedVersion: 2
           rgba: 167772415
@@ -475,7 +475,7 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 16384
+        atime1: 11565
         atime2: 65535
         atime3: 65535
         atime4: 65535
@@ -1268,13 +1268,13 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minColor:
         serializedVersion: 2
-        rgba: 4287912578
+        rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4287978115
-      minMaxState: 2
+        rgba: 1090519039
+      minMaxState: 0
     startSize:
-      scalar: .00499999989
+      scalar: .200000003
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1289,7 +1289,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: .5
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -1436,22 +1436,22 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4287255674
+          rgba: 4281084595
         key1:
           serializedVersion: 2
-          rgba: 4287847041
+          rgba: 4281084595
         key2:
           serializedVersion: 2
-          rgba: 4287912578
+          rgba: 4281084594
         key3:
           serializedVersion: 2
-          rgba: 177429121
+          rgba: 170666674
         key4:
           serializedVersion: 2
-          rgba: 177429121
+          rgba: 167772415
         key5:
           serializedVersion: 2
-          rgba: 9591424
+          rgba: 0
         key6:
           serializedVersion: 2
           rgba: 0
@@ -1460,10 +1460,10 @@ ParticleSystem:
           rgba: 0
         ctime0: 0
         ctime1: 13107
-        ctime2: 14071
-        ctime3: 38357
+        ctime2: 38357
+        ctime3: 65535
         ctime4: 65535
-        ctime5: 65535
+        ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 0
@@ -1474,7 +1474,7 @@ ParticleSystem:
         atime5: 0
         atime6: 0
         atime7: 0
-        m_NumColorKeys: 5
+        m_NumColorKeys: 4
         m_NumAlphaKeys: 3
       minGradient:
         key0:
