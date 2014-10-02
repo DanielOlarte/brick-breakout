@@ -15,6 +15,7 @@ public class LevelSelectionController : MonoBehaviour {
 		Application.LoadLevel ("LevelBase");
 
 		PlayerPrefs.SetString (ScoreUtils.LEVEL_USER_INIT, match.Value);
+		PlayerPrefs.SetString (ScoreUtils.CURRENT_LEVEL_USER, match.Value);
 	}
 
 	void backMainMenuClicked() {

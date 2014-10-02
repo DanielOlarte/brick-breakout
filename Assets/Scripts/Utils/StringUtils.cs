@@ -27,6 +27,19 @@ public class StringUtils
 		return int.Parse(numberLevel);
 	}
 
+	public static string getNextLevelName(string sceneName) {
+		int levelNumber = getLevelBySceneName (sceneName);
+		levelNumber += 1;
+		string levelStr = "Level";
+
+		if (levelNumber < 10) {
+			levelStr += "0";
+		}
+
+		levelStr += levelNumber.ToString ();
+		return levelStr;
+	}
+
 	public static string getSpaces(int n) {
 		return new String(' ', n);
 	}

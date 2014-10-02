@@ -14,7 +14,7 @@ public class WallBuilder : MonoBehaviour
 	// Use this for initialization 24
 	void Awake ()
 	{
-		string levelName = PlayerPrefs.GetString (ScoreUtils.LEVEL_USER_INIT);
+		string levelName = PlayerPrefs.GetString (ScoreUtils.CURRENT_LEVEL_USER);
 		readFile("Levels/" + levelName);
         initPrefabMap();
         placeBricks();

@@ -19,6 +19,7 @@ public static class ScoreUtils
 	public static int TOTAL_LIVES = 3;
 
 	public static string LEVEL_USER_INIT = "level_user_init";
+	public static string CURRENT_LEVEL_USER = "current_level_user";
 
 	public static string FAST_BALLS_MODIFIER = "fast_balls";
 	public static string SLOW_BALLS_MODIFIER = "slow_balls";

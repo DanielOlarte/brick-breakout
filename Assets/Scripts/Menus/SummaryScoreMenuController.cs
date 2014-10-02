@@ -41,9 +41,12 @@ public class SummaryScoreMenuController : MonoBehaviour {
 	}
 
 	private void moveNextLevel() {
-		int currentLevel = StringUtils.getLevelBySceneName(PlayerPrefs.GetString (ScoreUtils.LEVEL_USER_INIT));
+		int currentLevel = StringUtils.getLevelBySceneName(PlayerPrefs.GetString (ScoreUtils.CURRENT_LEVEL_USER));
 		int totalLevels = TimerUtils.getNumberOfLevels();
 		if (currentLevel < totalLevels) {
+			string newLevel = StringUtils.getNextLevelName(PlayerPrefs.GetString (ScoreUtils.CURRENT_LEVEL_USER));
+			Debug.Log (newLevel);
+			PlayerPrefs.SetString(ScoreUtils.CURRENT_LEVEL_USER, newLevel);
 			Application.LoadLevel ("LevelBase");
 		} else {
 			Application.LoadLevel ("GameOver");
