@@ -1,86 +1,65 @@
 Initialize engine version: 4.5.4f1 (e036f44c54c9)
 GfxDevice: creating device client; threaded=1
 Direct3D:
-    Version:  Direct3D 9.0c [nvumdshim.dll 9.18.13.4411]
-    Renderer: Intel(R) HD Graphics 3000
-    Vendor:   Intel
-    VRAM:     848 MB (via DXGI)
-    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 INTZ=1 RAWZ=0 NULL=1 RESZ=1 SlowINTZ=0
+    Version:  Direct3D 9.0c [nvd3dum.dll 9.18.13.3788]
+    Renderer: NVIDIA GeForce GTX 460
+    Vendor:   NVIDIA
+    VRAM:     971 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
 Begin MonoManager ReloadAssembly
 Platform assembly: D:\Users\Silex RPR\Documents\Oscar RPR\Brainstorm Interactive\Breakout\ProjectBreakout_Data\Managed\UnityEngine.dll (this message is harmless)
 Loading D:\Users\Silex RPR\Documents\Oscar RPR\Brainstorm Interactive\Breakout\ProjectBreakout_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: D:\Users\Silex RPR\Documents\Oscar RPR\Brainstorm Interactive\Breakout\ProjectBreakout_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading D:\Users\Silex RPR\Documents\Oscar RPR\Brainstorm Interactive\Breakout\ProjectBreakout_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-- Completed reload, in  0.049 seconds
-desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+- Completed reload, in  0.037 seconds
+desktop: 1680x1050 60Hz; virtual: 1680x1050 at 0,0
 <RI> Initializing input.
-XInput1_3.dll not found.
 <RI> Input initialized.
 Platform assembly: D:\Users\Silex RPR\Documents\Oscar RPR\Brainstorm Interactive\Breakout\ProjectBreakout_Data\Managed\System.Core.dll (this message is harmless)
-It is no longer necessary to hook up a camera to the tk2dUIManager. You can simply attach a tk2dUICamera script to the cameras that interact with UI.
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
 Platform assembly: D:\Users\Silex RPR\Documents\Oscar RPR\Brainstorm Interactive\Breakout\ProjectBreakout_Data\Managed\System.dll (this message is harmless)
-UnloadTime: 7.579932 ms
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 295.
-Total: 2.049060 ms (FindLiveObjects: 0.045158 ms CreateObjectMapping: 0.028223 ms MarkObjects: 0.520347 ms  DeleteObjects: 0.025658 ms)
-
-UnloadTime: 1.069945 ms
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 352.
-Total: 2.112179 ms (FindLiveObjects: 0.047724 ms CreateObjectMapping: 0.031302 ms MarkObjects: 0.608098 ms  DeleteObjects: 0.012829 ms)
-
-backMainMenuClicked
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-UnloadTime: 3.810236 ms
-Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 303.
-Total: 2.034691 ms (FindLiveObjects: 0.047211 ms CreateObjectMapping: 0.029763 ms MarkObjects: 0.531123 ms  DeleteObjects: 0.092882 ms)
-
-UnloadTime: 1.026326 ms
-Discarding unnecessary tk2dUIManager instance.
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 321.
-Total: 1.919743 ms (FindLiveObjects: 0.040539 ms CreateObjectMapping: 0.030276 ms MarkObjects: 0.536255 ms  DeleteObjects: 0.022066 ms)
-
-UnloadTime: 1.124340 ms
-Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 434.
-Total: 2.047007 ms (FindLiveObjects: 0.053882 ms CreateObjectMapping: 0.033868 ms MarkObjects: 0.611177 ms  DeleteObjects: 0.024118 ms)
-
-UnloadTime: 1.542055 ms
+UnloadTime: 1.837296 ms
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 68 unused Assets to reduce memory usage. Loaded Objects now: 1767.
-Total: 1.316776 ms (FindLiveObjects: 0.095448 ms CreateObjectMapping: 0.022579 ms MarkObjects: 0.554216 ms  DeleteObjects: 0.047211 ms)
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 444.
+Total: 0.537510 ms (FindLiveObjects: 0.014029 ms CreateObjectMapping: 0.007891 ms MarkObjects: 0.152572 ms  DeleteObjects: 0.007307 ms)
+
+UnloadTime: 0.942031 ms
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 75 unused Assets to reduce memory usage. Loaded Objects now: 2564.
+Total: 0.936185 ms (FindLiveObjects: 0.078916 ms CreateObjectMapping: 0.017244 ms MarkObjects: 0.423227 ms  DeleteObjects: 0.047642 ms)
 
 0
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
-Level01
+Level02
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
-UnloadTime: 6.109720 ms
-Discarding unnecessary tk2dUIManager instance.
+Modifier : 1.1
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
+Modifier : 1.1
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Modifier : 1.1
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Modifier : 1.1
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Modifier : 1.1
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+UnloadTime: 5.695151 ms
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 28 unused Assets to reduce memory usage. Loaded Objects now: 473.
-Total: 2.176324 ms (FindLiveObjects: 0.057474 ms CreateObjectMapping: 0.039000 ms MarkObjects: 0.597321 ms  DeleteObjects: 0.111869 ms)
+Unloading 152 unused Assets to reduce memory usage. Loaded Objects now: 534.
+Total: 2.154132 ms (FindLiveObjects: 0.041212 ms CreateObjectMapping: 0.023382 ms MarkObjects: 0.318881 ms  DeleteObjects: 1.050176 ms)
 

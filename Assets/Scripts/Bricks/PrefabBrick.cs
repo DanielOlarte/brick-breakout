@@ -18,6 +18,13 @@ public class PrefabBrick : MonoBehaviour {
 
 	}
 
+	void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (collision.gameObject.tag == "Player") {
+			GetComponent<AudioSource>().Play();
+		}
+	}
+
 	void OnCollisionExit2D(Collision2D collision)
 	{
 		if (collision.gameObject.tag == "Player") {

@@ -25,7 +25,7 @@ public class FastBallsObj : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)  {
 		if (other.gameObject.CompareTag ("Paddle")) {
 			Debug.Log ("CollisionFastBalls-----");
-
+			GetComponent<AudioSource>().Play();
 			StartCoroutine ("startObjectEffect");	
 		}
 	}

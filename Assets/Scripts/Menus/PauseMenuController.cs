@@ -5,6 +5,7 @@ public class PauseMenuController : MonoBehaviour {
 	
 	public bool isPaused;
 	public Transform[] childTransforms;
+	public AudioClip sound;
 
 	private InputManager inputManager;
 
@@ -27,12 +28,9 @@ public class PauseMenuController : MonoBehaviour {
 		disablePauseMenu ();
 	}
 
-	public void optionsGame() {
-	
-	}
-
 	public void exitGame() {
 		Application.LoadLevel ("MainMenu");
+		SoundManager.GetInstance ().changeAudio (sound);
 	}
 
 	private void enablePauseMenu() {

@@ -30,7 +30,7 @@ public class InversePaddleObj : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)  {
 		if (other.gameObject.CompareTag ("Paddle")) {
 			Debug.Log ("CollisionInversePaddle-----");
-
+			GetComponent<AudioSource>().Play();
 			paddleDidntCapture = true;
 			renderer.enabled = false;
 			StartCoroutine ("startObjectEffect");	

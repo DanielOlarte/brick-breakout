@@ -7,6 +7,7 @@ public class SummaryScoreMenuController : MonoBehaviour {
 	public Transform[] childTransforms;
 	public tk2dTextMesh resultsText;
 	public GameObject particleSummary;
+	public AudioClip sound;
 
 	void Start() {
 		disableSummaryMenu ();
@@ -40,10 +41,10 @@ public class SummaryScoreMenuController : MonoBehaviour {
 	}
 
 	private void moveNextLevel() {
-		int currentLevelIndex = Application.loadedLevel;
-		int totalScenes = Application.levelCount;
-		if (currentLevelIndex + 1 < totalScenes) {
-			Application.LoadLevel (currentLevelIndex + 1);
+		int currentLevel = StringUtils.getLevelBySceneName(PlayerPrefs.GetString (ScoreUtils.LEVEL_USER_INIT));
+		int totalLevels = TimerUtils.getNumberOfLevels();
+		if (currentLevel < totalLevels) {
+			Application.LoadLevel ("LevelBase");
 		} else {
 			Application.LoadLevel ("GameOver");
 		}
@@ -53,7 +54,7 @@ public class SummaryScoreMenuController : MonoBehaviour {
 
 		//instantiateParticle ();
 		LaunchParticlePoof ();
-
+		SoundManager.GetInstance ().changeAudio (sound);
 		foreach (Transform t in childTransforms) {
 			t.gameObject.SetActive(true);
 		}
@@ -74,7 +75,7 @@ public class SummaryScoreMenuController : MonoBehaviour {
 		Vector3 positionHit = transform.position;
 		positionHit.z = -10;
 		
-		Instantiate(particleSummary, positionHit, Quaternion.identity);
+		//Instantiate(particleSummary, positionHit, Quaternion.identity);
 
 	}
 }

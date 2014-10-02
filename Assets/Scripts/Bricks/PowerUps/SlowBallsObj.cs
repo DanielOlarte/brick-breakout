@@ -25,6 +25,9 @@ public class SlowBallsObj : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D other)  {
 		if (other.gameObject.CompareTag ("Paddle")) {
+
+			GetComponent<AudioSource>().Play();
+
 			Debug.Log ("CollisionSlowBalls-----");
 
 			paddleDidntCapture = true;
@@ -42,7 +45,7 @@ public class SlowBallsObj : MonoBehaviour {
 			BallController ballController =  (BallController)ball.GetComponent (typeof(BallController));
 			ballController.setSpeedModifier(modifierStr, -ballController.getModifiedSpeed()*speedModifier);
 
-			Instantiate (slowBallsParticle, ball.transform.position, ball.transform.rotation);
+			//Instantiate (slowBallsParticle, ball.transform.position, ball.transform.rotation);
 		}
 
 		gameManager.setScoreModifier (modifierStr, scoreModifier);

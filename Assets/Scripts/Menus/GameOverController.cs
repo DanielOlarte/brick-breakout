@@ -9,6 +9,8 @@ public class GameOverController : MonoBehaviour {
 	private int score;
 	private int position;
 
+	public AudioClip[] sounds;
+
 	void Start() {
 		tk2dTextMesh scoreTitle =(tk2dTextMesh) GameObject.Find(NameUtils.NAME_SCORE_TITLE).GetComponent<tk2dTextMesh>();
 		scoreTitle.text = PlayerPrefs.GetInt (ScoreUtils.TOTAL_SCORE).ToString ();
@@ -32,18 +34,22 @@ public class GameOverController : MonoBehaviour {
 				buttonGO.SetActive(false);
 			}
 		}
+		SoundManager.GetInstance ().changeAudio (sounds[0]);
 	}
 
 	void mainMenuClicked() {
 		Application.LoadLevel ("MainMenu");
+		SoundManager.GetInstance ().changeAudio (sounds[1]);
 	}
 	
 	void leaderboardsClicked() {
 		Application.LoadLevel ("Leaderboards");
+		SoundManager.GetInstance ().changeAudio (sounds[1]);
 	}
 	
 	void levelSelectionClicked() {
 		Application.LoadLevel ("LevelSelection");
+		SoundManager.GetInstance ().changeAudio (sounds[1]);
 	}
 
 	void saveButtonClicked() {

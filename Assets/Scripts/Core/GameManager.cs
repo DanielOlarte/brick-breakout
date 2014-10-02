@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject[] particles;
 
+	public AudioClip[] sounds;
+
 	private float basicScoreModifier;
 
 	private GameObject paddleGO;
@@ -68,6 +70,9 @@ public class GameManager : MonoBehaviour {
 		Time.timeScale = 1.0f;
 
 		enableUI ();
+
+		SoundManager.GetInstance ().changeAudio (sounds [0]);
+		SoundManager.GetInstance ().volumeDown (0.5f);
 	}
 	
 	// Update is called once per frame

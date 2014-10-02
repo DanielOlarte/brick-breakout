@@ -14,6 +14,10 @@ public static class TimerUtils
 		return timerLevels[level];
 	}
 
+	public static int getNumberOfLevels() {
+		return timerLevels.Length;
+	}
+
 	public static string getTimeFromFloat(float time) {
 		TimeSpan t = TimeSpan.FromSeconds(time);
 		
