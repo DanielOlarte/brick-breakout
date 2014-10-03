@@ -159,6 +159,7 @@ MonoBehaviour:
   timeEffect: 6
   speedModifier: 1.10000002
   scoreModifier: 1.5
+  particleFire: {fileID: 100002, guid: cf8540bb419551b4f936dd06a502fd15, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

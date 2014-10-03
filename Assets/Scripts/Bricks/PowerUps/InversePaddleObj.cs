@@ -3,8 +3,10 @@ using System.Collections;
 
 public class InversePaddleObj : MonoBehaviour {
 
-	public float timeEffect = 10.0f;
+	public float timeEffect;
 	public float scoreModifier = 4.0f;
+
+	public GameObject particleInverse;
 
 	private bool paddleDidntCapture = false;
 	private string modifierStr = ScoreUtils.INVERSE_PADDLE_MODIFIER;
@@ -41,6 +43,16 @@ public class InversePaddleObj : MonoBehaviour {
 	{
 		paddleController = (PaddleController) GameObject.Find("Paddle").GetComponent(typeof(PaddleController));
 		paddleController.inverseDirection();
+
+		
+		Vector3 p = paddleController.transform.position;
+		p.z = -2;
+		Quaternion rs = paddleController.transform.rotation;
+		rs.x = 270;
+		
+		GameObject fire = Instantiate(particleInverse, p, Quaternion.Euler (rs.x, rs.y, rs.z)) as GameObject;
+		fire.transform.parent = paddleController.transform;
+
 		gameManager.setScoreModifier (modifierStr, scoreModifier);
 
 		yield return StartCoroutine("waitSeconds");

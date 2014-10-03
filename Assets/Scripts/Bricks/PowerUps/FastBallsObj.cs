@@ -8,6 +8,8 @@ public class FastBallsObj : MonoBehaviour {
 	public float speedModifier = 0.3f;
 	public float scoreModifier = 1.5f;
 
+	public GameObject particleFire;
+
 	private bool paddleDidntCapture = false;
 	private string modifierStr = ScoreUtils.FAST_BALLS_MODIFIER;
 	private GameManager gameManager;
@@ -37,6 +39,14 @@ public class FastBallsObj : MonoBehaviour {
 		foreach(GameObject ball in balls) {
 			BallController ballController =  (BallController)ball.GetComponent (typeof(BallController));
 			ballController.setSpeedModifier(modifierStr, ballController.getModifiedSpeed()*speedModifier);
+
+			Vector3 p = ball.transform.position;
+			p.z = -2;
+			Quaternion rs = ball.transform.rotation;
+			rs.x = 270;
+
+			GameObject fire = Instantiate(particleFire, p, Quaternion.Euler (rs.x, rs.y, rs.z)) as GameObject;
+			fire.transform.parent = ball.transform;
 		}
 
 		gameManager.setScoreModifier (modifierStr, scoreModifier);

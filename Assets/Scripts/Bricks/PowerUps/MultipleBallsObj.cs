@@ -9,7 +9,9 @@ public class MultipleBallsObj : MonoBehaviour {
 	public float limitLowAngle;
 	public float limitHighAngle;
 	public float scoreModifier = 2.0f;
-	
+
+	public GameObject particleMultiple;
+
 	private string modifierStr = ScoreUtils.MULTIPLE_BALLS_MODIFIER;
 
 	private bool paddleDidntCapture = false;
@@ -36,17 +38,27 @@ public class MultipleBallsObj : MonoBehaviour {
 					BallController ballController =  (BallController)ball.GetComponent (typeof(BallController));
 					ballController.setOnPaddle(false);
 					ballController.setStarted(true);
+
 					Vector2 velocity = gameManager.getSpeedBall();
 					ball.rigidbody2D.velocity = velocity;
 
 					float randomAngle = Random.Range (limitLowAngle, limitHighAngle);
 					Debug.Log (randomAngle);
 					Vector3 dir = Quaternion.AngleAxis(randomAngle, Vector3.forward) * Vector3.right;
+					Debug.Log (dir);
 					ball.rigidbody2D.AddForce(dir*powerModifier, ForceMode2D.Impulse);
-
 					gameManager.addBall(ball);
 				}
 
+				foreach(GameObject ball in gameManager.getBalls()) {
+					Vector3 p = ball.transform.position;
+					p.z = -4;
+					Quaternion rs = ball.transform.rotation;
+					rs.x = 270;
+					
+					GameObject fire = Instantiate(particleMultiple, p, Quaternion.Euler (rs.x, rs.y, rs.z)) as GameObject;
+					fire.transform.parent = ball.transform;
+				}
 
 				gameManager.setScoreModifier (modifierStr, scoreModifier);
 				renderer.enabled = false;

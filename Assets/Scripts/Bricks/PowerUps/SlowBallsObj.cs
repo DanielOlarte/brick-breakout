@@ -7,8 +7,9 @@ public class SlowBallsObj : MonoBehaviour {
 	public float timeEffect = 3.0f;
 	public float speedModifier = 0.4f;
 	public float scoreModifier = 0.5f;
-	public GameObject slowBallsParticle;
 
+	public GameObject particleIce;
+	
 	private bool paddleDidntCapture = false;
 	private string modifierStr = ScoreUtils.SLOW_BALLS_MODIFIER;
 	private GameManager gameManager;
@@ -45,6 +46,13 @@ public class SlowBallsObj : MonoBehaviour {
 			BallController ballController =  (BallController)ball.GetComponent (typeof(BallController));
 			ballController.setSpeedModifier(modifierStr, -ballController.getModifiedSpeed()*speedModifier);
 
+			Vector3 p = ball.transform.position;
+			p.z = -2;
+			Quaternion rs = ball.transform.rotation;
+			rs.x = 270;
+			
+			GameObject fire = Instantiate(particleIce, p, Quaternion.Euler (rs.x, rs.y, rs.z)) as GameObject;
+			fire.transform.parent = ball.transform;
 			//Instantiate (slowBallsParticle, ball.transform.position, ball.transform.rotation);
 		}
 

@@ -158,6 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeEffect: 5
   scoreModifier: 4
+  particleInverse: {fileID: 100000, guid: befa925903fabd14b99eaac5f7359bf1, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
