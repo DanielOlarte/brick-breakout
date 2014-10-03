@@ -1,0 +1,31 @@
+Initialize engine version: 4.5.4f1 (e036f44c54c9)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvd3dumx.dll 9.18.13.3788]
+    Renderer: NVIDIA GeForce GTX 460
+    Vendor:   NVIDIA
+    VRAM:     971 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Users\Silex RPR\Documents\Oscar RPR\Brainstorm Interactive\Breakout\Release_Windows\Brick Breakout_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Users\Silex RPR\Documents\Oscar RPR\Brainstorm Interactive\Breakout\Release_Windows\Brick Breakout_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Users\Silex RPR\Documents\Oscar RPR\Brainstorm Interactive\Breakout\Release_Windows\Brick Breakout_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Users\Silex RPR\Documents\Oscar RPR\Brainstorm Interactive\Breakout\Release_Windows\Brick Breakout_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+- Completed reload, in  0.034 seconds
+desktop: 1680x1050 60Hz; virtual: 1680x1050 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: D:\Users\Silex RPR\Documents\Oscar RPR\Brainstorm Interactive\Breakout\Release_Windows\Brick Breakout_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\Users\Silex RPR\Documents\Oscar RPR\Brainstorm Interactive\Breakout\Release_Windows\Brick Breakout_Data\Managed\System.dll (this message is harmless)
+UnloadTime: 0.645947 ms
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 328.
+Total: 0.478176 ms (FindLiveObjects: 0.012275 ms CreateObjectMapping: 0.007599 ms MarkObjects: 0.118374 ms  DeleteObjects: 0.015783 ms)
+
+UnloadTime: 1.621006 ms
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 445.
+Total: 0.445440 ms (FindLiveObjects: 0.013445 ms CreateObjectMapping: 0.008768 ms MarkObjects: 0.141757 ms  DeleteObjects: 0.006430 ms)
+

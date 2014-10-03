@@ -9,7 +9,10 @@ public class SummaryScoreMenuController : MonoBehaviour {
 	public GameObject particleSummary;
 	public AudioClip sound;
 
+	private bool isShowing;
+
 	void Start() {
+		isShowing = false;
 		disableSummaryMenu ();
 	}
 	
@@ -54,9 +57,7 @@ public class SummaryScoreMenuController : MonoBehaviour {
 	}
 
 	private void enableSummaryMenu() {
-
-		//instantiateParticle ();
-		LaunchParticlePoof ();
+		isShowing = true;
 		SoundManager.GetInstance ().changeAudio (sound);
 		foreach (Transform t in childTransforms) {
 			t.gameObject.SetActive(true);
@@ -65,20 +66,14 @@ public class SummaryScoreMenuController : MonoBehaviour {
 	}
 
 	private void disableSummaryMenu() {
+		isShowing = false;
 		foreach (Transform t in childTransforms) {
 			t.gameObject.SetActive(false);
 		}
 	}
 
-	private void instantiateParticle() {
-		InvokeRepeating("LaunchParticlePoof", 5, 1.0F);
+	public bool isShowingSummary() {
+		return isShowing;
 	}
 
-	private void LaunchParticlePoof() {
-		Vector3 positionHit = transform.position;
-		positionHit.z = -10;
-		
-		//Instantiate(particleSummary, positionHit, Quaternion.identity);
-
-	}
 }

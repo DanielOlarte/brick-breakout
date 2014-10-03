@@ -7,20 +7,27 @@ public class PauseMenuController : MonoBehaviour {
 	public Transform[] childTransforms;
 	public AudioClip sound;
 
+	public SummaryScoreMenuController summaryController;
+
+	private bool isShowingSummary;
 	private InputManager inputManager;
 
 	// Use this for initialization
 	void Start () {
 		inputManager = (InputManager)FindObjectOfType (typeof(InputManager));
 		disablePauseMenu ();
+		isShowingSummary = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (inputManager.pauseMenuInput() && !isPaused) {
-			enablePauseMenu();
-		} else if (inputManager.pauseMenuInput() && isPaused) {
-			disablePauseMenu ();
+		isShowingSummary = summaryController.isShowingSummary ();
+		if (!isShowingSummary) {
+			if (inputManager.pauseMenuInput() && !isPaused) {
+				enablePauseMenu();
+			} else if (inputManager.pauseMenuInput() && isPaused) {
+				disablePauseMenu ();
+			}
 		}
 	}
 

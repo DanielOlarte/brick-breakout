@@ -14,10 +14,9 @@ public class SplashScreenController : MonoBehaviour {
 	void Start () {
 		StartCoroutine (startCountdownFade ());
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		//StartCoroutine(changeBackground());
 		if (logoGO && fading) {
 			Color tempColor = logoGO.renderer.material.color;
 			tempColor.a = Mathf.Lerp(logoGO.renderer.material.color.a, 0, Time.deltaTime * fadeSpeed);
