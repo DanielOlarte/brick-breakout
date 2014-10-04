@@ -44,7 +44,8 @@ public class SlowBallsObj : MonoBehaviour {
 
 		foreach(GameObject ball in balls) {
 			BallController ballController =  (BallController)ball.GetComponent (typeof(BallController));
-			ballController.setSpeedModifier(modifierStr, -ballController.getModifiedSpeed()*speedModifier);
+			ballController.setSpeedModifier(modifierStr, /*ballController.getModifiedSpeed()**/speedModifier);
+			ballController.setPowerUp(modifierStr, gameObject);
 
 			Vector3 p = ball.transform.position;
 			p.z = -2;
@@ -68,7 +69,7 @@ public class SlowBallsObj : MonoBehaviour {
 		
 		foreach(GameObject ball in balls) {
 			BallController ballController =  (BallController)ball.GetComponent (typeof(BallController));
-			ballController.removeSpeedModifier(modifierStr);
+			ballController.removePowerUp(modifierStr);
 		}
 
 		gameManager.removeScoreModifier (modifierStr);

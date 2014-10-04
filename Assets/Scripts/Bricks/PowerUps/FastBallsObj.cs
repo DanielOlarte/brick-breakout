@@ -38,8 +38,8 @@ public class FastBallsObj : MonoBehaviour {
 		
 		foreach(GameObject ball in balls) {
 			BallController ballController =  (BallController)ball.GetComponent (typeof(BallController));
-			ballController.setSpeedModifier(modifierStr, ballController.getModifiedSpeed()*speedModifier);
-
+			ballController.setSpeedModifier(modifierStr, /*ballController.getModifiedSpeed()**/speedModifier);
+			ballController.setPowerUp(modifierStr, gameObject);
 			Vector3 p = ball.transform.position;
 			p.z = -2;
 			Quaternion rs = ball.transform.rotation;
@@ -64,7 +64,7 @@ public class FastBallsObj : MonoBehaviour {
 		
 		foreach(GameObject ball in balls) {
 			BallController ballController =  (BallController)ball.GetComponent (typeof(BallController));
-			ballController.removeSpeedModifier(modifierStr);
+			ballController.removePowerUp(modifierStr);
 		}
 
 		gameManager.removeScoreModifier (modifierStr);

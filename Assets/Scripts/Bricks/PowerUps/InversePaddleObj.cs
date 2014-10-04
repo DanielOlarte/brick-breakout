@@ -43,6 +43,7 @@ public class InversePaddleObj : MonoBehaviour {
 	{
 		paddleController = (PaddleController) GameObject.Find("Paddle").GetComponent(typeof(PaddleController));
 		paddleController.inverseDirection();
+		paddleController.setPowerUp (modifierStr, gameObject);
 
 		
 		Vector3 p = paddleController.transform.position;
@@ -62,6 +63,7 @@ public class InversePaddleObj : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(timeEffect);
 
+		paddleController.removePowerUp (modifierStr);
 		gameManager.removeScoreModifier (modifierStr);
 
 		Destroy (gameObject);

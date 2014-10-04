@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PaddleController : MonoBehaviour {
 
@@ -12,6 +13,25 @@ public class PaddleController : MonoBehaviour {
 	private InputManager inputManager;
 	private int directionModifier;
 	private bool isStopped;
+
+	private Dictionary<string,GameObject> powerups = new Dictionary<string,GameObject>();
+
+	public void setPowerUp(string key,GameObject go)
+	{
+		if( !powerups.ContainsKey(key) )
+		{
+			powerups.Add(key, go);
+		}
+		else{
+			Destroy (powerups[key]);
+			powerups[key] = go;
+		}
+	}
+	
+	public void removePowerUp(string key)
+	{
+		powerups.Remove (key);
+	}
 
 	// Use this for initialization
 	void Start () {

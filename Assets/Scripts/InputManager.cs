@@ -4,6 +4,7 @@ using System.Collections;
 public class InputManager : MonoBehaviour
 {
 	private int leftClick = 0;
+	private float tempMousePositionX;
 
 #if UNITY_ANDROID
     private float fingerStartTime  = 0.0f;
