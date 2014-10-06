@@ -1,11 +1,10 @@
-N,N,N,N,S,N,N, ,N,N,N, ,N,N,N,N,M,N
-M,N,N,,,,,,,,XX,U,X
-N,N,N,XX,N,N
-N,N,S,N,N,U,N,N,N,N,N,N,N,N,N,N,N,M,N,N,N,N,N,N,U,X,,F,XX,X
-N,N,N,N,N,N,N,N,XX,U,N,N,N,N,N,N,N,N
-N,U,N,N,U,N,M,N,N,N,N,N,N,N,N,N,XX,N,N,N,S,N,N,N
-U,U,U,U,U,U,U,I,U,U,U,U,U,N,N,N,N
-N,N,N,N,N,N,N,U,N,N,,,,,,,,,N,N,N,N,N,N,N,U,N,N,F
-N,N,N,N,N,XX,X,U,X,XX,,,,,,,N,N,N,N,N,S,F,U,N,N
-N,N,N,N,N,XX,X,U,X,XX,N,N,N,N,U,XX,X,XX,XX,I,S,N,N
-N,N,N,N,N,N,N,U,N,N,N,N,N,N,N,N,N,U,N,N,M,S,I,M
+
+F,N,N,N,N,N,N,N,S,N,N,N,N,N,U,U,N,N,N,N,N,S,N,N,N,N,N,N,N,F
+N,M,N,N,N,N,N,M,N,N,N,N,N,N,,,N,N,N,N,N,N,M,N,N,N,N,N,M,N
+N,N,S,N,N,N,F,N,N,N,N,N,N,N,M,M,N,N,N,N,N,N,N,F,N,N,N,S,N,N
+N,N,N,X,N,X,N,N,N,N,N,N,N,N,F,F,N,N,N,N,N,N,N,N,X,N,X,N,N,N
+N,N,N,N,X,N,N,N,N,N,X,N,X,N,I,I,N,N,X,N,X,N,N,N,N,X,N,N,N,N
+N,N,N,X,N,X,N,N,N,X,N,X,N,X,XX,XX,N,X,N,X,N,X,N,N,X,N,X,N,N,N
+N,N,F,N,N,N,S,N,N,N,X,N,X,N,X,X,N,N,X,N,X,N,N,S,N,N,N,F,N,N
+N,M,N,N,N,N,N,M,N,X,N,X,N,X,XX,XX,X,N,X,N,X,N,M,N,N,N,N,N,M,N
+S,N,N,N,N,N,N,N,F,N,X,N,X,N,XX,XX,N,X,N,X,N,F,N,N,N,N,N,N,N,S

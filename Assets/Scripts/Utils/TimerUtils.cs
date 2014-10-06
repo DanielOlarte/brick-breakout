@@ -4,10 +4,26 @@ using UnityEngine;
 public static class TimerUtils
 {
 	private static float[] timerLevels = new float[]{
-		180.0f, // LEVEL01
-		420.0f,  // LEVEL02
-		180.0f, // LEVEL03
-		420.0f  // LEVEL04
+		360.0f, // LEVEL01
+		360.0f,  // LEVEL02
+		240.0f, // LEVEL03
+		420.0f,  // LEVEL04
+		360.0f, // LEVEL05
+		420.0f,  // LEVEL06
+		420.0f, // LEVEL07
+		420.0f,  // LEVEL08
+		390.0f, // LEVEL09
+		480.0f,  // LEVEL10
+		480.0f, // LEVEL11
+		420.0f,  // LEVEL12
+		240.0f, // LEVEL13
+		420.0f,  // LEVEL14
+		480.0f, // LEVEL15
+		420.0f,  // LEVEL16
+		360.0f, // LEVEL17
+		540.0f,  // LEVEL18
+		420.0f, // LEVEL19
+		420.0f  // LEVEL20
 	};
 	
 	public static float getTimerByLevel(int level) {

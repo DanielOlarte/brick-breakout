@@ -63,6 +63,8 @@ public class BallController : MonoBehaviour {
 		Vector3 pos = paddle.gameObject.transform.position;
 		pos.y = pos.y + paddle.gameObject.transform.localScale.y / 4;
 		transform.position = pos;
+
+		setSpeedModifier("time_modifier", 0.0f);
 	}
 	
 	// Update is called once per frame
