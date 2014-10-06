@@ -27,7 +27,6 @@ public class HelpMenuController : MonoBehaviour {
 	}
 
 	void backMainMenuClicked() {
-		Debug.Log ("backMainMenuClicked");
 		Application.LoadLevel ("Options");
 	}
 }

@@ -6,9 +6,7 @@ public class CursorScript : MonoBehaviour {
 	private GameObject cursorGO;
 	private tk2dTextMesh textMesh;
 
-	// Use this for initialization
 	void Start () {
-
 	}
 
 	void onTextChanged() {

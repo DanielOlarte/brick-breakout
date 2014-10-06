@@ -25,7 +25,10 @@ public static class TimerUtils
 		420.0f, // LEVEL19
 		420.0f  // LEVEL20
 	};
-	
+
+	public static string TIME_STR = "TIME  ";
+	public static string COUNTDOWN_GO_STR = "GO!";
+
 	public static float getTimerByLevel(int level) {
 		return timerLevels[level];
 	}

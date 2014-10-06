@@ -4,21 +4,19 @@ using System.Collections;
 public class InversePaddleObj : MonoBehaviour {
 
 	public float timeEffect;
-	public float scoreModifier = 4.0f;
+	public float scoreModifier;
 
-	public GameObject particleInverse;
+	public GameObject particle;
 
 	private bool paddleDidntCapture = false;
 	private string modifierStr = ScoreUtils.INVERSE_PADDLE_MODIFIER;
 	private GameManager gameManager;
 	private PaddleController paddleController;
 
-	// Use this for initialization
 	void Start () {
 		gameManager = (GameManager)FindObjectOfType (typeof(GameManager));
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 	
 	}
@@ -30,8 +28,7 @@ public class InversePaddleObj : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other)  {
-		if (other.gameObject.CompareTag ("Paddle")) {
-			Debug.Log ("CollisionInversePaddle-----");
+		if (other.gameObject.CompareTag (TagUtils.TAG_PADDLE)) {
 			GetComponent<AudioSource>().Play();
 			paddleDidntCapture = true;
 			renderer.enabled = false;
@@ -41,18 +38,20 @@ public class InversePaddleObj : MonoBehaviour {
 
 	private IEnumerator startObjectEffect()
 	{
-		paddleController = (PaddleController) GameObject.Find("Paddle").GetComponent(typeof(PaddleController));
+		paddleController = (PaddleController) GameObject.Find(NameUtils.GO_PADDLE).GetComponent(typeof(PaddleController));
 		paddleController.inverseDirection();
 		paddleController.setPowerUp (modifierStr, gameObject);
 
+		Vector3 positionBall = paddleController.transform.position;
+		positionBall.z = -2;
+		Quaternion rotationBall = paddleController.transform.rotation;
+		rotationBall.x = 270;
 		
-		Vector3 p = paddleController.transform.position;
-		p.z = -2;
-		Quaternion rs = paddleController.transform.rotation;
-		rs.x = 270;
-		
-		GameObject fire = Instantiate(particleInverse, p, Quaternion.Euler (rs.x, rs.y, rs.z)) as GameObject;
-		fire.transform.parent = paddleController.transform;
+		GameObject particleObject = Instantiate(particle, positionBall, 
+		                                        Quaternion.Euler (rotationBall.x, rotationBall.y, rotationBall.z)) 
+			as GameObject;
+		particleObject.transform.parent = paddleController.transform;
+
 
 		gameManager.setScoreModifier (modifierStr, scoreModifier);
 
@@ -67,7 +66,6 @@ public class InversePaddleObj : MonoBehaviour {
 		gameManager.removeScoreModifier (modifierStr);
 
 		Destroy (gameObject);
-		Debug.Log ("Effect Inverse Done");
 	}
 
 	void OnBecameInvisible() {

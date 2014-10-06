@@ -12,14 +12,12 @@ public class PauseMenuController : MonoBehaviour {
 	private bool isShowingSummary;
 	private InputManager inputManager;
 
-	// Use this for initialization
 	void Start () {
 		inputManager = (InputManager)FindObjectOfType (typeof(InputManager));
 		disablePauseMenu ();
 		isShowingSummary = false;
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		isShowingSummary = summaryController.isShowingSummary ();
 		if (!isShowingSummary) {

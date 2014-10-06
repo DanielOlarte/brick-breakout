@@ -6,7 +6,6 @@ public class SummaryScoreMenuController : MonoBehaviour {
 
 	public Transform[] childTransforms;
 	public tk2dTextMesh resultsText;
-	public GameObject particleSummary;
 	public AudioClip sound;
 
 	private bool isShowing;
@@ -48,7 +47,6 @@ public class SummaryScoreMenuController : MonoBehaviour {
 		int totalLevels = TimerUtils.getNumberOfLevels();
 		if (currentLevel < totalLevels) {
 			string newLevel = StringUtils.getNextLevelName(PlayerPrefs.GetString (ScoreUtils.CURRENT_LEVEL_USER));
-			Debug.Log (newLevel);
 			PlayerPrefs.SetString(ScoreUtils.CURRENT_LEVEL_USER, newLevel);
 			Application.LoadLevel ("LevelBase");
 		} else {

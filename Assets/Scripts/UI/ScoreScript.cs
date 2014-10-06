@@ -7,44 +7,36 @@ public class ScoreScript : MonoBehaviour {
 	static private tk2dTextMesh textMesh;
 
 	private int score;
-	// Use this for initialization
+
 	void Start () {
 		textMesh = GetComponent<tk2dTextMesh>();
-
 		score = PlayerPrefs.GetInt (ScoreUtils.TOTAL_SCORE);
-		Debug.Log (score);
-
 		updateScore ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
+	void Update () {
 	}
 
 	public void updateScore(int newScore) {
 		score += newScore;
-		string pointsScore = score.ToString();
-		int l = pointsScore.Length;
-		string baseS = ScoreUtils.BASE_SCORE;
-
-		StringBuilder aStringBuilder = new StringBuilder(baseS);
-		aStringBuilder.Remove((baseS.Length - l) + 1, l - 1);
-		aStringBuilder.Insert((baseS.Length - l) + 1, pointsScore);
-		textMesh.text = aStringBuilder.ToString();
-		textMesh.Commit();
+		updateScore ();
 	}
 
 	public void updateScore() {
-		string pointsScore = score.ToString();
-		int l = pointsScore.Length;
-		string baseS = ScoreUtils.BASE_SCORE;
-		
-		StringBuilder aStringBuilder = new StringBuilder(baseS);
-		aStringBuilder.Remove((baseS.Length - l) + 1, l - 1);
-		aStringBuilder.Insert((baseS.Length - l) + 1, pointsScore);
-		textMesh.text = aStringBuilder.ToString();
+		textMesh.text = buildScore ();
 		textMesh.Commit();
+	}
+
+	private string buildScore() {
+		string pointsScore = score.ToString();
+		int lengthScore = pointsScore.Length;
+		string baseScore = ScoreUtils.BASE_SCORE;
+
+		StringBuilder aStringBuilder = new StringBuilder(baseScore);
+		aStringBuilder.Remove((baseScore.Length - lengthScore) + 1, lengthScore - 1);
+		aStringBuilder.Insert((baseScore.Length - lengthScore) + 1, pointsScore);
+
+		return aStringBuilder.ToString ();
 	}
 
 	public int getScore() {

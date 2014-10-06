@@ -8,21 +8,19 @@ public class WallBuilder : MonoBehaviour
 {
 	public float xOffset;
 	public float yOffset;
+
+	private float BASE_START_POS_Y = 4.2f;
 	private List<List<string>> filedata;
     private Dictionary<string, string> prefabMap;
 
-	// Use this for initialization 24
-	void Awake ()
-	{
+	void Awake () {
 		string levelName = PlayerPrefs.GetString (ScoreUtils.CURRENT_LEVEL_USER);
 		readFile("Levels/" + levelName);
         initPrefabMap();
         placeBricks();
 	}
 
-	// Update is called once per frame
-	void Update ()
-	{
+	void Update () {
 
 	}
 
@@ -48,20 +46,17 @@ public class WallBuilder : MonoBehaviour
     private void placeBricks()
     {
 		float halfWidth = tk2dCamera.Instance.ScreenExtents.xMin + xOffset;
-		float tempYOffset = /*tk2dCamera.Instance.ScreenExtents.yMax - yOffset - 0.95f*/4.2f;
+		float tempYOffset = BASE_START_POS_Y;
+		float xMax = tk2dCamera.Instance.ScreenExtents.xMax;
 
         foreach (var data in filedata)
         {
 			float tempXOffset = halfWidth + xOffset;
-            foreach (var item in data)
-			{
-				if (tempXOffset < tk2dCamera.Instance.ScreenExtents.xMax - 2*xOffset)
-                {
-                    instantiateBrick(item,tempXOffset, tempYOffset);
+            foreach (var item in data) {
+				if (tempXOffset < xMax - 2*xOffset) {
+                    instantiateBrick(item, tempXOffset, tempYOffset);
                 }
-                else
-                {
-					//Debug.Log ("TempXOffset: " + tempXOffset + " HalfWidth: " + halfWidth + " XOffset: " + (-xOffset));
+                else {
                     break;
                 }
 				tempXOffset += xOffset;
@@ -70,11 +65,10 @@ public class WallBuilder : MonoBehaviour
         }
     }
 
-    private void instantiateBrick(string type,float xOffset,float yOffset)
+    private void instantiateBrick(string type, float xOffset,float yOffset)
     {
 		string item = type.Trim ();
 		if (prefabMap.ContainsKey (item)) {
-			//Debug.Log ("PositionX: " + xOffset);
 			GameObject.Instantiate (Resources.Load (prefabMap [item]), new Vector3 (xOffset, yOffset, 0), Quaternion.identity);
 		}
     }

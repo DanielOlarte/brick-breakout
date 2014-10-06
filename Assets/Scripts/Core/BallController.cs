@@ -4,13 +4,18 @@ using System.Collections.Generic;
 
 public class BallController : MonoBehaviour {
 
-	public float baseSpeed = 3.0f;
+	public float baseSpeed;
+
+	private float minSpeed = 0.5f;
+	private int INTERVAL_TIME_INCREASE = 16;
+	private float INTERVAL_TIME_INCREASE_F = 15.0f;
+	private float TOP_MAX_Y = 5.2f;
+
 	private int tickCount;
-	public float redirectionMaxValue = 0.5f;
 	private PaddleController paddle;
 	private bool onPaddle = true;
-	private Dictionary<string,float> speedModifiers = new Dictionary<string,float>();
-	private Dictionary<string,GameObject> powerups = new Dictionary<string,GameObject>();
+	private Dictionary<string,float> speedModifiers = new Dictionary<string, float>();
+	private Dictionary<string,GameObject> powerups = new Dictionary<string, GameObject>();
 	private InputManager inputManager;
 	private bool hasStarted = false;
 
@@ -23,21 +28,19 @@ public class BallController : MonoBehaviour {
 		this.onPaddle = onPaddle;
 	}
 
-	public void setSpeedModifier(string key,float value)
+	private void setSpeedModifier(string key,float value)
 	{
-		float modifiedSpeed = getModifiedSpeed();
 		if( !speedModifiers.ContainsKey(key) )
 		{
-			speedModifiers.Add(key, modifiedSpeed*value);
+			speedModifiers.Add(key, baseSpeed*value);
 		}
 		else{
 			speedModifiers[key] = 0;
-			modifiedSpeed = getModifiedSpeed();
-			speedModifiers[key] = modifiedSpeed*value;
+			speedModifiers[key] = baseSpeed*value;
 		}
 	}
 
-	public void setPowerUp(string key,GameObject go)
+	public void setPowerUp(string key, GameObject go, float value)
 	{
 		if( !powerups.ContainsKey(key) )
 		{
@@ -47,6 +50,8 @@ public class BallController : MonoBehaviour {
 			Destroy (powerups[key]);
 			powerups[key] = go;
 		}
+
+		setSpeedModifier (key, value);
 	}
 				
 	public void removePowerUp(string key)
@@ -54,7 +59,6 @@ public class BallController : MonoBehaviour {
 		powerups.Remove (key);
 		speedModifiers.Remove (key);
 	}
-	
 
 	void Start () {
 		inputManager = (InputManager)FindObjectOfType (typeof(InputManager));
@@ -64,28 +68,26 @@ public class BallController : MonoBehaviour {
 		pos.y = pos.y + paddle.gameObject.transform.localScale.y / 4;
 		transform.position = pos;
 
-		setSpeedModifier("time_modifier", 0.0f);
+		setSpeedModifier(ScoreUtils.TIME_MODIFIER, 0.0f);
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		if (hasStarted) {
 			increaseTimerSpeed ();
 			checkBoundaries ();
 
 			if( inputManager.releaseBallInput() && onPaddle ) {
-				rigidbody2D.velocity = new Vector2(0.0f,3.0f);
+				rigidbody2D.velocity = new Vector2(0.0f, baseSpeed);
 				onPaddle = false;
 			}
-			//---------para que no se quede atascada horizontalmente--------------
-			if( Mathf.Abs(rigidbody2D.velocity.y) < 0.5f && !onPaddle)
+
+			if( Mathf.Abs(rigidbody2D.velocity.y) < minSpeed && !onPaddle)
 			{
-				//Debug.Log ("Vel: " + rigidbody2D.velocity.y);
 				Vector2 currentVelocity = rigidbody2D.velocity;
-				currentVelocity.y = 0.5f;
+				currentVelocity.y = minSpeed;
 				rigidbody2D.velocity = currentVelocity;
 			}
-			//------------------------END-----------------------------------------
+
 			adjustVelocity();
 		}
 	}
@@ -93,7 +95,7 @@ public class BallController : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collision)
 	{
 		Vector2 currentVelocity = rigidbody2D.velocity;
-		if ( collision.contacts[0].normal.y > 0.9f && collision.gameObject.name.Equals("Paddle")) {
+		if ( collision.contacts[0].normal.y > 0.9f && collision.gameObject.name.Equals(NameUtils.GO_PADDLE)) {
 			float paddleSize = collision.collider.gameObject.transform.localScale.x / 2;
 			float paddleCenterModifier = (transform.position.x - collision.collider.gameObject.transform.position.x) / paddleSize;
 			float speedModifier = getModifiedSpeed() * paddleCenterModifier;							
@@ -103,17 +105,6 @@ public class BallController : MonoBehaviour {
 		rigidbody2D.velocity = currentVelocity;
 	}
 
-	/*void OnBecameInvisible() {
-		GameManager gameManager = (GameManager)FindObjectOfType (typeof(GameManager));
-		if (gameManager != null) {
-			gameManager.updateLivesAndInstantiate (gameObject);
-		}
-		
-		Destroy (gameObject);
-	}*/
-	//------------------------------------------------END OF UNITY FUNCTIONS--------------------------------------------------------
-
-	//------------------------------------------------CUSTOM FUNCTIONS--------------------------------------------------------
 	public float getModifiedSpeed()
 	{
 		float modifier = 0.0f;
@@ -128,9 +119,9 @@ public class BallController : MonoBehaviour {
 
 	private void increaseTimerSpeed()
 	{
-		float tickTimer = (TimeScript.FullTimer - TimeScript.Timer) / 15.0f;
-		if ( tickTimer > tickCount && tickCount < 16) {
-			setSpeedModifier("time_modifier",tickCount / 15.0f);
+		float tickTimer = (TimeScript.FullTimer - TimeScript.Timer) / INTERVAL_TIME_INCREASE_F;
+		if ( tickTimer > tickCount && tickCount < INTERVAL_TIME_INCREASE) {
+			setSpeedModifier(ScoreUtils.TIME_MODIFIER, tickCount / INTERVAL_TIME_INCREASE_F);
 			tickCount += 1;
 		}
 	}
@@ -138,17 +129,15 @@ public class BallController : MonoBehaviour {
 	public void adjustVelocity()
 	{
 		float constant = calculateVelocityConstant ();
-		rigidbody2D.velocity = new Vector2 (constant*rigidbody2D.velocity.x,constant*rigidbody2D.velocity.y);
-		//Debug.Log ("AdjustVel: " + rigidbody2D.velocity.y);
+		rigidbody2D.velocity = new Vector2 (constant*rigidbody2D.velocity.x, constant*rigidbody2D.velocity.y);
 	}
 
 	private float calculateVelocityConstant()
 	{
 		float speedSum = rigidbody2D.velocity.x + rigidbody2D.velocity.y;
 		float constant = 0.0f;
-		if (Mathf.Abs(speedSum) > 0.0f) 
-		{
-			constant = Mathf.Sqrt ( Mathf.Pow(getModifiedSpeed(),2) / ( Mathf.Pow(rigidbody2D.velocity.x,2) + Mathf.Pow(rigidbody2D.velocity.y,2) ) );
+		if (Mathf.Abs(speedSum) > 0.0f) {
+			constant = Mathf.Sqrt (Mathf.Pow(getModifiedSpeed(), 2) / ( Mathf.Pow(rigidbody2D.velocity.x, 2) + Mathf.Pow(rigidbody2D.velocity.y, 2) ) );
 		}
 		return constant;
 	}
@@ -172,7 +161,6 @@ public class BallController : MonoBehaviour {
 			if ( newVelocity.x < 0) {
 				newVelocity.x = newVelocity.x * -1;
 			}
-
 		}
 
 		if ( newPosition.x > xMax ) {
@@ -181,15 +169,14 @@ public class BallController : MonoBehaviour {
 				newVelocity.x = newVelocity.x * -1;
 			}
 		}
-		float yDist = /*tk2dCamera.Instance.ScreenExtents.yMax*/5.2f; 
-		float yMax = cameraPosition.y + yDist/* - colliderSize.y*/;
+
+		float yDist = TOP_MAX_Y; 
+		float yMax = cameraPosition.y + yDist;
 		if ( newPosition.y > yMax ) {
-			newPosition.y = /*Mathf.Clamp( newPosition.y, -yMax, yMax )*/5.2f;
-			//Debug.Log ("Velocity Got Max There " + newVelocity.y);
+			newPosition.y = TOP_MAX_Y;
 			if ( newVelocity.y > 0) {
 				newVelocity.y = newVelocity.y * -1;
 			}
-			//Debug.Log ("Got Max There " + newVelocity.y);
 		}
 
 		if (newPosition.y < -yMax) {
@@ -202,13 +189,10 @@ public class BallController : MonoBehaviour {
 		}
 
 		rigidbody2D.velocity = newVelocity;
-
 		transform.position = newPosition;
 	}
 
 	public void setStarted(bool started) {
 		this.hasStarted = started;
 	}
-
-	//------------------------------------------------END CUSTOM FUNCTIONS--------------------------------------------------------
 }

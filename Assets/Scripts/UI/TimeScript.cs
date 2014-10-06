@@ -36,14 +36,13 @@ public class TimeScript : MonoBehaviour
 
 	private bool hasStarted = false;
 
-	// Use this for initialization
 	void Start () {
 		int levelNumber = StringUtils.getLevelBySceneName (PlayerPrefs.GetString (ScoreUtils.LEVEL_USER_INIT));
 		timer = TimerUtils.getTimerByLevel(levelNumber - 1);
 		fullTimer = timer;
 		textMesh = GetComponent<tk2dTextMesh>();
 		string answer = TimerUtils.getTimeFromFloat (Timer);
-		textMesh.text = "TIME  " + answer;
+		textMesh.text = TimerUtils.TIME_STR + answer;
 	}
 	
 	// Update is called once per frame
@@ -51,7 +50,7 @@ public class TimeScript : MonoBehaviour
 		if (hasStarted) {
 			Timer -= Time.deltaTime;
 			string answer = TimerUtils.getTimeFromFloat (Timer);
-			textMesh.text = "TIME  " + answer;
+			textMesh.text = TimerUtils.TIME_STR + answer;
 			textMesh.Commit();
 		}
 	}

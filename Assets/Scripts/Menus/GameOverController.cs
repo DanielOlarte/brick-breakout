@@ -3,13 +3,16 @@ using System.Collections;
 
 public class GameOverController : MonoBehaviour {
 
+	public AudioClip[] sounds;
+
 	private GameObject[] buttonsGO;
 	private GameObject[] buttonsPlayerNameGO;
 	private string[] leaderboard;
 	private int score;
 	private int position;
 
-	public AudioClip[] sounds;
+	private int IDX_SOUND_GAME_OVER = 0;
+	private int IDX_SOUND_MENUS = 1;
 
 	void Start() {
 		tk2dTextMesh scoreTitle =(tk2dTextMesh) GameObject.Find(NameUtils.NAME_SCORE_TITLE).GetComponent<tk2dTextMesh>();
@@ -34,22 +37,22 @@ public class GameOverController : MonoBehaviour {
 				buttonGO.SetActive(false);
 			}
 		}
-		SoundManager.GetInstance ().changeAudio (sounds[0]);
+		SoundManager.GetInstance ().changeAudio (sounds[IDX_SOUND_GAME_OVER]);
 	}
 
 	void mainMenuClicked() {
 		Application.LoadLevel ("MainMenu");
-		SoundManager.GetInstance ().changeAudio (sounds[1]);
+		SoundManager.GetInstance ().changeAudio (sounds[IDX_SOUND_MENUS]);
 	}
 	
 	void leaderboardsClicked() {
 		Application.LoadLevel ("Leaderboards");
-		SoundManager.GetInstance ().changeAudio (sounds[1]);
+		SoundManager.GetInstance ().changeAudio (sounds[IDX_SOUND_MENUS]);
 	}
 	
 	void levelSelectionClicked() {
 		Application.LoadLevel ("LevelSelection");
-		SoundManager.GetInstance ().changeAudio (sounds[1]);
+		SoundManager.GetInstance ().changeAudio (sounds[IDX_SOUND_MENUS]);
 	}
 
 	void saveButtonClicked() {

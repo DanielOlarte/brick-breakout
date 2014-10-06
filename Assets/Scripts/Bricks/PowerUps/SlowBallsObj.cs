@@ -4,36 +4,29 @@ using System.Collections.Generic;
 
 public class SlowBallsObj : MonoBehaviour {
 	
-	public float timeEffect = 3.0f;
-	public float speedModifier = 0.4f;
-	public float scoreModifier = 0.5f;
+	public float timeEffect;
+	public float speedModifier;
+	public float scoreModifier;
 
-	public GameObject particleIce;
+	public GameObject particle;
 	
 	private bool paddleDidntCapture = false;
 	private string modifierStr = ScoreUtils.SLOW_BALLS_MODIFIER;
 	private GameManager gameManager;
-	
-	// Use this for initialization
+
 	void Start () {
 		gameManager = (GameManager)FindObjectOfType (typeof(GameManager));
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		
 	}
 	
 	void OnTriggerEnter2D(Collider2D other)  {
-		if (other.gameObject.CompareTag ("Paddle")) {
-
+		if (other.gameObject.CompareTag (TagUtils.TAG_PADDLE)) {
 			GetComponent<AudioSource>().Play();
-
-			Debug.Log ("CollisionSlowBalls-----");
-
 			paddleDidntCapture = true;
 			renderer.enabled = false;
-
 			StartCoroutine ("startObjectEffect");	
 		}
 	}
@@ -44,17 +37,17 @@ public class SlowBallsObj : MonoBehaviour {
 
 		foreach(GameObject ball in balls) {
 			BallController ballController =  (BallController)ball.GetComponent (typeof(BallController));
-			ballController.setSpeedModifier(modifierStr, /*ballController.getModifiedSpeed()**/speedModifier);
-			ballController.setPowerUp(modifierStr, gameObject);
+			ballController.setPowerUp(modifierStr, gameObject, speedModifier);
 
-			Vector3 p = ball.transform.position;
-			p.z = -2;
-			Quaternion rs = ball.transform.rotation;
-			rs.x = 270;
+			Vector3 positionBall = ball.transform.position;
+			positionBall.z = -2;
+			Quaternion rotationBall = ball.transform.rotation;
+			rotationBall.x = 270;
 			
-			GameObject fire = Instantiate(particleIce, p, Quaternion.Euler (rs.x, rs.y, rs.z)) as GameObject;
-			fire.transform.parent = ball.transform;
-			//Instantiate (slowBallsParticle, ball.transform.position, ball.transform.rotation);
+			GameObject particleObject = Instantiate(particle, positionBall, 
+			                                        Quaternion.Euler (rotationBall.x, rotationBall.y, rotationBall.z)) 
+													as GameObject;
+			particleObject.transform.parent = ball.transform;
 		}
 
 		gameManager.setScoreModifier (modifierStr, scoreModifier);
@@ -75,7 +68,6 @@ public class SlowBallsObj : MonoBehaviour {
 		gameManager.removeScoreModifier (modifierStr);
 
 		Destroy (gameObject);
-		Debug.Log ("Effect Slow Done");
 	}
 
 	void OnBecameInvisible() {

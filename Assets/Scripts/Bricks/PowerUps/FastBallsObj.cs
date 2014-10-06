@@ -4,29 +4,25 @@ using System.Collections.Generic;
 
 public class FastBallsObj : MonoBehaviour {
 	
-	public float timeEffect = 3.0f;
-	public float speedModifier = 0.3f;
-	public float scoreModifier = 1.5f;
+	public float timeEffect;
+	public float speedModifier;
+	public float scoreModifier;
 
-	public GameObject particleFire;
+	public GameObject particle;
 
 	private bool paddleDidntCapture = false;
 	private string modifierStr = ScoreUtils.FAST_BALLS_MODIFIER;
 	private GameManager gameManager;
-
-	// Use this for initialization
+	
 	void Start () {
 		gameManager = (GameManager)FindObjectOfType (typeof(GameManager));
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-		
 	}
 	
 	void OnTriggerEnter2D(Collider2D other)  {
-		if (other.gameObject.CompareTag ("Paddle")) {
-			Debug.Log ("CollisionFastBalls-----");
+		if (other.gameObject.CompareTag (TagUtils.TAG_PADDLE)) {
 			GetComponent<AudioSource>().Play();
 			StartCoroutine ("startObjectEffect");	
 		}
@@ -38,15 +34,17 @@ public class FastBallsObj : MonoBehaviour {
 		
 		foreach(GameObject ball in balls) {
 			BallController ballController =  (BallController)ball.GetComponent (typeof(BallController));
-			ballController.setSpeedModifier(modifierStr, /*ballController.getModifiedSpeed()**/speedModifier);
-			ballController.setPowerUp(modifierStr, gameObject);
-			Vector3 p = ball.transform.position;
-			p.z = -2;
-			Quaternion rs = ball.transform.rotation;
-			rs.x = 270;
+			ballController.setPowerUp(modifierStr, gameObject, speedModifier);
 
-			GameObject fire = Instantiate(particleFire, p, Quaternion.Euler (rs.x, rs.y, rs.z)) as GameObject;
-			fire.transform.parent = ball.transform;
+			Vector3 positionBall = ball.transform.position;
+			positionBall.z = -2;
+			Quaternion rotationBall = ball.transform.rotation;
+			rotationBall.x = 270;
+
+			GameObject particleObject = Instantiate(particle, positionBall, 
+			                              			Quaternion.Euler (rotationBall.x, rotationBall.y, rotationBall.z)) 
+										  			as GameObject;
+			particleObject.transform.parent = ball.transform;
 		}
 
 		gameManager.setScoreModifier (modifierStr, scoreModifier);
@@ -70,7 +68,6 @@ public class FastBallsObj : MonoBehaviour {
 		gameManager.removeScoreModifier (modifierStr);
 
 		Destroy (gameObject);
-		Debug.Log ("Effect Fast Done");
 	}
 
 	void OnBecameInvisible() {

@@ -25,7 +25,7 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	public void changeAudio(AudioClip audio) {
-		musicGO = GameObject.Find("Music"); 
+		musicGO = GameObject.Find(NameUtils.GO_MUSIC); 
 		musicGO.audio.clip = audio; 
 		musicGO.audio.Play(); 
 	}

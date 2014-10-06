@@ -5,9 +5,7 @@ using System.Collections;
 public class LeaderboardScript : MonoBehaviour {
 	
 	static private tk2dTextMesh leaderboardMesh;
-	
 
-	// Use this for initialization
 	void Start () {
 		leaderboardMesh = GetComponent<tk2dTextMesh>();
 
@@ -29,8 +27,7 @@ public class LeaderboardScript : MonoBehaviour {
 		leaderboardMesh.text = sb.ToString();
 		leaderboardMesh.Commit ();
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		
 	}

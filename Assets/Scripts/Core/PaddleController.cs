@@ -33,13 +33,11 @@ public class PaddleController : MonoBehaviour {
 		powerups.Remove (key);
 	}
 
-	// Use this for initialization
 	void Start () {
 		inputManager = (InputManager)FindObjectOfType (typeof(InputManager));
 		directionModifier = 1;
 	}
 
-	// Update is called once per frame
 	void Update () {
 
 		inputManager.paddleMovementInput (this, moveSpeed, directionModifier);

@@ -6,13 +6,14 @@ public class CounterController : MonoBehaviour {
 
 	public TimeScript timeScript;
 
+	private float timeCountdown = 4.0f;
 	private float timer;
 	private tk2dTextMesh textMesh;
 	private BallController ballController;
 
 	// Use this for initialization
 	void Start () {
-		timer = 4.0f;
+		timer = timeCountdown;
 		textMesh = (tk2dTextMesh)GetComponent<tk2dTextMesh> ();
 
 		ballController = (BallController)FindObjectOfType (typeof(BallController));
@@ -28,7 +29,7 @@ public class CounterController : MonoBehaviour {
 		textMesh.Commit();
 
 		if (timer <= 0.0f) {
-			textMesh.text = "GO!";
+			textMesh.text = TimerUtils.COUNTDOWN_GO_STR;
 			textMesh.Commit ();
 
 			Invoke("startLevel", 1); 
@@ -36,7 +37,7 @@ public class CounterController : MonoBehaviour {
 	}
 
 	private void startLevel() {
-		timer = 4.0f;
+		timer = timeCountdown;
 		timeScript.setStarted (true);
 		ballController.setStarted (true);
 

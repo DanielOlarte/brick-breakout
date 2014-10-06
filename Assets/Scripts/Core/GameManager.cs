@@ -18,6 +18,11 @@ public class GameManager : MonoBehaviour {
 	private TimeScript timeScript;
 	private ScoreScript scoreScript;
 
+	private float LIVE_OFFSET_X = 0.4f;
+	private int IDX_SOUND_IN_GAME = 0;
+	private float SECONDS_SPAWN_BALL = 2.0f;
+	private float SECONDS_MOVE_LEVEL = 0.5f;
+
 	private List<GameObject> listLives;
 	private int score;
 	private int lives;
@@ -40,28 +45,25 @@ public class GameManager : MonoBehaviour {
 		scoreModifiers.Remove (key);
 	}
 
-
-	// Use this for initialization
 	void Start () {
-		Debug.Log (PlayerPrefs.GetString (ScoreUtils.LEVEL_USER_INIT));
-
 		ballsGO = new List<GameObject> ();
-		ballsGO.Add((GameObject)Instantiate(Resources.Load("Ball")));
-		paddleGO = GameObject.Find("Paddle");
-		timeScript = (TimeScript) GameObject.Find("TimeScore").GetComponent(typeof(TimeScript));
-		scoreScript = (ScoreScript) GameObject.Find("PointsScore").GetComponent(typeof(ScoreScript));
+		ballsGO.Add((GameObject)Instantiate(Resources.Load(NameUtils.GO_BALL)));
+		paddleGO = GameObject.Find(NameUtils.GO_PADDLE);
+		timeScript = (TimeScript) GameObject.Find(NameUtils.GO_TIME_SCORE).GetComponent(typeof(TimeScript));
+		scoreScript = (ScoreScript) GameObject.Find(NameUtils.GO_POINTS_SCORE).GetComponent(typeof(ScoreScript));
 
 		lives = PlayerPrefs.GetInt(ScoreUtils.LIVES);
 		listLives = new List<GameObject> ();
+
 		for (int i = 0; i < lives; i++) {
-			GameObject live = (GameObject)Instantiate(Resources.Load("Live"));
+			GameObject live = (GameObject)Instantiate(Resources.Load(NameUtils.GO_LIVE));
 			Vector3 position = live.transform.position;
-			position.x += (i*0.4f);
+			position.x += (i * LIVE_OFFSET_X);
 			live.transform.position = position;
 			listLives.Insert(i, live);
 		}
 
-		GameObject[] gos = GameObject.FindGameObjectsWithTag("Bricks");
+		GameObject[] gos = GameObject.FindGameObjectsWithTag(TagUtils.TAG_BRICKS);
 		numberBricks = gos.Length;
 
 		int levelNumber = StringUtils.getLevelBySceneName (PlayerPrefs.GetString (ScoreUtils.CURRENT_LEVEL_USER));
@@ -71,11 +73,10 @@ public class GameManager : MonoBehaviour {
 
 		enableUI ();
 
-		SoundManager.GetInstance ().changeAudio (sounds [0]);
+		SoundManager.GetInstance ().changeAudio (sounds [IDX_SOUND_IN_GAME]);
 		SoundManager.GetInstance ().volumeDown (0.5f);
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		if (numberBricks == 0) {
 			moveNextLevel();
@@ -94,8 +95,6 @@ public class GameManager : MonoBehaviour {
 		{
 			modifier += entry.Value;
 		}
-
-		Debug.Log ("Modifier : " + modifier);
 		scoreScript.updateScore ((int)Mathf.Round(points*modifier));
 	}
 
@@ -125,7 +124,7 @@ public class GameManager : MonoBehaviour {
 			Destroy (listLives [lives]);
 			if (lives > 0 ) {
 				disablePowers ();
-				StartCoroutine (startWaitNextBall (2.0f));
+				StartCoroutine (startWaitNextBall (SECONDS_SPAWN_BALL));
 			} else {
 				finishGame ();
 			}
@@ -148,7 +147,7 @@ public class GameManager : MonoBehaviour {
 		disableTimer ();
 		disablePowers ();
 
-		StartCoroutine (startWaitNextLevel (0.5f));
+		StartCoroutine (startWaitNextLevel (SECONDS_MOVE_LEVEL));
 	}
 
 	public void minusBrick() {
@@ -178,7 +177,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void disablePowers() {
-		GameObject[] powersGO = GameObject.FindGameObjectsWithTag ("Powers");
+		GameObject[] powersGO = GameObject.FindGameObjectsWithTag (TagUtils.TAG_POWERS);
 		if (powersGO.Length > 0) {
 			foreach(GameObject powerGameObject in powersGO) {
 				Destroy (powerGameObject);
@@ -194,7 +193,7 @@ public class GameManager : MonoBehaviour {
 	private IEnumerator waitSeconds(float seconds)
 	{
 		yield return new WaitForSeconds(seconds);
-		GameObject newBall = (GameObject)Instantiate(Resources.Load("Ball"));
+		GameObject newBall = (GameObject)Instantiate(Resources.Load(NameUtils.GO_BALL));
 		newBall.GetComponent<BallController>().setStarted(true);
 		ballsGO.Add(newBall);
 	}

@@ -159,7 +159,7 @@ MonoBehaviour:
   timeEffect: 6
   speedModifier: -.5
   scoreModifier: .5
-  particleIce: {fileID: 100002, guid: 129a77021de530c40a72166ef637122b, type: 2}
+  particle: {fileID: 100002, guid: 129a77021de530c40a72166ef637122b, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

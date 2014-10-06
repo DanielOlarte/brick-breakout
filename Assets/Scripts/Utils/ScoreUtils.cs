@@ -25,6 +25,7 @@ public static class ScoreUtils
 	public static string SLOW_BALLS_MODIFIER = "slow_balls";
 	public static string INVERSE_PADDLE_MODIFIER = "inverse_paddle";
 	public static string MULTIPLE_BALLS_MODIFIER = "multiple_balls";
+	public static string TIME_MODIFIER = "time_modifier";
 
 	public static float SCORE_LEVEL_MODIFIER = 0.1f;
 
@@ -34,7 +35,6 @@ public static class ScoreUtils
 	public static string BASE_SCORE = "00000000";
 
 	public static void initializeLeaderboards() {
-		//PlayerPrefs.DeleteAll ();
 		if (!PlayerPrefs.HasKey (LEADERBOARD_INIT)) {
 			PlayerPrefs.SetInt (LEADERBOARD_INIT, 0);
 		}				
@@ -109,12 +109,6 @@ public static class ScoreUtils
 			string position = BASE_STR_LEADERBOARD + i.ToString();
 			PlayerPrefs.SetString(position, leaderboard[i - 1]);
 		}
-
-		/*for (int i = 1; i <= TOTAL_POSITIONS_LEADERBOARD; i++) {
-			string position = BASE_STR_LEADERBOARD + i.ToString();
-
-			Debug.Log (position + " - " + PlayerPrefs.GetString(position));
-		}*/
 	}
 
 	public static int getFullScore(int score, float leftTime, int leftLives) {

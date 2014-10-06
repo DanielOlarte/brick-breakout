@@ -161,7 +161,7 @@ MonoBehaviour:
   limitLowAngle: 30
   limitHighAngle: 150
   scoreModifier: 2
-  particleMultiple: {fileID: 100002, guid: f7d1dc4c583c551469f6328ded87b229, type: 2}
+  particle: {fileID: 100002, guid: f7d1dc4c583c551469f6328ded87b229, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -4,7 +4,6 @@ using System.Collections;
 public class InputManager : MonoBehaviour
 {
 	private int leftClick = 0;
-	private float tempMousePositionX;
 
 #if UNITY_ANDROID
     private float fingerStartTime  = 0.0f;
@@ -19,7 +18,6 @@ public class InputManager : MonoBehaviour
 		#if UNITY_ANDROID
 		if(Input.touchCount == 1)// && Input.GetTouch(0).phase == TouchPhase.Moved)
 		{
-			//GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
 			Camera camera = tk2dCamera.Instance.ScreenCamera;
 			float   fingerXPosition = camera.ScreenToWorldPoint(Input.GetTouch(0).position).x;
 			Vector3 newPos = new Vector3(direction*fingerXPosition,paddle.transform.position.y,paddle.transform.position.z);
@@ -31,19 +29,6 @@ public class InputManager : MonoBehaviour
 		#if UNITY_STANDALONE
 		Vector3 currentPosition = paddle.transform.position;
 		paddle.currentMoveSpeed = paddleMoveSpeed;
-		/*if( inputManager.paddleRight() ) 
-		{
-			moveDirection = paddle.transform.right*directionModifier;
-			moveDirection.Normalize();
-		} else if( inputManager.paddleLeft() ) 
-		{
-			moveDirection = -paddle.transform.right*directionModifier;
-			moveDirection.Normalize();
-		} else 
-		{
-			moveDirection = new Vector3(0.0f,0.0f,0.0f);
-			currentMoveSpeed = 0.0f;
-		}*/
 		Camera camera = tk2dCamera.Instance.ScreenCamera;
 		float mouseXPosition = camera.ScreenToWorldPoint(Input.mousePosition).x;
 		Vector3 target = new Vector3( direction*mouseXPosition,currentPosition.y,currentPosition.z);
@@ -57,7 +42,6 @@ public class InputManager : MonoBehaviour
 
         if (Input.touchCount > 0)
         {
-
             foreach (Touch touch in Input.touches)
             {
                 switch (touch.phase)

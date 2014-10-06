@@ -8,26 +8,23 @@ public class PrefabBrick : MonoBehaviour {
 	public GameObject particleHit;
 	private Brick brick;
 
-	// Use this for initialization
 	void Start () {
 		brick = (Brick)BrickFactory.getBrick(type);
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
+	void Update () {
 	}
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
-		if (collision.gameObject.tag == "Player") {
+		if (collision.gameObject.tag == TagUtils.TAG_PLAYER) {
 			GetComponent<AudioSource>().Play();
 		}
 	}
 
 	void OnCollisionExit2D(Collision2D collision)
 	{
-		if (collision.gameObject.tag == "Player") {
+		if (collision.gameObject.tag == TagUtils.TAG_PLAYER) {
 			brick.addHits ();
 
 			Vector3 positionHit = transform.position;
@@ -46,7 +43,7 @@ public class PrefabBrick : MonoBehaviour {
 
 				int totalPoints = brick.getPoints()*brick.getCurrentHits();
 
-				GameObject gameObjectGM = GameObject.Find("GameManager");
+				GameObject gameObjectGM = GameObject.Find(NameUtils.GO_GAME_MANAGER);
 				GameManager gameManager = (GameManager) gameObjectGM.GetComponent(typeof(GameManager));
 				gameManager.addScore(totalPoints);
 				gameManager.minusBrick();
