@@ -34,6 +34,15 @@ public class InputManager : MonoBehaviour
 		Vector3 target = new Vector3( direction*mouseXPosition,currentPosition.y,currentPosition.z);
 		paddle.transform.position = Vector3.Lerp( currentPosition, target, Time.deltaTime*10 );
 		#endif
+
+		#if UNITY_WEBPLAYER
+		Vector3 currentPosition = paddle.transform.position;
+		paddle.currentMoveSpeed = paddleMoveSpeed;
+		Camera camera = tk2dCamera.Instance.ScreenCamera;
+		float mouseXPosition = camera.ScreenToWorldPoint(Input.mousePosition).x;
+		Vector3 target = new Vector3( direction*mouseXPosition,currentPosition.y,currentPosition.z);
+		paddle.transform.position = Vector3.Lerp( currentPosition, target, Time.deltaTime*10 );
+		#endif
 	}
 
 	public bool releaseBallInput()
@@ -100,6 +109,14 @@ public class InputManager : MonoBehaviour
 			return true;
 		}
 		#endif
+
+		#if UNITY_WEBPLAYER
+		if( Input.GetMouseButtonDown(leftClick) )
+		{
+			return true;
+		}
+		#endif
+		
 		return false;
 	}
 
@@ -109,6 +126,13 @@ public class InputManager : MonoBehaviour
 			return true;
 		}
 		#endif
+
+		#if UNITY_WEBPLAYER
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			return true;
+		}
+		#endif
+		
 		return false;
 	}
 }

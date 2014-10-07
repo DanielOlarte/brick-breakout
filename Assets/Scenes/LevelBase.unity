@@ -123,7 +123,6 @@ MonoBehaviour:
   - {fileID: 185147969}
   - {fileID: 1264200423}
   resultsText: {fileID: 1264200424}
-  particleSummary: {fileID: 100012, guid: 58d268a4aef074d468566f8b9e98a0be, type: 2}
   sound: {fileID: 8300000, guid: 86b91fb97d3164d44a1388f57e3b386a, type: 3}
 --- !u!1001 &84072602
 Prefab:
@@ -2038,7 +2037,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1282525768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.60468674, y: 5.39999962, z: 10}
+  m_LocalPosition: {x: -9.59999943, y: 5.39999962, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 96073355}
